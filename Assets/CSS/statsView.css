@@ -6,10 +6,21 @@ canvas {
 #chartDiv {
     width: 400px;
     height: 400px;
+    top: -100%;
 }
 
 #pieDiv {
     width: 400px;
     height: 400px;
+    position: relative;
+}
+
+#graphContainer {
+    z-index: 1;
+    position: relative;
+}
+
+#html {
+    background-color: ghostwhite;
     float: right;
 }
