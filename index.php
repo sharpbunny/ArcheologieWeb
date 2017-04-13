@@ -18,9 +18,8 @@ if (!isset($_SESSION["iduser"]))
 else
 {
     // Research ctrl
+    // require_once('Controllers/researchCtrl.php');
+
+    require_once('Controllers/LoginCtrl.php');
+    Login::DisplayDeconnexion();
 }
-
-var_dump($_SESSION);
-var_dump($_POST);
-
-?>
