@@ -1,6 +1,6 @@
 <! doctype html>
 
-<html>
+<html id="html">
 
     <head>
     <!-- Vérifier si on doit le laisser dans le head ou le mettre dans le body -->
@@ -10,13 +10,13 @@
     </head>
 
     <body>
-        <h1>ArcheologieWeb</h1>
+        <!-- <h1>ArcheologieWeb</h1>-->
+        <div id="Container">  </div>
         
         <!-- Formulaire permettant de choisir la statistique à afficher-->
         <form action="../Controllers/statsController.php" method="post">
             <select name="listeStats">
-                <option value="themePieChart" name="themePieChart">Theme Pie Chart </option>
-                <option value="themeBarChart" name="themeBarChart">Theme Bar Chart </option>
+                <option value="themeChart" name="themeChart">Statistiques des thèmes d'intervention' </option>
             </select>
             <input type="Submit" name="chartSubmit" value="Afficher le graphique">
         </form>
