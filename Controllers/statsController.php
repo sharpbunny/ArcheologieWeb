@@ -1,6 +1,7 @@
 <?php
     session_start();
-
+    //FIXME : To be embedded in a class
+    
     /*On vérifie que l'utilisateur a bien ouvert une session (login et mdp corrects) et qu'il a bien demandé une statistiques*/
     if(isset($_SESSION['iduser'])){
 

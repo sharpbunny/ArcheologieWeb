@@ -1,5 +1,5 @@
 <footer id="footer">
 <?php
-echo $footer;
+    echo $footer;
 ?>
 </footer>

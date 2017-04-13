@@ -1,10 +1,10 @@
 <?php
-// page title
-$title = "Accueil";
-// page footer content
-$footer = "Contenu bas de page";
-// buffer init
-ob_start();
+    // page title
+    $title = "Accueil";
+    // page footer content
+    $footer = "Contenu bas de page";
+    // buffer init
+    ob_start();
 ?>
 <form id="formLogin" action="./index.php" method="POST">
     <input id="pseudoLogin" type="text" name="pseudoLogin" placeholder="Identifiant"> <br>
@@ -12,26 +12,26 @@ ob_start();
     <input id="validerLogin" type="submit" name="validerLogin" value="Se connecter"> <br>
 </form>
 <?php
-if (isset($_GET["error_login"]))
-{
-    $displayErrorMessage = "";
-    if ($_GET["error_login"] == "badlogin")
+    if (isset($_GET["error_login"]))
     {
-        $displayErrorMessage = "Mauvais login ou password, veuillez réessayer.";
+        $displayErrorMessage = "";
+        if ($_GET["error_login"] == "badlogin")
+        {
+            $displayErrorMessage = "Mauvais login ou password, veuillez réessayer.";
+        }
+        else
+        {
+            $displayErrorMessage = "Erreur sur le login inconnue.";
+        }
+        echo "<p>$displayErrorMessage</p>";
     }
-    else
-    {
-        $displayErrorMessage = "Erreur sur le login inconnue.";
-    }
-    echo "<p>$displayErrorMessage</p>";
-}
 
-// store buffer into $content
-$content = ob_get_clean();
+    // store buffer into $content
+    $content = ob_get_clean();
 
-$user = "";
+    $user = "";
 
-// call template to display
-include('Views/siteTemplate.php');
+    // call template to display
+    include('Views/siteTemplate.php');
 
 ?>
