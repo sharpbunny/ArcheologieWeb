@@ -24,7 +24,7 @@
 
         <!-- Div contenant les graphiques -->
         <?php 
-            if($_GET['stats'] == true){
+            if(isset($_GET['stats']) && $_GET['stats'] == true){
                 echo'<div id="graphContainer">
                 <div id="chartDiv">
                     <canvas id="ArcheoChart" width="100" height="100"></canvas>        
@@ -37,7 +37,7 @@
             }
 
             else{
-                echo '<p>Vous n\'avez choisi aucune statistique.</p>'
+                echo '<p>Vous n\'avez choisi aucune statistique.</p>';
             }
 
         ?>
