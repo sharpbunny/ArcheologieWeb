@@ -5,7 +5,7 @@ if (!isset($_SESSION["iduser"]))
 {
     if (!isset($_POST["validerLogin"]))
     {
-        require_once('Controllers/researchController.php');
+        require_once('Controllers/LoginCtrl.php');
         Login::DisplayLoginView();
     }
     if (isset($_POST["validerLogin"]))
