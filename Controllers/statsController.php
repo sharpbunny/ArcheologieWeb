@@ -6,8 +6,7 @@
 
         /*Si l'utilisateur a demandé à afficher une statistique : listeStats n'est pas vide*/
         if(!empty($_POST['listeStats'])){
-            //On appelle le modèle chargeant les données depuis la bdd
-            //On envoie les données à la view pour qu'elle les affiche
+            include('../Model/statsModel.php');
             header('Location: ../Views/statsView.php?stats=true'); //A modifier plus tard
         }
         
