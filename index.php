@@ -5,7 +5,7 @@ if (!isset($_SESSION["iduser"]))
 {
     if (!isset($_POST["validerLogin"]))
     {
-        require_once('Controllers/LoginCtrl.php');
+        require_once('Controllers/researchController.php');
         Login::DisplayLoginView();
     }
     if (isset($_POST["validerLogin"]))
@@ -18,8 +18,7 @@ if (!isset($_SESSION["iduser"]))
 else
 {
     // Research ctrl
-    require_once('Controllers/researchController.php');
+
+    require_once('Controllers/LoginCtrl.php');
+    Login::DisplayDeconnexion();
 }
-
-
-?>
