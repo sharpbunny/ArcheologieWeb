@@ -1,9 +1,11 @@
 <?php 
-// First Login Controller.
+/**
+* In charge of displaying first login connexion and deconnexion button
+*/
 class Login 
 {
 	/**
-	 * display login view 
+	 * Display login view 
 	 */
 	static public function DisplayLoginView()
 	{

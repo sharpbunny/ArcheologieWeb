@@ -1,9 +1,14 @@
 <?php
-
+//FIXME : rename file with Model suffix 
+/**
+* Model to request user table
+*/
 class User
 {
     /**
-     * Check if user exist in the bdd.
+     * Check if user exists in the bdd.
+     * @param string user's login
+     * @param string user's password 
      * @return mixed boolean or iduser.
      */
     private static function CheckUser( $login, $password)
@@ -12,7 +17,7 @@ class User
         $exist = false;
         
         $pdo = ArcheoPDO::Connect();
-		
+
 		$select = $pdo->query("SELECT iduser FROM users WHERE username='$login' AND userpass='$password'");
         $select = $select->fetch();
 
@@ -28,6 +33,7 @@ class User
 
     /**
      * Connect user.
+     * FIXME : what  this function actually does ?
      */
     public static function ConnexionUser()
     {
@@ -47,11 +53,12 @@ class User
         }
     }
 
+    /**
+    * FIXME : what  this function actually does ?
+    */
     public static function DeconnexionUser()
     {
         session_unset();
         session_destroy();
     }
 }
-
-if (isset($_POST["deco"])) {User::DeconnexionUser();}

@@ -1,6 +1,12 @@
 <?php
+/**
+* Connector to manage connection and disconnection to database
+*/
 class ArcheoPDO
 {
+    /**
+    * PDO Attribute activated by new PDO
+    */
     private $mysqlPDO;
 
     /**

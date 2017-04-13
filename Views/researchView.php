@@ -1,6 +1,5 @@
 <?php 
-//FIXME move to view
-
+    //FIXME move to view
 ?>
 
 <!DOCTYPE html>
