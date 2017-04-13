@@ -17,6 +17,9 @@
             <canvas id="ArcheoChart" width="100" height="100"></canvas>        
         </div>
 
+        <div id="pieDiv">
+                    <canvas id="ArcheoPie"></canvas>        
+        </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js" type="text/javascript"></script> <!-- Librairie chartjs-->
         <script src="statsView.js" type="text/javascript"></script>

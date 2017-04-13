@@ -7,3 +7,9 @@ canvas{
     width: 400px;
     height: 400px;  
 }
+
+#pieDiv{
+     width: 400px;
+    height: 400px;   
+    float: right;  
+}
