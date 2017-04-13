@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="Assets/CSS/stylesheet.css" />
+<?php
+if (isset($links)) {
+    foreach ($links as $link){
+        echo "    ".$link."\n";
+    }
+}
+?>
     <title><?php echo $title; ?></title>
   </head>
   <body id="bodyRecherche">
@@ -31,9 +38,9 @@
         <?php echo $content; ?>
       </div>
     </div>
-  </body>
 <?php
 include("footer.php");
 ?>
+  </body>
 
 </html>

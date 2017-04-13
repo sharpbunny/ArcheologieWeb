@@ -1,6 +1,12 @@
 <?php
+/**
+* Connector to manage connection and disconnection to database
+*/
 class ArcheoPDO
 {
+    /**
+    * PDO Attribute activated by new PDO
+    */
     private $mysqlPDO;
 
     /**
@@ -9,7 +15,7 @@ class ArcheoPDO
     */
     public static function Connect() 
     {
-        $host = '10.111.61.148';
+        $host = '127.0.0.1';
         $bdd = 'intervention_bdd';
         $user = 'csharp';
         $password = 'csharp';
