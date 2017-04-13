@@ -1,6 +1,7 @@
 <?php 
 // First Login Controller.
 //FIXME : create class
+
 require("./Model/Connector.php");
 class Login {
 
@@ -9,6 +10,7 @@ class Login {
 		ArcheoPDO::Disconnect();
 	}
 }
+
 
 if ( !isset( $_SESSION["id"] ) ) {
 	if ( !isset( $_POST["validerLogin"] ) )
