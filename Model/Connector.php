@@ -8,7 +8,7 @@ class Pdo
     public static function Connect() 
     {
         $host = '10.111.61.148';
-        $bdd = 'interventionbdd';
+        $bdd = 'intervention_bdd';
         $user = 'csharp';
         $password = 'csharp';
         try
