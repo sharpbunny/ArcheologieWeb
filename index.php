@@ -1,10 +1,17 @@
-<?php
+<?php 
+session_start();
 
 // contains redirection to first controller
-require('Controllers/LoginCtrl.php');
 
-//TODO 
-// call static methode to load view 
+
+
+//TODO check if session exists
+//TODO if not exists 
+require('Controllers/LoginCtrl.php');
 Login::DisplayLoginView();
+//TODO else 
+
+
+
 
 ?>
