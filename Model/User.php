@@ -12,7 +12,7 @@ class User
         $exist = false;
         
         $pdo = ArcheoPDO::Connect();
-		
+
 		$select = $pdo->query("SELECT iduser FROM users WHERE username='$login' AND userpass='$password'");
         $select = $select->fetch();
 
@@ -53,5 +53,3 @@ class User
         session_destroy();
     }
 }
-
-if (isset($_POST["deco"])) {User::DeconnexionUser();}

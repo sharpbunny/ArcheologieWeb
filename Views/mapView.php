@@ -1,7 +1,7 @@
 <?php
 // page title
 $title = "map";
-// page footer contenyt
+// page footer content
 $footer = "Contenu bas de page";
 // buffer init
 ob_start();
@@ -14,6 +14,6 @@ $content = ob_get_clean();
 $user = "";
 
 // call template to display
-include('Views/sitetemplate.php');
+include('Views/siteTemplate.php');
 
 ?>

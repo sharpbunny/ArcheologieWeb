@@ -7,7 +7,7 @@ class Map
 	 */
 	static public function DisplayMapView()
 	{
-		require_once("./Views/map.php");
+        require_once("./Views/mapView.php");
 	}
 
 }
