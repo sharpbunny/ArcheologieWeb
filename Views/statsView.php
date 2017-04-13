@@ -11,7 +11,7 @@
 
     <body>
         <!-- <h1>ArcheologieWeb</h1>-->
-        <div id="Container">  </div>
+        
         
         <!-- Formulaire permettant de choisir la statistique à afficher-->
         <form action="../Controllers/statsController.php" method="post">
