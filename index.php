@@ -1,11 +1,14 @@
 <?php 
 session_start();
-$action = $_GET['action'];
+
+$getpost = array_merge($_GET, $_POST);
+$action = htmlspecialchars($getpost['action']);
+
 if (!isset($_SESSION["iduser"]))
 {
     if (!isset($_POST["validerLogin"]))
     {
-        require_once('Controllers/LoginCtrl.php');
+        require_once('Controllers/LoginController.php');
         Login::DisplayLoginView();
     }
     if (isset($_POST["validerLogin"]))
@@ -40,7 +43,7 @@ else
         }
         
         
-        require_once('Controllers/LoginCtrl.php');
+        require_once('Controllers/LoginController.php');
         Login::DisplayDeconnexion();
     }
 }

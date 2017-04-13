@@ -8,7 +8,7 @@
   <body>
     <div id="global">
       <header>
-        <a href="index.php"><h1>ArchéoSite</h1></a>
+        <a href="#"><h1>ArchéoSite</h1></a>
         <p>
         <?php
         if (isset($user->login)) {
@@ -29,7 +29,8 @@
       </div>
     </div>
   </body>
-
-  <?php require_once("footer.php"); ?>
+<?php
+include("footer.php");
+?>
 
 </html>
