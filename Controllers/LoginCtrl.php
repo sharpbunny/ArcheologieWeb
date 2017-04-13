@@ -1,17 +1,9 @@
 <?php 
 // First Login Controller.
-//FIXME : create class
+class Login {
 
-if ( !isset( $_SESSION["id"] ) ) {
-	if ( !isset( $_POST["validerLogin"] ) )
-	{
-		include("./Views/login.php");
-	}
-	else if ( isset( $_POST["validerLogin"] ) and isset( $_POST["pseudoLogin"] ) and isset( $_POST["passwordLogin"] ) )
-	{
-		include("./Model/User.php");
+	static public function DisplayLoginView() {
+		require_once("./Views/login.php");
 	}
 }
-
-
 ?>

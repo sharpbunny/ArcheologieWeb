@@ -1,6 +1,8 @@
 <?php
-class Pdo
+class ArcheoPDO
 {
+    private $mysqlPDO;
+
     /**
     * function to connect to bdd 
     * @return PDO
@@ -30,7 +32,7 @@ class Pdo
     public static function Disconnect() 
     {
         // TODO : disconnect BDD
-
+        $mysqlPDO = null;
     }
 }
 
