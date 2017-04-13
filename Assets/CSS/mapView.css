@@ -27,9 +27,20 @@ body {
     height: 1024px;
 }
 
+
 #droite {
+    display:flex;
+    flex-direction: row;
+      align-items: center;
     background-color: maroon;
     width: 1000px;
+}
+#map{
+    position:absolute;
+    background-color: white;
+    width:700px;
+    height:400px;
+    margin-left:150px;
 }
 
 p {
