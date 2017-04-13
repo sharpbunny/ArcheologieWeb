@@ -1,3 +1,8 @@
+<?php 
+//FIXME move to view
+
+?>
+
 <!DOCTYPE html>
 <html>
 
