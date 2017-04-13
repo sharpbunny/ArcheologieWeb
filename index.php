@@ -19,7 +19,7 @@ else
 {
     // Research ctrl
     require_once('Controllers/researchCtrl.php');
-    Login::DisplayLoginView();
 }
+
 
 ?>

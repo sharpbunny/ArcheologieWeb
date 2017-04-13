@@ -1,6 +1,5 @@
 <?php
 
-
 class User
 {
     /**
@@ -47,4 +46,12 @@ class User
             header("Location: ./index.php?error_login=badlogin");
         }
     }
+
+    public static function DeconnexionUser()
+    {
+        session_unset();
+        session_destroy();
+    }
 }
+
+if (isset($_POST["deco"])) {User::DeconnexionUser();}
