@@ -12,13 +12,26 @@ if (!isset($_SESSION["iduser"]))
     {
         require_once("Model/User.php");
         User::ConnexionUser();
+        header("Location: ./index.php");
     }
-    
+
 }
 else
 {
-    // Research ctrl
 
-    require_once('Controllers/LoginCtrl.php');
-    Login::DisplayDeconnexion();
+    if (isset($_POST["deco"]))
+    {
+        echo 'logout';
+        require_once("Model/User.php");
+        User::DeconnexionUser();
+        header("Location: ./index.php");
+    }
+    else
+    {
+        // Research ctrl
+        require_once('Controllers/researchController.php');
+
+        require_once('Controllers/LoginCtrl.php');
+        Login::DisplayDeconnexion();
+    }
 }
