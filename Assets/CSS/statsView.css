@@ -1,6 +1,6 @@
 canvas {
-    width: 100px;
-    height: 100px;
+    width: 400px;
+    height: 400px;
 }
 
 #chartDiv {
@@ -9,15 +9,28 @@ canvas {
     top: -100%;
 }
 
-#pieDiv {
-    width: 400px;
-    height: 400px;
+#ArcheoChart {
+    width: 100%;
+    height: 100%;
+}
+
+#ArcheoPie {
+    width: 100%;
+    height: 100%;
     position: relative;
+    float: right
+}
+
+#pieDiv {
+    width: 100%;
+    height: 100%;
 }
 
 #graphContainer {
     z-index: 1;
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 #html {
