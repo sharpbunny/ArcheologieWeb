@@ -14,7 +14,9 @@
         if (isset($user->login)) {
             echo "Bienvenue ".$user->login;
             echo "<nav>";
+            echo "<a href=\"index.php?action=search\">Recherche</a>";
             echo "<a href=\"index.php?action=stats\">Stats</a>";
+            echo "<a href=\"index.php?action=map\">Maps</a>";
             echo "</nav>";
         }
                

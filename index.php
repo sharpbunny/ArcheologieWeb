@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+$action = $_GET['action'];
 if (!isset($_SESSION["iduser"]))
 {
     if (!isset($_POST["validerLogin"]))
@@ -27,9 +27,19 @@ else
     }
     else
     {
-        // Research ctrl
-        require_once('Controllers/researchController.php');
-        Research::DisplaySearchView();
+        if ($action == "search") {
+            // Research ctrl
+            require_once('Controllers/researchController.php');
+            Research::DisplaySearchView();
+        } else if ($action == "stats"){
+            // stats
+        } else if ($action == "map"){
+            // map
+            require_once('Controllers/mapController.php');
+            Map::DisplayMapView();
+        }
+        
+        
         require_once('Controllers/LoginCtrl.php');
         Login::DisplayDeconnexion();
     }
