@@ -22,7 +22,4 @@ else
 
     require_once('Controllers/LoginCtrl.php');
     Login::DisplayDeconnexion();
-
 }
-
-?>
