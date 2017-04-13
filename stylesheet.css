@@ -1,0 +1,29 @@
+#bodyRecherche{
+    height: 1000px;
+    width: 800px;
+    
+}
+
+#bodyRecherche,#divBarreRecherche fieldset{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#divBarreRecherche{
+    background-color: beige;
+}
+#barreRecherche{
+    height:34px;
+    width: 559px;
+    
+}
+
+#resultatRecherche{
+    background-color: purple;
+    height: 800px;
+    border: 1px solid black;
+}
