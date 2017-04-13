@@ -1,3 +1,8 @@
+<?php
+$title = "Accueil";
+$footer = "Contenu bas de page";
+ob_start();
+?>
 <form id="formLogin" action="./index.php" method="POST">
     <input id="pseudoLogin" type="text" name="pseudoLogin" placeholder="Identifiant"> <br>
     <input id="passwordLogin" type="password" name="passwordLogin" placeholder="Mot de Passe"> <br>
@@ -17,3 +22,10 @@ if (isset($_GET["error_login"]))
     }
     echo "<p>$displayErrorMessage</p>";
 }
+
+$content = ob_get_clean();
+
+$user = "";
+include('Views/sitetemplate.php');
+
+?>
