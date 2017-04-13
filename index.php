@@ -1,6 +1,17 @@
-<?php session_start();
+<?php 
+session_start();
 
 // contains redirection to first controller
-include("Controllers/LoginCtrl.php");
+
+
+
+//TODO check if session exists
+//TODO if not exists 
+require('Controllers/LoginCtrl.php');
+Login::DisplayLoginView();
+//TODO else display research View
+
+
+
 
 ?>
