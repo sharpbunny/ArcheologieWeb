@@ -15,8 +15,7 @@
         <!-- Formulaire permettant de choisir la statistique à afficher-->
         <form action="../Controllers/statsController.php" method="post">
             <select name="listeStats">
-                <option value="themePieChart" name="themePieChart">Theme Pie Chart </option>
-                <option value="themeBarChart" name="themeBarChart">Theme Bar Chart </option>
+                <option value="themeChart" name="themeChart">Statistiques des thèmes d'intervention' </option>
             </select>
             <input type="Submit" name="chartSubmit" value="Afficher le graphique">
         </form>
@@ -24,7 +23,7 @@
 
         <!-- Div contenant les graphiques -->
         <?php 
-            if($_GET['stats'] == true){
+            if(isset($_GET['stats']) && $_GET['stats'] == true){
                 echo'<div id="graphContainer">
                 <div id="chartDiv">
                     <canvas id="ArcheoChart" width="100" height="100"></canvas>        
@@ -37,7 +36,7 @@
             }
 
             else{
-                echo '<p>Vous n\'avez choisi aucune statistique.</p>'
+                echo '<p>Vous n\'avez choisi aucune statistique.</p>';
             }
 
         ?>

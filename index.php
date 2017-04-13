@@ -1,17 +1,26 @@
 <?php 
 session_start();
 
-// contains redirection to first controller
+if (!isset($_SESSION["iduser"]))
+{
+    if (!isset($_POST["validerLogin"]))
+    {
+        require_once('Controllers/LoginCtrl.php');
+        Login::DisplayLoginView();
+    }
+    if (isset($_POST["validerLogin"]))
+    {
+        require_once("Model/User.php");
+        User::ConnexionUser();
+    }
+    
+}
+else
+{
+    // Research ctrl
+}
 
-
-
-//TODO check if session exists
-//TODO if not exists 
-require('Controllers/LoginCtrl.php');
-Login::DisplayLoginView();
-//TODO else display research View
-
-
-
+var_dump($_SESSION);
+var_dump($_POST);
 
 ?>

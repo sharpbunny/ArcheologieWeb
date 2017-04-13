@@ -1,28 +1,50 @@
 <?php
-//FIXME : add class
-if ( !isset( $_SESSION["id"] ) )
+
+
+class User
 {
-	if ( !isset( $_POST["validerLogin"] ) )
-	{
-		include("./Views/login.php");
-	}
-	else if ( isset( $_POST["validerLogin"] ) and isset( $_POST["pseudoLogin"] ) and isset( $_POST["passwordLogin"] ) )
-	{
-		$login = $_POST["pseudoLogin"];
-        $password = md5($_POST["passwordLogin"]);
+    /**
+     * Check if user exist in the bdd.
+     * @return mixed boolean or iduser.
+     */
+    private static function CheckUser( $login, $password)
+    {
+        require_once("./Model/Connector.php");
         $exist = false;
+        
+        $pdo = ArcheoPDO::Connect();
+		
+		$select = $pdo->query("SELECT iduser FROM users WHERE username='$login' AND userpass='$password'");
+        $select = $select->fetch();
 
-        // Test de l'existance sur la base de donnée.
+       if ($select[0] != false)
+       {
+           $exist = $select[0];
+       }
 
+		ArcheoPDO::Disconnect();
+
+        return $exist;
+    }
+
+    /**
+     * Connect user.
+     */
+    public static function ConnexionUser()
+    {
+        $login = $_POST["pseudoLogin"];
+        $password = md5($_POST["passwordLogin"]);
+         // Test de l'existance sur la base de donnée.
+        $exist = User::CheckUser($login, $password);
         // Si la personne existe.
-        if ($exist) 
+        if ($exist != false) 
         {
-            $_SESSION["id"] = "id";// bdd id;
-            $_SESSION["pseudo"] = "pseudo";// bdd pseudo;
+            $_SESSION["iduser"] = $exist;
+            $_SESSION["pseudo"] = $login;
         }
         else 
         {
             header("Location: ./index.php?error_login=badlogin");
         }
-	}
+    }
 }
