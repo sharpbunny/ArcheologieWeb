@@ -29,7 +29,7 @@ else
     {
         // Research ctrl
         require_once('Controllers/researchController.php');
-
+        Research::DisplaySearchView();
         require_once('Controllers/LoginCtrl.php');
         Login::DisplayDeconnexion();
     }
