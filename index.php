@@ -36,7 +36,7 @@ else
         } else if ($action == "map"){
             // map
             require_once('Controllers/mapController.php');
-            Research::DisplayMapView();
+            Map::DisplayMapView();
         }
         
         
