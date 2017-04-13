@@ -1,4 +1,4 @@
-<! doctype html>
+<!doctype html>
 
 <html id="html">
 
