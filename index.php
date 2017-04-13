@@ -18,7 +18,7 @@ if (!isset($_SESSION["iduser"]))
 else
 {
     // Research ctrl
-    require_once('Controllers/LoginCtrl.php');
+    require_once('Controllers/researchCtrl.php');
     Login::DisplayLoginView();
 }
 
