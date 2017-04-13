@@ -10,9 +10,14 @@
     <div id="blocRecherche">
         <div id="divBarreRecherche">
             <fieldset>
+                <form action="POST">
                 <label>Champ de recherche</label>
-                <input id="barreRecherche" type="text"></input>
+                <input id="barreRecherche" name="researchField" type="text"></input>
+                </form>
             </fieldset>
+            <?php
+            include("researchSQLAccess.php");
+            ?>
         </div>
         <div id="resultatRecherche">
                 <table>
@@ -22,5 +27,5 @@
         </div>
     </div>
 </body>
-
+<script></script>
 </html>
