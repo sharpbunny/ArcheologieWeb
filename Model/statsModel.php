@@ -1,7 +1,6 @@
 <?php 
-
+    //FIXME : create CLASS
     include ('Connector.php');
-
     //Si l'utilisateur a bien une session d'ouverte, on autorise sa connexion à la BDD
     if(isset($_SESSION['iduser'])){
        $bdd = ArcheoPDO::Connect();
