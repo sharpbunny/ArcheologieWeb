@@ -1,5 +1,5 @@
 <?php
-//include'pagedeconnectionbdd';
+include'Connector.php';
 class Map{
 
   private $latitude;
@@ -28,5 +28,9 @@ class Map{
     public function setLongitude($value)
     {  
             $this->longitude=$value;
+    }
+
+    public function afficherCarte(){
+            
     }
 }
