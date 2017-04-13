@@ -1,4 +1,4 @@
-.divDeGauche{
+#divDeGauche{
 
 
     float: left;
@@ -6,26 +6,30 @@
     
 }
 
-.divDeDroite{
+#divDeDroite{
     float: right;
     background-color: red;
    
 }
 
-.divDuCentre{
+#divDuCentre{
     float: center;
 }
-.TitreRegionPlusImage{
+#TitreRegionPlusImage{
     float: center;
 }
 
-.Tableau{
+#Tableau{
     border-top : 5px black;
     border-bottom: 6px black;
     background-color: black;
    
-    border : 6px black;
+    border : 6px solid black;
 }
 th{
-    border : 5px black;
+    border : 5px solid black;
+}
+
+*{
+    color: red;
 }
