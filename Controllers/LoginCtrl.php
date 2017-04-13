@@ -1,11 +1,12 @@
 <?php 
 // First Login Controller.
 //FIXME : create class
-
+require("./Model/Connector.php");
 class Login {
+
 	static public function DisplayLoginView() {
-		include("./Model/Connector.php");
-		Pdo::Connect();
+		ArcheoPDO::Connect();
+		ArcheoPDO::Disconnect();
 	}
 }
 
