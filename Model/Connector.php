@@ -1,5 +1,5 @@
 <?php
-class Pdo
+class ArcheoPDO
 {
     /**
     * function to connect to bdd 
