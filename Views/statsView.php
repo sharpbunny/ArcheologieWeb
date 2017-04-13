@@ -10,8 +10,10 @@
     </head>
 
     <body>
+        <h1>ArcheologieWeb</h1>
+        <canvas id="ArcheoChart" width="400" height="400"></canvas>
 
-
+        <script src="statsView.js" type="javascript"></script>
     </body>
 
 </html>
