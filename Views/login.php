@@ -23,13 +23,11 @@ if (isset($_GET["error_login"]))
     {
         $displayErrorMessage = "Erreur sur le login inconnue.";
     }
-    echo "<p>$displayErrorMessage</p>";
+    echo "<p>".$displayErrorMessage."</p>";
 }
 
 // store buffer into $content
 $content = ob_get_clean();
-
-$user = "";
 
 // call template to display
 include('Views/siteTemplate.php');

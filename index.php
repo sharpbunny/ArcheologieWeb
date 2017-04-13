@@ -1,8 +1,12 @@
 <?php 
+require_once("Model/User.php");
+
 session_start();
 
+$user = new User();
+
 $getpost = array_merge($_GET, $_POST);
-$action = htmlspecialchars($getpost['action']);
+$action = htmlspecialchars(isset($getpost['action'])?$getpost['action']:"");
 
 if (!isset($_SESSION["iduser"]))
 {
@@ -13,19 +17,20 @@ if (!isset($_SESSION["iduser"]))
     }
     if (isset($_POST["validerLogin"]))
     {
-        require_once("Model/User.php");
-        User::ConnexionUser();
+        $login = htmlspecialchars($getpost['pseudoLogin']);
+        $password = htmlspecialchars($getpost['passwordLogin']);
+        $user->CheckUser($login, $password);
         header("Location: ./index.php");
     }
 
 }
 else
 {
+    $user->getUser($_SESSION["iduser"]);
 
     if (isset($_POST["deco"]))
     {
-        require_once("Model/User.php");
-        User::DeconnexionUser();
+        $user->DeconnexionUser();
         header("Location: ./index.php");
     }
     else
@@ -36,14 +41,14 @@ else
             Research::DisplaySearchView();
         } else if ($action == "stats"){
             // stats
-        } else if ($action == "map"){
+            require_once('Controllers/statsController.php');
+            Stats::DisplayStatsView();
+        } else {
             // map
             require_once('Controllers/mapController.php');
             Map::DisplayMapView();
         }
-        
-        
-        require_once('Controllers/LoginController.php');
-        Login::DisplayDeconnexion();
     }
 }
+
+?>

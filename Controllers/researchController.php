@@ -5,10 +5,11 @@ class Research{
     }
 
     /**
-	 * display login view 
+	 * display search view 
 	 */
 	static public function DisplaySearchView()
 	{
+        global $user;
 		require_once("./Views/researchView.php");
 	}
 }
