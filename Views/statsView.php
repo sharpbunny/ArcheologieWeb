@@ -11,7 +11,7 @@
 
     <body>
         <!-- <h1>ArcheologieWeb</h1>-->
-        <div id="Container">  </div>
+        
         
         <!-- Formulaire permettant de choisir la statistique à afficher-->
         <form action="../Controllers/statsController.php" method="post">
@@ -25,6 +25,17 @@
         <!-- Div contenant les graphiques -->
         <?php 
             if(isset($_GET['stats']) && $_GET['stats'] == true){
+
+                //Si c'est le graphique concernant les thèmes qui a été demandé
+                if(isset($_GET['theme'])){
+                    ?><script type="text/javascript" language="javascript">
+                        var theme = <?php echo $_GET['theme']; ?>
+                    </script>
+
+        <?php
+                }
+
+
                 echo'<div id="graphContainer">
                 <div id="chartDiv">
                     <canvas id="ArcheoChart" width="100" height="100"></canvas>        
