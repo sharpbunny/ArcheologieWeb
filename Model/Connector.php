@@ -1,6 +1,8 @@
 <?php
-class Pdo
+class ArcheoPDO
 {
+    private $mysqlPDO;
+
     /**
     * function to connect to bdd 
     * @return PDO
@@ -8,7 +10,7 @@ class Pdo
     public static function Connect() 
     {
         $host = '10.111.61.148';
-        $bdd = 'interventionbdd';
+        $bdd = 'intervention_bdd';
         $user = 'csharp';
         $password = 'csharp';
         try
@@ -30,7 +32,7 @@ class Pdo
     public static function Disconnect() 
     {
         // TODO : disconnect BDD
-
+        $mysqlPDO = null;
     }
 }
 
