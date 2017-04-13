@@ -20,13 +20,9 @@
       <div id="content">
         <?php echo $content; ?>
       </div>
-      <footer id="footer">
-<?php
-echo $footer; 
-var_dump($_SESSION);
-var_dump($_POST);
-?>
-      </footer>
     </div>
   </body>
+
+  <?php require_once("footer.php"); ?>
+
 </html>
