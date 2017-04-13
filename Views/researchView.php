@@ -29,7 +29,7 @@
                 </table>
          <?php
          //Insertion du Controlleur dans la vue
-         include("../controllers/researchController.php");
+         //include("controllers/researchController.php");
          Research::jeanpierre($_POST['researchField']);
          ?>
         </div>

@@ -4,6 +4,13 @@ class Research{
         echo $recheche;
     }
 
+    /**
+	 * display login view 
+	 */
+	static public function DisplaySearchView()
+	{
+		require_once("./Views/researchView.php");
+	}
 }
 
 

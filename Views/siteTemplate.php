@@ -11,8 +11,13 @@
         <a href="index.php"><h1>ArchéoSite</h1></a>
         <p>
         <?php
-         if (isset($user->login))
-                echo "Bienvenue ".$user->login;
+        if (isset($user->login)) {
+            echo "Bienvenue ".$user->login;
+            echo "<nav>";
+            echo "<a href=\"index.php?action=stats\">Stats</a>";
+            echo "</nav>";
+        }
+               
         else echo "Connectez-vous";
         ?>
         </p>
