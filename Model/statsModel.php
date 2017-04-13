@@ -12,6 +12,31 @@ include ('Connector.php');
                 LEFT JOIN theme ON themeintervention.ID_theme = theme.ID_theme
                 ORDER BY theme.nomTheme ASC');
                 ;
+                
+                $tabData = array(); //Tableau qui contiendra le nom du thème et le nombre de fois qu'il apparait.
+
+                //On traite les données une à une
+                while($data = $theme->fetch()){
+                    $nom = $data['nomTheme'];
+                    $themeDejaPresent = false;
+                    if($tabData != null){ //Si tabData a déjà été rempli
+                        foreach($tabData as $element){
+                            //On regarde si le nom du thème n'existe pas déjà dans tabData
+                            if($element[0] == $nom){
+                                $themeDejaPresent = true;
+                            }
+                        }
+                    }
+
+                    else{ //Si tabData n'a pas encore été rempli
+                        $tabTemp = array($nom, 1);
+                        $tabData[] = $tabTemp;
+                    }
+
+                }
+
+                $theme->closeCursor();
+
             }
 
             else{
