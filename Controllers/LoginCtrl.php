@@ -1,27 +1,21 @@
 <?php 
 // First Login Controller.
-//FIXME : create class
+class Login 
+{
+	/**
+	 * display login view 
+	 */
+	static public function DisplayLoginView()
+	{
+		require_once("./Views/login.php");
+	}
 
-require("./Model/Connector.php");
-class Login {
-
-	static public function DisplayLoginView() {
-		ArcheoPDO::Connect();
-		ArcheoPDO::Disconnect();
+	/**
+	 * Display view to deconnect
+	 */
+	static public function DisplayDeconnexion()
+	{
+		require_once("./Views/deconnexionButton.html");
 	}
 }
-
-
-if ( !isset( $_SESSION["id"] ) ) {
-	if ( !isset( $_POST["validerLogin"] ) )
-	{
-		include("./Views/login.php");
-	}
-	else if ( isset( $_POST["validerLogin"] ) and isset( $_POST["pseudoLogin"] ) and isset( $_POST["passwordLogin"] ) )
-	{
-		include("./Model/User.php");
-	}
-}
-
-
 ?>

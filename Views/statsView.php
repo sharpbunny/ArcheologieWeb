@@ -1,6 +1,6 @@
 <! doctype html>
 
-<html>
+<html id="html">
 
     <head>
     <!-- Vérifier si on doit le laisser dans le head ou le mettre dans le body -->
@@ -10,13 +10,13 @@
     </head>
 
     <body>
-        <h1>ArcheologieWeb</h1>
+        <!-- <h1>ArcheologieWeb</h1>-->
+        
         
         <!-- Formulaire permettant de choisir la statistique à afficher-->
         <form action="../Controllers/statsController.php" method="post">
             <select name="listeStats">
-                <option value="themePieChart" name="themePieChart">Theme Pie Chart </option>
-                <option value="themeBarChart" name="themeBarChart">Theme Bar Chart </option>
+                <option value="themeChart" name="themeChart">Statistiques des thèmes d'intervention' </option>
             </select>
             <input type="Submit" name="chartSubmit" value="Afficher le graphique">
         </form>
@@ -25,6 +25,17 @@
         <!-- Div contenant les graphiques -->
         <?php 
             if(isset($_GET['stats']) && $_GET['stats'] == true){
+
+                //Si c'est le graphique concernant les thèmes qui a été demandé
+                if(isset($_GET['theme'])){
+                    ?><script type="text/javascript" language="javascript">
+                        var theme = <?php echo $_GET['theme']; ?>
+                    </script>
+
+        <?php
+                }
+
+
                 echo'<div id="graphContainer">
                 <div id="chartDiv">
                     <canvas id="ArcheoChart" width="100" height="100"></canvas>        
