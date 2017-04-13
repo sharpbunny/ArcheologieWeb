@@ -5,7 +5,7 @@
     <head>
     <!-- Vérifier si on doit le laisser dans le head ou le mettre dans le body -->
         <meta charset="utf-8">
-        <link href="statsView.css" rel="stylesheet">
+        <link href="../Assets/CSS/statsView.css" rel="stylesheet">
         <title></title>
     </head>
 
@@ -22,7 +22,7 @@
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js" type="text/javascript"></script> <!-- Librairie chartjs-->
-        <script src="statsView.js" type="text/javascript"></script>
+        <script src="../Assets/JS/statsView.js" type="text/javascript"></script>
     </body>
 
 </html>
