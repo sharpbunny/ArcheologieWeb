@@ -1,0 +1,15 @@
+canvas{
+    width: 100px;
+    height: 100px;
+}
+
+#chartDiv{
+    width: 400px;
+    height: 400px;  
+}
+
+#pieDiv{
+     width: 400px;
+    height: 400px;   
+    float: right;  
+}
