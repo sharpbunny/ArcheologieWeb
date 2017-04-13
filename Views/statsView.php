@@ -22,14 +22,27 @@
         </form>
 
 
-        <!-- Div contenant le graphique en bâtons -->
-        <div id="chartDiv">
-            <canvas id="ArcheoChart" width="100" height="100"></canvas>        
-        </div>
+        <!-- Div contenant les graphiques -->
+        <?php 
+            if($_GET['stats'] == true){
+                echo'<div id="graphContainer">
+                <div id="chartDiv">
+                    <canvas id="ArcheoChart" width="100" height="100"></canvas>        
+                    </div>
 
-        <div id="pieDiv">
-             <canvas id="ArcheoPie"></canvas>        
-        </div>
+                    <div id="pieDiv">
+                        <canvas id="ArcheoPie"></canvas>        
+                    </div>
+                </div>';
+            }
+
+            else{
+                echo '<p>Vous n\'avez choisi aucune statistique.</p>'
+            }
+
+        ?>
+
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js" type="text/javascript"></script> <!-- Librairie chartjs-->
         <script src="../Assets/JS/statsView.js" type="text/javascript"></script>
