@@ -21,7 +21,6 @@ else
 
     if (isset($_POST["deco"]))
     {
-        echo 'logout';
         require_once("Model/User.php");
         User::DeconnexionUser();
         header("Location: ./index.php");
