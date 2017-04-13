@@ -13,13 +13,18 @@
                 $theme = $bdd->query('SELECT nomTheme, COUNT(nomTheme) FROM themeintervention
                     LEFT JOIN theme ON theme.ID_theme = themeintervention.ID_theme
                     GROUP BY nomTheme
-                    ORDER BY nomTheme ASC');
-
+                    ORDER BY nomTheme ASC'); 
+                /* La requête précédente créée un tableau a deux dimensions. La première colonne contient le nom d'un thème, la seconde
+                colonne contient le nombre de fois que ce thème est invoqué pour un site d'intervention.
+                Exemple : "Agriculture" | 11
+                          "Arts, biens de prestige" | 2
+                          etc...*/  
+                
 
                 $theme->closeCursor();
 
                 ArcheoPDO::Disconnect();
-                header('Location: ../Controllers/statsView.php?$theme');
+                header('Location: ../Controllers/statsView.php?$theme&amp;stats=true');
             }
 
             else{
