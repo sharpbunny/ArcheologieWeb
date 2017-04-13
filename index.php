@@ -9,7 +9,7 @@ session_start();
 //TODO if not exists 
 require('Controllers/LoginCtrl.php');
 Login::DisplayLoginView();
-//TODO else 
+//TODO else display research View
 
 
 

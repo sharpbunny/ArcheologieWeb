@@ -1,4 +1,5 @@
 <?php
+//FIXME : add class
 if ( !isset( $_SESSION["id"] ) )
 {
 	if ( !isset( $_POST["validerLogin"] ) )
