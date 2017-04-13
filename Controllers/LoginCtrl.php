@@ -1,6 +1,14 @@
 <?php 
 // First Login Controller.
 //FIXME : create class
+require("./Model/Connector.php");
+class Login {
+
+	static public function DisplayLoginView() {
+		ArcheoPDO::Connect();
+		ArcheoPDO::Disconnect();
+	}
+}
 
 if ( !isset( $_SESSION["id"] ) ) {
 	if ( !isset( $_POST["validerLogin"] ) )
