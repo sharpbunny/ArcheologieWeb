@@ -1,7 +1,7 @@
 <?php 
 include ('Connector.php');
     //Si l'utilisateur a bien une session d'ouverte, on autorise sa connexion à la BDD
-    //if(isset($_SESSION['id'])){
+    if(isset($_SESSION['id'])){
        $bdd = ArcheoPDO::Connect();
             //On effectue la requête correspondant au choix de l'utilisateur
 
@@ -16,14 +16,14 @@ include ('Connector.php');
 
             else{
 
-            //}
+            }
         ArcheoPDO::Disconnect();
     }
 
     //Si il n'est pas connecté
-    //else{
+    else{
         //header('Location: ../index.php');
         //exit;      
-    //}
+    }
 
 ?>
