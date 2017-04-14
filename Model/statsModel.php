@@ -23,7 +23,7 @@
                 $theme->closeCursor();
 
                 ArcheoPDO::Disconnect();
-                header('Location: index.php?action=stats&amp;'.$theme.'&amp;stats=true');
+                header('Location: index.php?action=stats?'.$theme.'&amp;stats=true');
             }
 
             else{
