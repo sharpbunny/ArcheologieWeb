@@ -1,5 +1,5 @@
 <?php 
-require_once("Model/User.php");
+require_once("Model/userModel.php");
 
 session_start();
 

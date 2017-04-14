@@ -1,5 +1,5 @@
 <?php
-//FIXME : rename file with Model suffix 
+
 /**
 * Model to request user table
 */
@@ -63,8 +63,8 @@ class User
     }
 
     /**
-    * FIXME : what  this function actually does ?
-    */
+     * Destroy object $user and destroy the current session.
+     */
     public static function DeconnexionUser()
     {
         $user = null;
