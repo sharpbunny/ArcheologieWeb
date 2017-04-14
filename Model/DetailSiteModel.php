@@ -8,7 +8,7 @@ class ModelDetailSite
     $StockageConnexion = ArcheoPDO::Connect();
 
     $result = $StockageConnexion("SELECT * FROM detailintervention");
-    $Donneesprises = $result->fetchAll();
+    $Donneesprises = $result->fetch();
     var_dump($Donneesprises);
 
     if(isset($_POST['BoutonA'])) 

@@ -18,6 +18,7 @@ require_once("../Model/DetailSiteModel.php");
                 <li id="LatitudeChoisi"> Latitude : 0.00 </li>
             </ul>
         </p>
+        <p> Test de prise d'information de la base de données :</p>
         <p id="PeriodeChoisi">Période concernée : Paléolithique, Mésolithique, Néolithique, Âge du Bronze, Âge du Fer, Antiquité, Moyen Âge, Epoque moderne<p>
         <p id="EtatSiteChoisi"> Etat du site : (Transfert l'information de la BDD : Ouvert au public (périodes destinées, normes de protections.) || Fermé au public (En cours d'investigation, travaux, restauration.) </p>
         <p id="TypeSiteChoisi"> Type de site : (Transfert l'information de la BDD : Bâtiments, Ruines, Artefacts, Décorations)
