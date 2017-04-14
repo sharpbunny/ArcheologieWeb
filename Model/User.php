@@ -67,9 +67,7 @@ class User
     */
     public static function DeconnexionUser()
     {
-        $this->iduser = 0;
-        $this->login = null;
-        $this->rankingaccess = null;
+        $user = null;
         session_unset();
         session_destroy();
     }
