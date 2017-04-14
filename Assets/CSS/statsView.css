@@ -6,24 +6,25 @@ canvas {
 #chartDiv {
     width: 400px;
     height: 400px;
-    top: -100%;
-}
-
-#ArcheoChart {
-    width: 100%;
-    height: 100%;
-}
-
-#ArcheoPie {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    float: right
 }
 
 #pieDiv {
     width: 100%;
     height: 100%;
+    float: right;
+}
+
+#ArcheoChart {
+    position: relative;
+    left: 50%;
+    top: 65%;
+}
+
+#ArcheoPie {
+    position: relative;
+    bottom: 90%;
+    right: 50%;
+    bottom: 35%;
 }
 
 #graphContainer {
@@ -35,5 +36,4 @@ canvas {
 
 #html {
     background-color: ghostwhite;
-    float: right;
 }
