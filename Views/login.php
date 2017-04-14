@@ -1,7 +1,7 @@
 <?php
 // page title
 $title = "Accueil";
-// page footer contenyt
+// page footer content
 $footer = "Contenu bas de page";
 // buffer init
 ob_start();
@@ -23,15 +23,13 @@ if (isset($_GET["error_login"]))
     {
         $displayErrorMessage = "Erreur sur le login inconnue.";
     }
-    echo "<p>$displayErrorMessage</p>";
+    echo "<p>".$displayErrorMessage."</p>";
 }
 
 // store buffer into $content
 $content = ob_get_clean();
 
-$user = "";
-
 // call template to display
-include('Views/sitetemplate.php');
+include('Views/siteTemplate.php');
 
 ?>

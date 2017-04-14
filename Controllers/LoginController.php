@@ -1,13 +1,16 @@
 <?php 
-// First Login Controller.
+/**
+* In charge of displaying first login connexion and deconnexion button
+*/
 class Login 
 {
 	/**
-	 * display login view 
+	 * Display login view 
 	 */
 	static public function DisplayLoginView()
 	{
-		require_once("./Views/login.php");
+        global $user;
+        require_once("./Views/login.php");
 	}
 
 	/**

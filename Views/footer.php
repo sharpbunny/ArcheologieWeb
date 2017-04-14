@@ -1,7 +1,12 @@
 <footer id="footer">
-    <p>Contenu bas de page</p>
-    <?php
-    var_dump($_SESSION);
-    var_dump($_POST);
-    ?>
+<div>
+<?php
+    echo $footer."\n";
+    echo "</div>\n";
+if (isset($scripts)) {
+    foreach ($scripts as $script){
+        echo $script."\n";
+    }
+}
+?>
 </footer>
