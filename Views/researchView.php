@@ -1,16 +1,15 @@
 <?php 
-    //FIXME move to view
+//FIXME move to view
+// page title
+$title = "Recherche de Sites";
+// page footer content
+$footer = "Contenu bas de page";
+// buffer init
+ob_start();
+// le code html qui va suivre ne sera pas envoyé à l'écran mais dans un buffer pour être envoyé au template
 ?>
 
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../stylesheet.css">
-</head>
-
-<body id="bodyRecherche">
     <div id="blocRecherche">
         <div id="divBarreRecherche">
             <fieldset>
@@ -33,6 +32,11 @@
          ?>
         </div>
     </div>
-</body>
-<script></script>
-</html>
+<?php
+// store buffer into $content
+$content = ob_get_clean();
+
+// call template to display
+include('Views/siteTemplate.php');
+
+?>
