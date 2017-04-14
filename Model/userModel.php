@@ -8,6 +8,7 @@ class User
     public $iduser = 0;
     public $login;
     public $rankingaccess;
+    public $error;
 
     function __construct()
     {
@@ -31,7 +32,11 @@ class User
             $user->iduser = $result['iduser'];
             $user->login = $result['username'];
             $user->rankingaccess = $result['rankingaccess'];
+            $user->error = "";
         }
+
+        ArcheoPDO::Disconnect();
+
     }
 
     /**
@@ -56,6 +61,8 @@ class User
             $_SESSION["iduser"] = $result['iduser'];
             $_SESSION["pseudo"] = $login;
             $_SESSION["rankingaccess"] = $result['rankingaccess'];
+       } else {
+           $this->error ="Utilisateur inconnu";
        }
 
 		ArcheoPDO::Disconnect();

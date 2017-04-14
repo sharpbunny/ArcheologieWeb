@@ -28,9 +28,10 @@ if (isset($links)) {
             echo "<form method='POST' action='index.php?action=logout'>";
             echo "<input name='deco' type='submit' value='Se déconnecter'>";
             echo "</form>";
+        } else {
+          echo "<p>Visiteur Connectez-vous</p>";
+          echo "<p>".$user->error."</p>";
         }
-               
-        else echo "<p>Visiteur Connectez-vous</p>";
         ?>
 
       </header>
