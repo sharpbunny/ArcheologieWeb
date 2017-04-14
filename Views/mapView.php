@@ -5,7 +5,7 @@ $title = "Carte des Sites";
 $footer = "Contenu bas de page";
 // buffer init
 $links=array();
-$links[]='<link rel="stylesheet" href="../Assets/CSS/mapView.css">';
+$links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
 $links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
 ob_start();
 ?>
