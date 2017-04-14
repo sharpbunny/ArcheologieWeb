@@ -10,21 +10,6 @@ $links = array(); // tableau pour stocker les css supplémentaires
 $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
 ?>
 
-<<<<<<< HEAD
-<html id="html">
-
-    <head>
-    <!-- Vérifier si on doit le laisser dans le head ou le mettre dans le body -->
-        <meta charset="utf-8">
-        <link href="../Assets/CSS/statsView.css" rel="stylesheet">
-        <title></title>
-    </head>
-
-    <body>
-       
-        
-=======
->>>>>>> c0a9252e79608c451c97dafc707e844912a61b0f
         <!-- Formulaire permettant de choisir la statistique à afficher-->
         <form action="index.php?action=stats" method="post">
             <select name="listeStats">
@@ -39,14 +24,13 @@ $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
             if(isset($_GET['stats']) && $_GET['stats'] == true){
 
                 //Si c'est le graphique concernant les thèmes qui a été demandé
-                if(isset($_GET['theme'])){
+                //if(isset($_GET['theme'])){
                     ?><script type="text/javascript" language="javascript">
                         var theme = <?php echo $_GET['theme']; ?>
                     </script>
 
         <?php
-                }
-
+               // }
 
                 echo'<div id="graphContainer">
                 <div id="chartDiv">
@@ -61,8 +45,7 @@ $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
 
             else{
                 echo '<p>Vous n\'avez choisi aucune statistique.</p>';
-            }
-
+                }
         ?>
 
 <?php
