@@ -1,18 +1,11 @@
 canvas {
-    width: 100px;
-    height: 100px;
+    width: 400px;
+    height: 400px;
 }
 
 #chartDiv {
     width: 400px;
     height: 400px;
-}
-
-#pieDiv {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    float: right;
 }
 
 #ArcheoChart {
@@ -26,11 +19,19 @@ canvas {
     bottom: 90%;
     right: 50%;
     bottom: 35%;
+    float: right
+}
+
+#pieDiv {
+    width: 100%;
+    height: 100%;
 }
 
 #graphContainer {
     z-index: 1;
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 #html {
