@@ -20,7 +20,7 @@ if (!isset($_SESSION["iduser"]))                             //check if session 
         $login = htmlspecialchars($getpost['pseudoLogin']);
         $password = htmlspecialchars($getpost['passwordLogin']);
         $user->CheckUser($login, $password);                  // load user connexion view
-        header("Location: ./index.php");
+        header("Location: ./index.php?message=".$user->error);
     }
 }
 else                                                         // else if session exists                                                  
