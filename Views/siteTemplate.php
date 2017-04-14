@@ -30,7 +30,7 @@ if (isset($links)) {
             echo "</form>";
         } else {
           echo "<p>Visiteur Connectez-vous</p>";
-          echo "<p>".$user->error."</p>";
+          if (isset($_GET['message'])) {echo "<p>".$_GET['message']."</p>";}
         }
         ?>
 
