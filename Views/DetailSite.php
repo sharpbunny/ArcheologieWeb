@@ -1,5 +1,6 @@
 <?php
-require_once("../Model/DetailSiteModel.php");
+require_once('../Model/DetailSiteModel.php');
+require_once('../Model/Connector.php');
 ?>
 <html>
 <head>
@@ -14,11 +15,10 @@ require_once("../Model/DetailSiteModel.php");
         <!--<img src="RegionIDF.png" alt="Détail de la région île de France" title ="Zone géographique des sites archéologiques">-->
         <p>Localisation :
             <ul>
-                <li id="LongitudeChoisi"> Longitude : 0.00 </li>
-                <li id="LatitudeChoisi"> Latitude : 0.00 </li>
+                <li id="LongitudeChoisi"> Longitude : <?php if(isset($TableauEstBienRempli)){echo $TableauEstBienRempli["longitude"];} ?></li>
+                <li id="LatitudeChoisi"> Latitude : <?php if(isset($TableauEstBienRempli)){echo $TableauEstBienRempli["latitude"];} ?></li>
             </ul>
         </p>
-        <p> Test de prise d'information de la base de données :</p>
         <p id="PeriodeChoisi">Période concernée : Paléolithique, Mésolithique, Néolithique, Âge du Bronze, Âge du Fer, Antiquité, Moyen Âge, Epoque moderne<p>
         <p id="EtatSiteChoisi"> Etat du site : (Transfert l'information de la BDD : Ouvert au public (périodes destinées, normes de protections.) || Fermé au public (En cours d'investigation, travaux, restauration.) </p>
         <p id="TypeSiteChoisi"> Type de site : (Transfert l'information de la BDD : Bâtiments, Ruines, Artefacts, Décorations)
@@ -37,16 +37,16 @@ require_once("../Model/DetailSiteModel.php");
                 </tr>
                 <tr>
                     <td>0.00</td>
-                    <td>Site de fouille A  <button name="BoutonA">Choisir</button> </td>
+                    <td>Site de fouille A<?php if(isset($TableauEstBienRempli)){echo $TableauEstBienRempli["nom_site"];} ?>  <button name="BoutonA">Choisir</button> </td>
                 
                 </tr>
                 <tr>
                     <td>0.10</td>
-                    <td>Site de fouille B<button id="BoutonB">Choisir</button></td>
+                    <td>Site de fouille B<?php if(isset($TableauEstBienRempli)){echo $TableauEstBienRempli["nomCommune"];} ?> <button id="BoutonB">Choisir</button></td>
                 
                 <tr>
                     <td>0.20</td>
-                    <td>Site de fouille C<button id="BoutonC">Choisir</button></td>
+                    <td>Site de fouille C <?php if(isset($TableauEstBienRempli)){echo $TableauEstBienRempli["ID_departement"];} ?> <button id="BoutonC">Choisir</button></td>
                     
                 </tr>
                 <tr>

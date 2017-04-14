@@ -2,13 +2,13 @@
 
 
     float: left;
-    background-color: black;
+   
     
 }
 
 #divDeDroite{
     float: right;
-    background-color: red;
+   
    
 }
 
@@ -30,6 +30,6 @@ th{
     border : 5px solid black;
 }
 
-*{
-    color: red;
+#PeriodeChoisi{
+    color: darkred;
 }
