@@ -9,7 +9,8 @@ class Map
 	*/
 	static public function DisplayMapView()
 	{
-		require_once("./Views/mapView.php");
+        global $user;
+        require_once("./Views/mapView.php");
 	}
 }
 ?>

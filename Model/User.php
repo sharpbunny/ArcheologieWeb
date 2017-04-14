@@ -5,52 +5,61 @@
 */
 class User
 {
-    /**
-     * Check if user exists in the bdd.
-     * @param string user's login
-     * @param string user's password 
-     * @return mixed boolean or iduser.
-     */
-    private static function CheckUser( $login, $password)
+    public $iduser = 0;
+    public $login;
+    public $rankingaccess;
+
+    function __construct()
     {
+
+    }
+
+    /**
+     * Get user info in the bdd.
+     * @param string user's id
+     */
+    public function getUser($iduser)
+    {
+        global $user;
         require_once("./Model/Connector.php");
-        $exist = false;
         
         $pdo = ArcheoPDO::Connect();
+        $select = $pdo->query("SELECT iduser, username, rankingaccess FROM users WHERE iduser='".$iduser."'");
+        $result = $select->fetch();
+        if (!empty($result))
+        {
+            $user->iduser = $result['iduser'];
+            $user->login = $result['username'];
+            $user->rankingaccess = $result['rankingaccess'];
+        }
+    }
 
-		$select = $pdo->query("SELECT iduser FROM users WHERE username='$login' AND userpass='$password'");
-        $select = $select->fetch();
+    /**
+     * Check if user exist in the bdd.
+     * @param string user login
+     * @param string user password
+     */
+    public function CheckUser($login, $password)
+    {
+        require_once("./Model/Connector.php");
 
-       if ($select[0] != false)
-       {
-           $exist = $select[0];
+        $pdo = ArcheoPDO::Connect();
+
+        $select = $pdo->query("SELECT iduser, username, rankingaccess FROM users WHERE username='$login' AND userpass='".md5($password)."'");
+        $result = $select->fetch();
+
+        if (!empty($result))
+        {
+            $this->iduser = $result['iduser'];
+            $this->login = $result['username'];
+            $this->rankingaccess = $result['rankingaccess'];
+            $_SESSION["iduser"] = $result['iduser'];
+            $_SESSION["pseudo"] = $login;
+            $_SESSION["rankingaccess"] = $result['rankingaccess'];
        }
 
 		ArcheoPDO::Disconnect();
 
-        return $exist;
-    }
-
-    /**
-     * Connect user.
-     * FIXME : what  this function actually does ?
-     */
-    public static function ConnexionUser()
-    {
-        $login = $_POST["pseudoLogin"];
-        $password = md5($_POST["passwordLogin"]);
-         // Test de l'existance sur la base de donnée.
-        $exist = User::CheckUser($login, $password);
-        // Si la personne existe.
-        if ($exist != false) 
-        {
-            $_SESSION["iduser"] = $exist;
-            $_SESSION["pseudo"] = $login;
-        }
-        else 
-        {
-            header("Location: ./index.php?error_login=badlogin");
-        }
     }
 
     /**
@@ -58,6 +67,9 @@ class User
     */
     public static function DeconnexionUser()
     {
+        $this->iduser = 0;
+        $this->login = null;
+        $this->rankingaccess = null;
         session_unset();
         session_destroy();
     }
