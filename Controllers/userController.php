@@ -2,15 +2,15 @@
 /**
 * In charge of displaying first login connexion and deconnexion button
 */
-class Login 
+class UserController
 {
 	/**
 	 * Display login view 
 	 */
-	static public function DisplayLoginView()
+	static public function userView()
 	{
         global $user;
-        require_once("./Views/login.php");
+        require_once("./Views/userView.php");
 	}
 
 	/**

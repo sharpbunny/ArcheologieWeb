@@ -10,7 +10,7 @@ ob_start();
 ?>
 
 
-    <div id="blocRecherche">
+    <div class="container" id="blocRecherche">
         <div id="divBarreRecherche">
             <fieldset>
                 <form action="researchView.php" method="POST">
@@ -28,7 +28,7 @@ ob_start();
          <?php
          //Insertion du Controlleur dans la vue
          //include("controllers/researchController.php");
-         Research::jeanpierre($_POST['researchField']);
+         //Research::jeanpierre($_POST['researchField']);
          ?>
         </div>
     </div>

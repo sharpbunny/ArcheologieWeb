@@ -44,7 +44,7 @@ class User
      * @param string user login
      * @param string user password
      */
-    public function CheckUser($login, $password)
+    public function loginUser($login, $password)
     {
         require_once("./Model/Connector.php");
 
@@ -72,7 +72,7 @@ class User
     /**
      * Destroy object $user and destroy the current session.
      */
-    public static function DeconnexionUser()
+    public static function logoutUser()
     {
         $user = null;
         session_unset();
