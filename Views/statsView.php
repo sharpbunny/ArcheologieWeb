@@ -13,7 +13,6 @@ $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
 <html id="html">
 
     <head>
-    <!-- Vérifier si on doit le laisser dans le head ou le mettre dans le body -->
         <meta charset="utf-8">
         <link href="../Assets/CSS/statsView.css" rel="stylesheet">
         <title></title>
