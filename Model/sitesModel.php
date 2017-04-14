@@ -1,5 +1,5 @@
 <?php
-require 'Views\sitesView.php'
+
 
 function MenuDVille()
 {        
@@ -130,6 +130,9 @@ function FiltreParDpt($dpt)
         $reponse->closeCursor();
 }
 
+$dptSelectionne="";
+$villeSelectionnee="";
+
 if(isset($_POST['vil']) || isset($POST['dpt'])) 
 { 
 
@@ -137,8 +140,7 @@ if(isset($_POST['vil']) || isset($POST['dpt']))
         $villeSelectionnee = $_POST['vil'];
         $dptSelectionne = $_POST['dpt'];
         
-        print_r($villeSelectionnee);
-        print_r($dptSelectionne);
+        
 }
 ?>
 

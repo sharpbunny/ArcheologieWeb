@@ -1,7 +1,7 @@
 <!doctype html>
 <?php
 header('Content-type: text/html; charset=utf-8');
-include 'Model\sitesModel.php';
+include '../Model/sitesModel.php';
 
 ?>
 <html lang="fr">
