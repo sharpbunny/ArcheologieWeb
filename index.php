@@ -8,12 +8,17 @@ $getpost = array_merge($_GET, $_POST);
 $controller = htmlspecialchars(isset($getpost['controller'])?$getpost['controller']:"");
 $action = htmlspecialchars(isset($getpost['action'])?$getpost['action']:"");
 $id = htmlspecialchars(isset($getpost['id'])?$getpost['id']:"");
-$login = htmlspecialchars(isset($getpost['pseudoLogin'])?$getpost['pseudoLogin']:"");
-$password = htmlspecialchars(isset($getpost['passwordLogin'])?$getpost['passwordLogin']:"");
+$login = htmlspecialchars(isset($getpost['login'])?$getpost['login']:"");
+$password = htmlspecialchars(isset($getpost['password'])?$getpost['password']:"");
 $iduser = htmlspecialchars(isset($_SESSION["iduser"])?$_SESSION["iduser"]:"");
 
 $user = new User();
 $user->getUser($iduser);
+
+if ($controller != 'user' && $action != 'login' && $user->iduser == 0 ) {
+    $controller = 'user';
+    $action='';
+}
 
 // check action passed through url
 // my.domain.com/controller/action/id

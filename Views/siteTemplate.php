@@ -13,47 +13,45 @@
 <?php
 if (isset($links)) {
     foreach ($links as $link){
-        echo "    ".$link."\n";
+        echo "        ".$link."\n";
     }
 }
 ?>
         <title><?php echo $title; ?></title>
     </head>
-    <body><br><br>
-        <div id="wrap">
-            <div class="container">
-        <?php
-        if ($user->iduser>0) {
+    <body>
+<?php
+if ($user->iduser>0) {
             echo '<nav class="navbar navbar-inverse navbar-fixed-top">'."\n";
-            echo '<div class="container">'."\n";
-            echo '<div class="navbar-header">'."\n";
-            echo '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">'."\n";
-            echo '<span class="sr-only">Toggle navigation</span>'."\n";
-            echo '<span class="icon-bar"></span>'."\n";
-            echo '<span class="icon-bar"></span>'."\n";
-            echo '<span class="icon-bar"></span>'."\n";
-            echo '<span class="icon-bar"></span>'."\n";
-            echo '</button>'."\n";
-            echo '<a class="navbar-brand" href="#">ArchéoSite</a>'."\n";
-            echo '</div>'."\n";
-            echo '<div id="navbar" class="collapse navbar-collapse">'."\n";
-            echo '<ul class="nav navbar-nav">'."\n";
-            echo '    <li class="active"><a href="#">Home</a></li>'."\n";
-            echo '    <li><a href="search">Recherche</a></li>'."\n";
-            echo '    <li><a href="stats">Stats</a></li>'."\n";
-            echo '    <li><a href="map/view">Maps</a></li>'."\n";
-            echo '    <li class="dropdown">';
-            echo '        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenue '.$user->login.'<b class="caret"></b></a>'."\n";
-            echo '        <ul class="dropdown-menu">';
-            echo '            <li><a href="user/info/'.$user->iduser.'">Votre compte</></li>';
-            echo '            <li class="divider"></li>';
-            echo '            <li><a href="user/logout">Déconnexion</a></li>';
-            echo '        </ul>';
-            echo '    </li>';
-            echo '</ul>';
-            echo '</div>';
-            echo '</div>';
-            echo "</nav>";
+            echo '    <div class="container">'."\n";
+            echo '        <div class="navbar-header">'."\n";
+            echo '            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">'."\n";
+            echo '                <span class="sr-only">Toggle navigation</span>'."\n";
+            echo '                <span class="icon-bar"></span>'."\n";
+            echo '                <span class="icon-bar"></span>'."\n";
+            echo '                <span class="icon-bar"></span>'."\n";
+            echo '                <span class="icon-bar"></span>'."\n";
+            echo '            </button>'."\n";
+            echo '            <a class="navbar-brand" href="#">ArchéoSite</a>'."\n";
+            echo '        </div>'."\n";
+            echo '        <div id="navbar" class="collapse navbar-collapse">'."\n";
+            echo '            <ul class="nav navbar-nav">'."\n";
+            echo '                <li class="active"><a href="#">Home</a></li>'."\n";
+            echo '                <li><a href="search">Recherche</a></li>'."\n";
+            echo '                <li><a href="stats">Stats</a></li>'."\n";
+            echo '                <li><a href="map/view">Maps</a></li>'."\n";
+            echo '                <li class="dropdown">'."\n";
+            echo '                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenue '.$user->login.'<b class="caret"></b></a>'."\n";
+            echo '                    <ul class="dropdown-menu">'."\n";
+            echo '                        <li><a href="user/info/'.$user->iduser.'">Votre compte</a></li>'."\n";
+            echo '                        <li class="divider"></li>'."\n";
+            echo '                        <li><a href="user/logout">Déconnexion</a></li>'."\n";
+            echo '                    </ul>'."\n";
+            echo '                </li>'."\n";
+            echo '            </ul>'."\n";
+            echo '        </div>'."\n";
+            echo '    </div>'."\n";
+            echo '</nav>'."\n";
         } else {
             echo '    <nav class="navbar navbar-inverse navbar-fixed-top">'."\n";
             echo '        <div class="container">'."\n";
@@ -67,29 +65,46 @@ if (isset($links)) {
             echo '            <div id="navbar" class="collapse navbar-collapse">';
             echo '                <ul class="nav navbar-nav">';
             echo '                    <li class="active"><a href="#">Home</a></li>';
-            echo '                    <li>Visiteur Connectez-vous</li>';
             echo '                </ul>';
-            echo '    <form id="formLogin" action="user/login" method="POST">';
-            echo '    <input id="pseudoLogin" type="text" name="pseudoLogin" placeholder="Identifiant">';
-            echo '    <input id="passwordLogin" type="password" name="passwordLogin" placeholder="Mot de Passe">';
-            echo '    <input id="validerLogin" type="submit" name="validerLogin" value="Se connecter">';
-            echo '    </form>';
-
+            echo '               <form class="navbar-form navbar-right" action="user/login" method="POST">';
+            echo '                   <div class="form-group">';
+            echo '                       <input type="text" name="login" placeholder="Identifiant" class="form-control">';
+            echo '                   </div>';
+            echo '                   <div class="form-group">';
+            echo '                       <input type="password" name="password" placeholder="Mot de Passe" class="form-control">';
+            echo '                   </div>';
+            echo '                   <button type="submit" class="btn btn-success" name="validerLogin">Se connecter</button>';
+            echo '               </form>';
             echo '            </div>';
             echo '        </div>';
-            echo "    </nav>";
+            echo '    </nav>'."\n";
           if (isset($_GET['message'])) {echo "<p>".$_GET['message']."</p>";}
         }
-        ?>
-        </div>
-        <div class="container">
-        <?php echo $content; ?>
-        </div>
-    </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<?php
-include("footer.php");
 ?>
-    </body>
+    <div class="container">
+        <div class="row">'
+            <div class="col-sm-2">
+                <div class="sidebar-module sidebar-module-inset">
+                    <?php echo $leftcontent."\n"; ?>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <?php echo $content."\n"; ?>
+            </div>
+        </div>
+        <hr>
+        <footer>
+<?php echo $footer."\n"; ?>
+        </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<?php
+if (isset($scripts)) {
+    foreach ($scripts as $script){
+        echo $script."\n";
+    }
+}
+?>
+     </body>
 </html>

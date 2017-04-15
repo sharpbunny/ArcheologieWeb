@@ -2,32 +2,24 @@
 // page title
 $title = "Carte des Sites";
 // page footer content
-$footer = '<p class="text-muted credit">Contenu bas de page</p>';
+$footer = '<p class="text-muted credit">&copy; 2017 Sharbunny, Inc.</p>';
 // buffer init
 $links=array();
 $links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
 $links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
-ob_start();
-?>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <div id="page">
-        <div id="centrerPage">
-            <div id="gauche">
-            </div>
-            <div id="droite">
-                <div id="map">
-                    <script>
-                        onload="InitialiserCarte() ;"
-                    </script>  
-                </div>
-            </div>
-        </div>
-    </div>
-<script src="Assets/JS/mapView.js"></script>
+//ob_start();
 
-<?php
+$leftcontent='Paramètres';
+
+$content = '<div class="container"><div id="map"></div></div>';
+
+
+// include scripts with template
+$scripts=array();
+$scripts[]='<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>';
+$scripts[]='<script src="Assets/JS/mapView.js"></script>';
 // store buffer into $content
-$content = ob_get_clean();
+//$content = ob_get_clean();
 // call template to display
 include('Views/siteTemplate.php');
 

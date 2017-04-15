@@ -31,11 +31,12 @@
     width: 1000px;
 }
 #map{
-    position:absolute;
+    position:relative;
     background-color: white;
-    width:700px;
-    height:400px;
-    margin-left:150px;
+    width:800px;
+    height:600px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 p {

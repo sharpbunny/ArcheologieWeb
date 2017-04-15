@@ -25,7 +25,7 @@ class User
         require_once("./Model/Connector.php");
         
         $pdo = ArcheoPDO::Connect();
-        $select = $pdo->query("SELECT iduser, username, rankingaccess FROM users WHERE iduser='".$iduser."'");
+        $select = $pdo->query("SELECT iduser, username, rankingaccess FROM users WHERE iduser=".(int)$iduser);
         $result = $select->fetch();
         if (!empty($result))
         {
