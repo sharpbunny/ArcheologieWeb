@@ -25,7 +25,7 @@ class User
         require_once("./Model/Connector.php");
         
         $pdo = ArcheoPDO::Connect();
-        $select = $pdo->query("SELECT iduser, username, rankingaccess FROM users WHERE iduser='".$iduser."'");
+        $select = $pdo->query("SELECT iduser, username, rankingaccess FROM users WHERE iduser=".(int)$iduser);
         $result = $select->fetch();
         if (!empty($result))
         {
@@ -44,7 +44,7 @@ class User
      * @param string user login
      * @param string user password
      */
-    public function CheckUser($login, $password)
+    public function loginUser($login, $password)
     {
         require_once("./Model/Connector.php");
 
@@ -72,7 +72,7 @@ class User
     /**
      * Destroy object $user and destroy the current session.
      */
-    public static function DeconnexionUser()
+    public static function logoutUser()
     {
         $user = null;
         session_unset();

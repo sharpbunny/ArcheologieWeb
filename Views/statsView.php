@@ -2,7 +2,7 @@
 // page title
 $title = "Stats des Sites";
 // page footer content
-$footer = "Contenu bas de page";
+$footer = '<p class="text-muted credit">&copy; 2017 Sharbunny, Inc.</p>';
 // buffer init
 ob_start();
 // le code html qui va suivre ne sera pas envoyé à l'écran mais dans un buffer pour être envoyé au template

@@ -2,23 +2,15 @@
 // page title
 $title = "Carte des Sites";
 // page footer content
-$footer = "Contenu bas de page";
+$footer = '<p class="text-muted credit">&copy; 2017 Sharbunny, Inc.</p>';
 // buffer init
 $links=array();
 $links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
 $links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
+// left side
 ob_start();
-?>
 
-       
-
-    <div id="page">
-        <div id="centrerPage">
-                <div id="gauche">
-            <!-- DIV : Aucun sens sémantique - zone géographique -->
-        
-                    <?php
-                     echo'<input id="activerpointeur" type="submit" value="pointeur" href="mapController.php">';
+                    echo'<input id="activerpointeur" type="submit" value="pointeur" href="mapController.php">';
                     $tab=Map::getsiteintervention();
                        //require'./Controllers/mapController.php';
                     //    for ($i=0;$i < count($tab);$i++)
@@ -29,23 +21,19 @@ ob_start();
                     //      echo('<p>'.$tab[$i]['longitude'].'</p>');
                     //        echo('<p>'.$tab[$i]['ID_commune'].'</p>');
                     //    }
-                     ?>
-                </div>
 
-                <div id="droite">
-                    <div id="map">
-                    
-                    </div>             
-                </div>
-        </div>
-    </div>
-<script src="Assets/JS/jquery-3.2.1.js"></script>
-<script src="Assets/JS/mapView.js"></script>
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<!--<script src="Assets/JS/leaflet.js"></script>-->
-<?php
+$leftcontent = ob_get_clean();
+// main of page
+ob_start();
+echo '<div class="container"><div id="map"></div></div>';
 // store buffer into $content
 $content = ob_get_clean();
+
+
+// include scripts with template
+$scripts=array();
+$scripts[]='<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>';
+$scripts[]='<script src="Assets/JS/mapView.js"></script>';
 // call template to display
 include('Views/siteTemplate.php');
 

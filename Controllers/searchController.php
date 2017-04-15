@@ -2,7 +2,7 @@
 /**
 * In charge of managing research page and request
 */
-class Research
+class SearchController
 {
 	/**
 	* FIXME: rename to better function's name
@@ -17,8 +17,8 @@ class Research
 	 */
 	static public function DisplaySearchView()
 	{
-        global $user;
-		require_once("./Views/researchView.php");
+        global $user, $basehref;
+        require_once("./Views/searchView.php");
 	}
 }
 
