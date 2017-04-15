@@ -9,7 +9,7 @@ class UserController
 	 */
 	static public function userView()
 	{
-        global $user;
+        global $user, $basehref;
         require_once("./Views/userView.php");
 	}
 

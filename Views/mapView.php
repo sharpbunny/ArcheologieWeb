@@ -24,16 +24,16 @@ ob_start();
 
 $leftcontent = ob_get_clean();
 // main of page
-//ob_start();
-$content = '<div class="container"><div id="map"></div></div>';
+ob_start();
+echo '<div class="container"><div id="map"></div></div>';
+// store buffer into $content
+$content = ob_get_clean();
 
 
 // include scripts with template
 $scripts=array();
 $scripts[]='<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>';
 $scripts[]='<script src="Assets/JS/mapView.js"></script>';
-// store buffer into $content
-//$content = ob_get_clean();
 // call template to display
 include('Views/siteTemplate.php');
 

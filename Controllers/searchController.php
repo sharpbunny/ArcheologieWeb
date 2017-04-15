@@ -17,8 +17,8 @@ class SearchController
 	 */
 	static public function DisplaySearchView()
 	{
-        global $user;
-		require_once("./Views/searchView.php");
+        global $user, $basehref;
+        require_once("./Views/searchView.php");
 	}
 }
 

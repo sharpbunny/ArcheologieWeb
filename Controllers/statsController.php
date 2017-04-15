@@ -9,7 +9,7 @@ class Stats
 	*/
 	static public function DisplayStatsView()
 	{
-        global $user;
+        global $user, $basehref;
         require_once("./Views/statsView.php");
 	}
 }
