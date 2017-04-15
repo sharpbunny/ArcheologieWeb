@@ -3,8 +3,6 @@ require_once("Model/userModel.php");
 
 session_start();
 
-$user = new User();
-
 $getpost = array_merge($_GET, $_POST);
 
 $controller = htmlspecialchars(isset($getpost['controller'])?$getpost['controller']:"");
@@ -12,8 +10,10 @@ $action = htmlspecialchars(isset($getpost['action'])?$getpost['action']:"");
 $id = htmlspecialchars(isset($getpost['id'])?$getpost['id']:"");
 $login = htmlspecialchars(isset($getpost['pseudoLogin'])?$getpost['pseudoLogin']:"");
 $password = htmlspecialchars(isset($getpost['passwordLogin'])?$getpost['passwordLogin']:"");
+$iduser = htmlspecialchars(isset($_SESSION["iduser"])?$_SESSION["iduser"]:"");
 
-$user->getUser($_SESSION["iduser"]);
+$user = new User();
+$user->getUser($iduser);
 
 // check action passed through url
 // my.domain.com/controller/action/id
@@ -33,7 +33,7 @@ switch ($controller)
         } else {
             // display user info
             $user->getUser($id);
-            userController::userView();
+            UserController::userView();
         }
         break;
     case 'stats':                                    // case = stats page request
@@ -52,10 +52,14 @@ switch ($controller)
         }
         break; 
     case 'search':                                   // case = search page request 
-    default:                                           // TODO : add page default
         // Research ctrl
-        require_once('Controllers/researchController.php');
-        Research::DisplaySearchView();
+        require_once('Controllers/searchController.php');
+        SearchController::DisplaySearchView();
+        break;
+    default:                                           // TODO : add page default
+        // user ctrl
+        require_once('Controllers/userController.php');
+        UserController::userView();
         break;
 }
 

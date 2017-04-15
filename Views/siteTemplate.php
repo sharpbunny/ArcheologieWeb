@@ -19,7 +19,7 @@ if (isset($links)) {
 ?>
         <title><?php echo $title; ?></title>
     </head>
-    <body>
+    <body><br><br>
         <div id="wrap">
             <div class="container">
         <?php

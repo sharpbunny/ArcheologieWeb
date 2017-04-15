@@ -1,13 +1,14 @@
 <?php
 // page title
-$title = "Accueil";
+$title = "Mon compte";
 // page footer content
-$footer = "Contenu bas de page";
+$footer = '<p class="text-muted credit">Contenu bas de page</p>';
 // buffer init
 ob_start();
-?>
 
-<?php
+echo '<p>Utilisateur: '.$user->login.'</p>';
+echo '<p>Level: '.$user->rankingaccess.'</p>';
+
 
 // store buffer into $content
 $content = ob_get_clean();
