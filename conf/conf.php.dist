@@ -3,13 +3,13 @@
  * Configuration file for archéo app
  */
 // db host
-$host = 'host';
+$host = 'Localhost';
 // db basename
-$bdd = 'base';
+$bdd = 'interventionbdd';
 // db user
-$user = 'user';
+$user = 'root';
 // db password
-$password = 'password';
+$password = '';
 // base href site
 $basehref = "/ArcheologieWeb/";
 ?>

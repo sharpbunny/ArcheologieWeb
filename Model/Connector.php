@@ -17,7 +17,7 @@ class ArcheoPDO
     {
         global $basehref;
         // if conf.php doesn't exists you need to create from model conf/conf.php.dist
-        include("conf/conf.php");
+        include("conf/conf.php.dist");
 
         try
         {
