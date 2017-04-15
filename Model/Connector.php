@@ -15,10 +15,14 @@ class ArcheoPDO
     */
     public static function Connect() 
     {
-        $host = '10.111.61.148';
-        $bdd = 'intervention_bdd';
-        $user = 'csharp';
-        $password = 'csharp';
+        //$host = '10.111.61.148';
+$host = 'Localhost';
+        //$bdd = 'intervention_bdd';
+        $bdd = 'interventionbdd';
+        //$user = 'csharp';
+        $user = 'root';
+        //$password = 'csharp';
+        $password = '';
         try
         {
             $mysqlPDO = new PDO("mysql:host=$host;dbname=$bdd;charset=utf8",

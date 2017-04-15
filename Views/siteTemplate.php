@@ -21,12 +21,12 @@ if (isset($links)) {
         if ($user->iduser>0) {
             echo "<p>Bienvenue ".$user->login."</p>";
             echo "<nav>";
-            echo "<a href=\"index.php?action=search\">Recherche</a>";
-            echo "<a href=\"index.php?action=stats\">Stats</a>";
-            echo "<a href=\"index.php?action=map\">Maps</a>";
+            echo "<a href=\"index.php?action=search\">Recherche </a>";
+            echo "<a href=\"index.php?action=stats\"> Stats</a>";
+            echo "<a href=\"index.php?action=map&amp;Ctrl=mapController.php&amp;method=getsiteintervention\"> Maps</a>";
             echo "</nav>";
             echo "<form method='POST' action='index.php?action=logout'>";
-            echo "<input name='deco' type='submit' value='Se déconnecter'>";
+            echo "<input id='deconect' name='deco' type='submit' value='Se déconnecter'>";
             echo "</form>";
         } else {
           echo "<p>Visiteur Connectez-vous</p>";
