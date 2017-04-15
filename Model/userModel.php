@@ -65,7 +65,7 @@ class User
            $this->error ="Utilisateur inconnu";
        }
 
-		ArcheoPDO::Disconnect();
+        ArcheoPDO::Disconnect();
 
     }
 

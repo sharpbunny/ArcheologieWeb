@@ -29,6 +29,22 @@ class Map
 		return $tableauSite;
 	}
 
+    /**
+    * Method called by ajax request
+    */
+    public static function SendJson() 
+    {
+        require('Model/mapModel.php');
+        $array = mapModel::getSite();
 
+        if (count($array) > 0) 
+        {
+            echo json_encode(array('error' => 0,  'array'=>$array));
+        }
+        else 
+        {
+            echo json_encode(array('error' => 1, 'message'=>"no stuff"));
+        }
+    }
 }
 ?>
