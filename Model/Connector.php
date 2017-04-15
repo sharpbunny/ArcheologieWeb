@@ -15,10 +15,9 @@ class ArcheoPDO
     */
     public static function Connect() 
     {
-        $host = '127.0.0.1';
-        $bdd = 'intervention_bdd';
-        $user = 'csharp';
-        $password = 'csharp';
+        // if conf.php doesn't exists you need to create from model conf/conf.php.dist
+        include("conf/conf.php");
+
         try
         {
             $mysqlPDO = new PDO("mysql:host=$host;dbname=$bdd;charset=utf8",

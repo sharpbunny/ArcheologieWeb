@@ -4,7 +4,7 @@
     align-items: center;
     background-color: #2E2928;
     width: 100%;
-    height: 1024px;
+    height: 700px;
 }
 
 #centrerPage {
@@ -13,33 +13,33 @@
     align-items: center;
 }
 
-#gauche,
-#droite {
-    border: solid 1px black;
+#gauche {   
     background-color: #2E2928;
     text-align: center;
     width: 350px;
-    height: 1024px;
+    height:  700px;
 }
-
 
 #droite {
     display:flex;
-    flex-direction: row;
-      align-items: center;
+    flex-direction: column;  
+    align-items: center;
     background-color: maroon;
-    width: 1000px;
+    width: 750px;
+    height: 700px;
+    margin:0;
 }
-#map{
+
+#map {  
     position:relative;
     background-color: white;
-    width:800px;
-    height:600px;
+    width:700px;
+    height:500px;
     margin-top: auto;
     margin-bottom: auto;
 }
 
 p {
-    color: white;
+    color: blue;
     font-family: Arial, Helvetica, sans-serif;
 }

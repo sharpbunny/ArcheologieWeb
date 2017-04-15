@@ -32,3 +32,23 @@ body {
     height: 800px;
     border: 1px solid black;
 }
+
+/* Placement & modification des items du header*/
+header
+{
+    border:solid 1px black;
+}
+
+#deconect{
+margin-bottom:10px;
+margin-left:900px;
+}
+
+h1{
+    text-align: center;
+}
+
+a{
+    text-decoration:none;
+}
+/* Fin */

@@ -7,10 +7,24 @@ $footer = '<p class="text-muted credit">&copy; 2017 Sharbunny, Inc.</p>';
 $links=array();
 $links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
 $links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
+// left side
+ob_start();
+
+                    echo'<input id="activerpointeur" type="submit" value="pointeur" href="mapController.php">';
+                    $tab=Map::getsiteintervention();
+                       //require'./Controllers/mapController.php';
+                    //    for ($i=0;$i < count($tab);$i++)
+                    //    {
+                    //   echo'<p>';print_r($tab[$i]['ID_site']) ;echo'</P>';
+                    //    echo('<p>'.$tab[$i]['nom_site'].'</p>');
+                    //      echo('<p>'.$tab[$i]['latitude'].'</p>');
+                    //      echo('<p>'.$tab[$i]['longitude'].'</p>');
+                    //        echo('<p>'.$tab[$i]['ID_commune'].'</p>');
+                    //    }
+
+$leftcontent = ob_get_clean();
+// main of page
 //ob_start();
-
-$leftcontent='Paramètres';
-
 $content = '<div class="container"><div id="map"></div></div>';
 
 
