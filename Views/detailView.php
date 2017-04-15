@@ -56,7 +56,7 @@ ob_start();
                 </tr>
                 <tr>
                     <td>0.30</td>
-                    <td>Site de fouille D<button id="BoutonD">Choisir</button></td>
+                    <td>Site de fouille D</td>
                 </tr>
             </table>
         </div>
