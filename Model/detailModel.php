@@ -1,18 +1,15 @@
 <?php
-
+require_once("Connector.php");
 class ModelDetailSite
 {
     
     static public function GetData()
     {
-        $getpost = array_merge($_GET, $_POST);
-        $id = htmlspecialchars(isset($getpost['id'])?$getpost['id']:"");
-
         $StockageConnexion = ArcheoPDO::Connect();
 
-        $result = $StockageConnexion->query("SELECT * FROM site_intervention WHERE ID_site='".$id."'");
-        $TableauRempli=array();
-
+         $result = $StockageConnexion->query("SELECT * FROM site_intervention WHERE ID_site='fff52f4ac0a03ea9b7b28a8cbd72342496b090d1'");
+        $TableauRempli;
+        
         while ($donnees = $result->fetch())
         {
             $TableauRempli =[
@@ -29,10 +26,14 @@ class ModelDetailSite
         {
             $TableauRempli['nomCommune'] = $donnees['nomCommune'];
             $TableauRempli['ID_departement'] = $donnees['ID_departement'];
+        
         }
         return $TableauRempli;
     }
    
 }      
-
+        if(isset($_POST['BoutonA'])) 
+        {
+             $TableauEstBienRempli = ModelDetailSite::GetData();
+        }
 ?>

@@ -12,7 +12,7 @@ $(function() {
 
 
         L.marker([43.565, 3.845]).addTo(map)
-            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.<br><a href="detail/view/fff52f4ac0a03ea9b7b28a8cbd72342496b090d1">Ruines</a>')
             .openPopup();
 
     }

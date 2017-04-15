@@ -33,14 +33,17 @@ if ($user->iduser>0) {
             echo '                <span class="icon-bar"></span>'."\n";
             echo '                <span class="icon-bar"></span>'."\n";
             echo '                <span class="icon-bar"></span>'."\n";
+            echo '                <span class="icon-bar"></span>'."\n";
             echo '            </button>'."\n";
             echo '            <a class="navbar-brand" href="#">ArchéoSite</a>'."\n";
             echo '        </div>'."\n";
             echo '        <div id="navbar" class="collapse navbar-collapse">'."\n";
             echo '            <ul class="nav navbar-nav">'."\n";
+            echo '                <a class="navbar-brand" href="#"><img alt="Brand" src="https://avatars0.githubusercontent.com/u/25343490?v=3&amp;s=25"></a>';
             echo '                <li'.($controller==''?' class="active"':'').'><a href="#">Home</a></li>'."\n";
             echo '                <li'.($controller=='search'?' class="active"':'').'><a href="search">Recherche</a></li>'."\n";
             echo '                <li'.($controller=='stats'?' class="active"':'').'><a href="stats">Stats</a></li>'."\n";
+            echo '                <li'.($controller=='detail'?' class="active"':'').'><a href="detail/view/fff52f4ac0a03ea9b7b28a8cbd72342496b090d1">Détail</a></li>'."\n";
             echo '                <li'.($controller=='map'?' class="active"':'').'><a href="map/view">Maps</a></li>'."\n";
             echo '                <li class="dropdown">'."\n";
             echo '                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenue '.$user->login.'<b class="caret"></b></a>'."\n";

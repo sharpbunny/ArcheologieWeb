@@ -2,7 +2,7 @@
 // page title
 $title = "Carte des Sites";
 // page footer content
-$footer = '<p class="text-muted credit">&copy; 2017 Sharbunny, Inc.</p>';
+$footer = '<p class="text-muted credit">&copy; 2017 Sharpbunny, Inc.</p>';
 // buffer init
 $links=array();
 $links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
