@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="Assets/CSS/stylesheet.css" />
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <?php
+$getpost = array_merge($_GET, $_POST);
+$controller = htmlspecialchars(isset($getpost['controller'])?$getpost['controller']:"");
 if (isset($links)) {
     foreach ($links as $link){
         echo "        ".$link."\n";
@@ -36,10 +38,10 @@ if ($user->iduser>0) {
             echo '        </div>'."\n";
             echo '        <div id="navbar" class="collapse navbar-collapse">'."\n";
             echo '            <ul class="nav navbar-nav">'."\n";
-            echo '                <li class="active"><a href="#">Home</a></li>'."\n";
-            echo '                <li><a href="search">Recherche</a></li>'."\n";
-            echo '                <li><a href="stats">Stats</a></li>'."\n";
-            echo '                <li><a href="map/view">Maps</a></li>'."\n";
+            echo '                <li'.($controller==''?' class="active"':'').'><a href="#">Home</a></li>'."\n";
+            echo '                <li'.($controller=='search'?' class="active"':'').'><a href="search">Recherche</a></li>'."\n";
+            echo '                <li'.($controller=='stats'?' class="active"':'').'><a href="stats">Stats</a></li>'."\n";
+            echo '                <li'.($controller=='map'?' class="active"':'').'><a href="map/view">Maps</a></li>'."\n";
             echo '                <li class="dropdown">'."\n";
             echo '                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenue '.$user->login.'<b class="caret"></b></a>'."\n";
             echo '                    <ul class="dropdown-menu">'."\n";
