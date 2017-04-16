@@ -3,14 +3,14 @@
 // page title
 $title = "Recherche de Sites";
 // page footer content
-$footer = "Contenu bas de page";
+$footer = '<p class="text-muted credit">&copy; 2017 Sharbunny, Inc.</p>';
 // buffer init
 ob_start();
 // le code html qui va suivre ne sera pas envoyé à l'écran mais dans un buffer pour être envoyé au template
 ?>
 
 
-    <div id="blocRecherche">
+    <div class="container" id="blocRecherche">
         <div id="divBarreRecherche">
             <fieldset>
                 <form action="researchView.php" method="POST">
@@ -28,7 +28,7 @@ ob_start();
          <?php
          //Insertion du Controlleur dans la vue
          //include("controllers/researchController.php");
-         Research::jeanpierre($_POST['researchField']);
+         //Research::jeanpierre($_POST['researchField']);
          ?>
         </div>
     </div>

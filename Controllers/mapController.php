@@ -4,12 +4,12 @@
 */
 class Map
 {
-	/**
-	* display map
-	*/
+    /**
+	 * display map
+	 */
 	static public function DisplayMapView()
 	{
-        global $user;
+        global $user, $basehref;
         require_once("./Views/mapView.php");
 	}
 
@@ -18,12 +18,12 @@ class Map
 		$tableauSite=array();
 		require_once'./Model/Connector.php';
 		$bdd= ArcheoPDO::Connect();
-		$req=$bdd->prepare('Select * from site_intervention');
+		$req=$bdd->prepare('SELECT * FROM site_intervention');
 		$req->execute();
 		while($resultat=$req->fetch(PDO::FETCH_ASSOC)):
 
 		$tableauSite[]=$resultat;
-		//print_r($resultat);			
+		//print_r($resultat);
 		endwhile;
 
 		return $tableauSite;

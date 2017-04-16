@@ -8,6 +8,7 @@ class User
     public $iduser = 0;
     public $login;
     public $rankingaccess;
+    public $error;
 
     function __construct()
     {
@@ -24,14 +25,18 @@ class User
         require_once("./Model/Connector.php");
         
         $pdo = ArcheoPDO::Connect();
-        $select = $pdo->query("SELECT iduser, username, rankingaccess FROM users WHERE iduser='".$iduser."'");
+        $select = $pdo->query("SELECT iduser, username, rankingaccess FROM users WHERE iduser=".(int)$iduser);
         $result = $select->fetch();
         if (!empty($result))
         {
             $user->iduser = $result['iduser'];
             $user->login = $result['username'];
             $user->rankingaccess = $result['rankingaccess'];
+            $user->error = "";
         }
+
+        ArcheoPDO::Disconnect();
+
     }
 
     /**
@@ -39,7 +44,7 @@ class User
      * @param string user login
      * @param string user password
      */
-    public function CheckUser($login, $password)
+    public function loginUser($login, $password)
     {
         require_once("./Model/Connector.php");
 
@@ -56,6 +61,8 @@ class User
             $_SESSION["iduser"] = $result['iduser'];
             $_SESSION["pseudo"] = $login;
             $_SESSION["rankingaccess"] = $result['rankingaccess'];
+       } else {
+           $this->error ="Utilisateur inconnu";
        }
 
 		ArcheoPDO::Disconnect();
@@ -65,7 +72,7 @@ class User
     /**
      * Destroy object $user and destroy the current session.
      */
-    public static function DeconnexionUser()
+    public static function logoutUser()
     {
         $user = null;
         session_unset();

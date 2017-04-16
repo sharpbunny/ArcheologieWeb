@@ -1,48 +1,67 @@
-body {
-    margin: auto;
-    padding: auto;
+.container{   
+    display: flex;
+   flex-direction: column;
 }
 
-#page {
+#mapviewcentral{
+    display: flex;
+    flex-direction: row;
+    margin-top:65px;
+    width:1100px;
+    height:800px;
+    margin-left:0;
+}
+#coordonne{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #2E2928;
-    width: 100%;
-    height: 700px;
+    background-color: #303030;
+    height:800px;
+    width:400px;  
 }
-
-#centrerPage {
+#columninput{
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
 }
-
-#gauche
-{   
-    background-color: #2E2928;
-    text-align: center;
-    width: 250px;
-    height:  900px;
+#lesite{
+    background-color: #303030;
+    width:1000px;
+    height:150px;
 }
-
-#droite {
-    display:flex;
-    flex-direction: column;  
-    align-items: center;
-    background-color: maroon;
-    width: 850px;
-    height: 900px;
-    margin:0;
-}
-#map{  
+#map {  
+    position:relative;
     background-color: white;
-    width:800px;
-    height:700px;
-    margin-top:100px;
+    width:1000px;
+    height:650px;
+   
+    margin-bottom: auto;
 }
 
 p {
     color: blue;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+#listDesSites{
+    border:solid 1px yellow;
+    width: 250px;
+    height: 600px;
+    margin-top:10px;
+    text-align: center;
+    color: white;
+}
+.navsite{
+    width: 60px;
+    height: 50px;
+}
+#rowinput{
+    border:solid 1px yellow;
+    width: 250px;
+    height: 51px;
+}
+.g{
+margin-left:0px;
+}
+.d{
+float:right;
 }

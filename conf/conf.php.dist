@@ -1,0 +1,15 @@
+<?php
+/**
+ * Configuration file for archéo app
+ */
+// db host
+$host = 'Localhost';
+// db basename
+$bdd = 'interventionbdd';
+// db user
+$user = 'root';
+// db password
+$password = '';
+// base href site
+$basehref = "/ArcheologieWeb/";
+?>

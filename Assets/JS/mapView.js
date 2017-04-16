@@ -1,18 +1,29 @@
+
 window.onload = function() {
 var map;
         var latitu=0;
         var longitu=0;
+        var touslessites;
+$(function() {
+
+
     InitialiserCarte();
 
      function InitialiserCarte(){
 
        map = L.map('map').setView([48.866667, 2.333333], 9);
-
+    
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-     
+        }).addTo(map); 
     }
+
+
+        L.marker([48.866667, 2.333333]).addTo(map)
+            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            .openPopup();
+
+});
 
 
 //Départ de jQuery
@@ -32,7 +43,8 @@ jQuery(document).ready(function($) {
            // c'est elle que l'on utilise pour mettre à jour notre page !
            // Comme quoi, tout à vraiment été pensé
            success : function(json){
-              ajoutdesmarqueur(json);                 
+              ajoutdesmarqueur(json);
+              touslessites=json;                 
            // $(html).appendTo("#gauche"); // On passe code_html à jQuery() qui va nous créer l'arbre DOM !
            },
            //paramètre exécuté une fonction si l'appel AJAX a échoué.
@@ -65,8 +77,7 @@ jQuery(document).ready(function($) {
                         if(key=="longitude")
                         {
                             longi=obj[key];
-                            boollon=true;
-                            //alert(longi);
+                            boollon=true;                        
                         }
                         
                        if( boolla==true && boollon==true)
@@ -79,4 +90,35 @@ jQuery(document).ready(function($) {
         
       }
 
+$( function(){
+
+remplirladiv();
+function remplirladiv(){
+    alert();
+    for(var i=0;i<touslessites.length;i++){
+                var obj = touslessites[i];
+               
+                    for(var key in obj){
+
+                        // if(key=="latitude")
+                        // {
+                        //     lati =obj[key];
+                        //     boolla=true;                       
+                        // }
+                        // if(key=="longitude")
+                        // {
+                        //     longi=obj[key];
+                        //     boollon=true;                        
+                        // }
+                   
+                         $("#listDesSites").html(key);              
+                 }  
+       
+       }
+    }
+});//fin appel jquery
+
 }//Fin de window.load
+
+
+
