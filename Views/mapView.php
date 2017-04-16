@@ -17,11 +17,11 @@ $leftcontent = ob_get_clean();
 ob_start();
 echo'<div id="mapviewcentral">
         <div id="coordonne">
-            <div id="listDesSites">
+            <div id="listDesSites"><p></p>
             </div>
               <div id="rowinput">
-                    <input class="navsite g" name="gauche" value="gauche" type="submit">
-                    <input class="navsite d" name="droite" value="droite" type="submit">
+                    <input class="navsite g" id="gauche" value="gauche" type="submit">
+                    <input class="navsite d" id="droite" value="droite" type="submit">
               </div>
                    <input id="activerpointeur" type="submit" value="pointeur" href="mapController.php">;
         </div>

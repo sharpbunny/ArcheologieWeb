@@ -4,9 +4,9 @@ var map;
         var latitu=0;
         var longitu=0;
         var touslessites;
+        var gauche=1;
+       var droite=1;
 $(function() {
-
-
     InitialiserCarte();
 
      function InitialiserCarte(){
@@ -17,17 +17,14 @@ $(function() {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map); 
     }
-
-
         L.marker([48.866667, 2.333333]).addTo(map)
             .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
             .openPopup();
-
 });
 
 
 //Départ de jQuery
-jQuery(document).ready(function($) {
+jQuery(document).ready(function($){
    // Votre code ici avec les appels à la fonction $()
   // $('#activerpointeur').click(function()
   // {     
@@ -42,9 +39,8 @@ jQuery(document).ready(function($) {
            // lorsque l'appel AJAX aura réussi, cette fonction est automatiquement appelée ;
            // c'est elle que l'on utilise pour mettre à jour notre page !
            // Comme quoi, tout à vraiment été pensé
-           success : function(json){
-              ajoutdesmarqueur(json);
-              touslessites=json;                 
+           success : function(json){            
+             ajoutdesmarqueur(json);                            
            // $(html).appendTo("#gauche"); // On passe code_html à jQuery() qui va nous créer l'arbre DOM !
            },
            //paramètre exécuté une fonction si l'appel AJAX a échoué.
@@ -52,8 +48,7 @@ jQuery(document).ready(function($) {
             alert(errorThrown);
            },
            // s'exécute une fois l'appel AJAX effectué.
-           complete : function(resultat,statut){
-
+           complete : function(json,statut){  
            }      
        });
     
@@ -62,7 +57,6 @@ jQuery(document).ready(function($) {
 });//Fin de jQuery
 
  function ajoutdesmarqueur(json){
-        
          var boolla=false;
                 var boollon=false;  
             for(var i=0;i<json.length;i++) {
@@ -86,16 +80,20 @@ jQuery(document).ready(function($) {
                            
                         }                                   
                     }
-                 }  
-        
+                 }
+                  touslessites=json;
+                  remplirladiv(touslessites);               
       }
 
-$( function(){
 
-remplirladiv();
-function remplirladiv(){
-    alert();
-    for(var i=0;i<touslessites.length;i++){
+
+    function remplirladiv(touslessites){
+        var affichparpage=20;
+        var nombrePage=touslessites.length / affichparpage;
+        var dernierepage=touslessites.length % affichparpage;
+        alert(nombrePage);
+        alert(dernierepage);
+    for(var i=0;i<affichparpage;i++){
                 var obj = touslessites[i];
                
                     for(var key in obj){
@@ -110,13 +108,39 @@ function remplirladiv(){
                         //     longi=obj[key];
                         //     boollon=true;                        
                         // }
-                   
-                         $("#listDesSites").html(key);              
-                 }  
-       
+                       if(key=="nom_site"){               
+                         $("#listDesSites").append(obj[key]+'<br>');
+                       }              
+                 }     
        }
     }
-});//fin appel jquery
+$('#gauche').click(function(){
+gauche--;
+  var affichparpage=20;
+        var nombrePage=touslessites.length / affichparpage;
+        var dernierepage=touslessites.length % affichparpage;
+for(var i=0;i<affichparpage;i++){
+                var obj = touslessites[i];
+               
+                    for(var key in obj)
+                    { 
+                       if(key=="nom_site")
+                       {               
+                         $("#listDesSites").append(obj[key]+'<br>');
+                       }              
+                 }     
+       }
+
+alert(gauche);
+return false;
+});
+
+$('#droite').click(function(){
+droite++;
+
+alert(droite);
+return false;
+});
 
 }//Fin de window.load
 
