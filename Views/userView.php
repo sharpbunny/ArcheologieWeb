@@ -2,7 +2,7 @@
 // page title
 $title = "Mon compte";
 // page footer content
-$footer = '<p class="text-muted credit">&copy; 2017 Sharbunny, Inc.</p>';
+$footer = '<p class="text-muted credit">&copy; 2017 Sharpbunny, Inc.</p>';
 // buffer init
 //ob_start();
 

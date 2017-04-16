@@ -46,6 +46,11 @@ switch ($controller)
         require_once('Controllers/statsController.php');
         Stats::DisplayStatsView();
         break; 
+    case 'detail':                                    // case = stats page request
+        //code
+        require_once('Controllers/detailController.php');
+        DetailController::DisplayDetailView();
+        break; 
     case 'map':                                       // case = map page request
         // map
         require_once('Controllers/mapController.php');

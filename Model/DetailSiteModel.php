@@ -1,39 +1,25 @@
 <?php
-require_once("Connector.php");
+
 class ModelDetailSite
 {
-    
+    /**
+     *
+     */
     static public function GetData()
     {
-        $StockageConnexion = ArcheoPDO::Connect();
+        $getpost = array_merge($_GET, $_POST);
+        $id = htmlspecialchars(isset($getpost['id'])?$getpost['id']:"");
 
-         $result = $StockageConnexion->query("SELECT * FROM site_intervention WHERE ID_site='fff52f4ac0a03ea9b7b28a8cbd72342496b090d1'");
-        $TableauRempli;
-        
-        while ($donnees = $result->fetch())
-        {
-            $TableauRempli =[
-                "ID_site"=>$donnees['ID_site'],
-                "nom_site"=>$donnees['nom_site'],
-                "latitude"=>$donnees['latitude'],
-                "longitude"=>$donnees['longitude'],
-                "ID_commune"=>$donnees['ID_commune'],
-            ];
-        }      
-        //Nouvelle requête pour ajouter des éléments dans le tableau ( méthode tableau associatif).
-        $resultatcommune = $StockageConnexion->query("SELECT * FROM commune WHERE ID_commune='1'");
-        while ($donnees = $resultatcommune->fetch())
-        {
-            $TableauRempli['nomCommune'] = $donnees['nomCommune'];
-            $TableauRempli['ID_departement'] = $donnees['ID_departement'];
-        
-        }
-        return $TableauRempli;
+        $bdd = ArcheoPDO::Connect();
+
+        $request = $bdd->prepare('SELECT s.ID_site, c.nomCommune, s.nom_site, s.latitude, s.longitude  FROM site_intervention as s
+                                  LEFT JOIN commune as c ON c.ID_commune = s.ID_commune
+                                  WHERE s.ID_site LIKE "'.$id.'"');
+        $request->execute();
+        $detailSite = $request->fetch(PDO::FETCH_ASSOC);
+
+        return $detailSite;
     }
-   
 }      
-        if(isset($_POST['BoutonA'])) 
-        {
-             $TableauEstBienRempli = ModelDetailSite::GetData();
-        }
+
 ?>

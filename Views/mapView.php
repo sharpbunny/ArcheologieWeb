@@ -2,14 +2,14 @@
 // page title
 $title = "Carte des Sites";
 // page footer content
-$footer = '<p class="text-muted credit">&copy; 2017 Sharbunny, Inc.</p>';
+$footer = '<p class="text-muted credit">&copy; 2017 Sharpbunny, Inc.</p>';
 // buffer init
 $links=array();
 $links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
 $links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
 // left side
 ob_start();
-
+                    echo '<div id="listnogeo"></div>';
                     echo'<input id="activerpointeur" type="submit" value="pointeur" href="mapController.php">';
                     $tab=Map::getsiteintervention();
                        //require'./Controllers/mapController.php';
