@@ -9,7 +9,7 @@ $links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
 $links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
 // left side
 ob_start();
-
+                    echo '<div id="listnogeo"></div>';
                     echo'<input id="activerpointeur" type="submit" value="pointeur" href="mapController.php">';
                     $tab=Map::getsiteintervention();
                        //require'./Controllers/mapController.php';

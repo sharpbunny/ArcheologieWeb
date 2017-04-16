@@ -33,6 +33,8 @@ $(function() {
                         if (obj.longitude!=null && obj.latitude!=null) {
                             L.marker([obj.latitude, obj.longitude]).addTo(map)
                                 .bindPopup('Site de fouille.<br>Ville de '+obj.nomCommune+'<br><a href="detail/view/'+obj.ID_site+'">'+obj.nom_site+'</a>');
+                        } else {
+                            // add to list site without geoloc
                         }
                     }
                 }
