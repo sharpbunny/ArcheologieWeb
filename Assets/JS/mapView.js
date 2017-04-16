@@ -6,6 +6,7 @@ var map;
         var touslessites;
         var gauche=1;
        var droite=1;
+       var pageencour;
 $(function() {
     InitialiserCarte();
 
@@ -45,7 +46,7 @@ jQuery(document).ready(function($){
            },
            //paramètre exécuté une fonction si l'appel AJAX a échoué.
            error:function(XMLHttpRequest,textStatus,errorThrown){
-            alert(errorThrown);
+            //alert(errorThrown);
            },
            // s'exécute une fois l'appel AJAX effectué.
            complete : function(json,statut){  
@@ -88,26 +89,24 @@ jQuery(document).ready(function($){
 
 
     function remplirladiv(touslessites){
-        var affichparpage=20;
+        var affichparpage=14;
         var nombrePage=touslessites.length / affichparpage;
         var dernierepage=touslessites.length % affichparpage;
         alert(nombrePage);
         alert(dernierepage);
+         if(gauche==1)
+        {
+            $('#gauche').hide();
+        }
+           if(droite==nombrePage)
+        {
+            $('#droite').hide();
+        }
     for(var i=0;i<affichparpage;i++){
                 var obj = touslessites[i];
                
                     for(var key in obj){
 
-                        // if(key=="latitude")
-                        // {
-                        //     lati =obj[key];
-                        //     boolla=true;                       
-                        // }
-                        // if(key=="longitude")
-                        // {
-                        //     longi=obj[key];
-                        //     boollon=true;                        
-                        // }
                        if(key=="nom_site"){               
                          $("#listDesSites").append(obj[key]+'<br>');
                        }              
@@ -115,11 +114,18 @@ jQuery(document).ready(function($){
        }
     }
 $('#gauche').click(function(){
-gauche--;
-  var affichparpage=20;
+gauche++;
+pageencour=droite;
+droite--;
+  var affichparpage=14;
         var nombrePage=touslessites.length / affichparpage;
         var dernierepage=touslessites.length % affichparpage;
-for(var i=0;i<affichparpage;i++){
+        if(gauche==1)
+        {
+            $('#gauche').hide();
+        }
+         $("#listDesSites").empty();
+for(var i=((affichparpage*pageencour)-affichparpage)-affichparpage;i<(affichparpage*pageencour)-affichparpage;i++){
                 var obj = touslessites[i];
                
                     for(var key in obj)
@@ -130,15 +136,38 @@ for(var i=0;i<affichparpage;i++){
                        }              
                  }     
        }
-
-alert(gauche);
+ $('#droite').show();
+//alert(gauche);
 return false;
 });
 
 $('#droite').click(function(){
 droite++;
+pageencour=gauche;
+gauche--;
+var affichparpage=14;
+        var nombrePage=touslessites.length / affichparpage;
+        var dernierepage=touslessites.length % affichparpage;
+          if(droite==parseInt(nombrePage, 10))
+        {
+            $('#droite').hide();
+        }
+        $("#listDesSites").empty();
+for(var i=(affichparpage*droite)-affichparpage;i<(affichparpage*droite);i++){
+                var obj = touslessites[i];
+               
+                    for(var key in obj)
+                    { 
+                       if(key=="nom_site")
+                       { 
+                                         
+                         $("#listDesSites").append(obj[key]+'<br>');
+                       }              
+                 }     
+       }
+ $('#gauche').show();
 
-alert(droite);
+//alert(droite);
 return false;
 });
 
