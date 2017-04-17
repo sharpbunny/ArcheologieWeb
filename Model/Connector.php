@@ -10,20 +10,25 @@ class ArcheoPDO
     private $mysqlPDO;
 
     /**
-    * function to connect to bdd 
+    * function to connect to bdd
     * @return PDO
     */
-    public static function Connect() 
+    public static function Connect()
     {
         global $basehref;
         // if conf.php doesn't exists you need to create from model conf/conf.php.dist
-        include("conf/conf.php");
+        if (file_exists("./conf/conf.php")) {
+            include("conf/conf.php");
+        } else {
+            // copy conf/conf.php.dist into conf/conf.php
+            die("No conf file");
+        }
 
-        try
-        {
+        try {
             $mysqlPDO = new PDO("mysql:host=$host;dbname=$bdd;charset=utf8",
-            $user, $password,
-            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+                $user, $password,
+                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
+            );
         }
         catch(Exception $e)
         { // en cas erreur on affiche un message et on arrete tout
@@ -33,13 +38,11 @@ class ArcheoPDO
     }
 
     /**
-    * function which disconnects bdd 
+    * function which disconnects bdd
     */
-    public static function Disconnect() 
+    public static function Disconnect()
     {
         // TODO : disconnect BDD
         $mysqlPDO = null;
     }
 }
-
-?>

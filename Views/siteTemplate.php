@@ -87,7 +87,7 @@ if ($user->iduser>0) {
         }
 ?>
     <div class="container">
-        <div class="row">'
+        <div class="row">
             <div class="col-sm-2">
                 <div class="sidebar-module sidebar-module-inset">
                     <?php echo $leftcontent."\n"; ?>

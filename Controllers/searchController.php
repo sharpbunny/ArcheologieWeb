@@ -4,22 +4,20 @@
 */
 class SearchController
 {
-	/**
-	* FIXME: rename to better function's name
-	*/
+    /**
+     * FIXME: rename to better function's name
+     */
     static function jeanpierre($recheche)
-	{
+    {
         echo $recheche;
     }
 
     /**
-	 * display search view 
-	 */
-	static public function DisplaySearchView()
-	{
+     * Display search view
+     */
+    static public function DisplaySearchView()
+    {
         global $user, $basehref;
         require_once("./Views/searchView.php");
-	}
+    }
 }
-
-?>
