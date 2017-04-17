@@ -5,7 +5,7 @@
 class Map
 {
     /**
-     * display map
+     * Display map
      */
     public static function displayMapView()
     {
@@ -13,6 +13,10 @@ class Map
         require_once("./Views/mapView.php");
     }
 
+    /**
+     * Get all site intervention.
+     * @return array array of site intervention
+     */
     public static function getsiteintervention()
     {
         $tableauSite=array();
@@ -22,7 +26,6 @@ class Map
         $req->execute();
         while ($resultat=$req->fetch(PDO::FETCH_ASSOC)) {
             $tableauSite[]=$resultat;
-            //print_r($resultat);
         }
 
         return $tableauSite;

@@ -17,7 +17,7 @@ class User
 
     /**
      * Get user info in the bdd.
-     * @param string user's id
+     * @param string $iduser user's id
      */
     public function getUser($iduser)
     {
@@ -41,8 +41,8 @@ class User
 
     /**
      * Check if user exist in the bdd.
-     * @param string user login
-     * @param string user password
+     * @param string $login user login
+     * @param string $password user password
      */
     public function loginUser($login, $password)
     {

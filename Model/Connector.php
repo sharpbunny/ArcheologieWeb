@@ -25,13 +25,15 @@ class ArcheoPDO
         }
 
         try {
-            $mysqlPDO = new PDO("mysql:host=$host;dbname=$bdd;charset=utf8",
+            $mysqlPDO = new PDO(
+                "mysql:host=".$host.";dbname=".$bdd.";charset=utf8",
                 $user, $password,
                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
             );
         }
         catch(Exception $e)
-        { // en cas erreur on affiche un message et on arrete tout
+        {
+            // en cas erreur on affiche un message et on arrete tout
             die('<h1>Erreur de connexion : </h1>' . $e->getMessage());
         }
         return $mysqlPDO;
