@@ -12,8 +12,8 @@ ob_start();
 <?php
 $leftcontent = ob_get_clean();
 ?>
-<p>Utilisateur: '.$user->login.'</p>
-<p>Level: '.$user->rankingaccess.'</p>
+<p>Utilisateur: <?php echo $user->login; ?></p>
+<p>Level: <?php echo $user->rankingaccess; ?></p>
 <?php
 // store buffer into $content
 $content = ob_get_clean();
