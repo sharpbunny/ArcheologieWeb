@@ -35,6 +35,9 @@ class Map
     {
         require('Model/mapModel.php');
         $array = mapModel::getSite();
+        header('Cache-Control: no-cache, must-revalidate');
+        header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+        header('Content-Type: application/json; charset=UTF-8');
 
         if (count($array) > 0) {
             echo json_encode(array('error' => 0,  'array'=>$array));

@@ -12,7 +12,7 @@ ob_start();
                     echo '<div id="listnogeo"></div>';
                     // echo'<input id="activerpointeur" type="submit" value="pointeur" href="mapController.php">';
                     // $tab=Map::getsiteintervention();
-                       // //require'./Controllers/mapController.php';
+                    //require'./Controllers/mapController.php';
                     //    for ($i=0;$i < count($tab);$i++)
                     //    {
                     //   echo'<p>';print_r($tab[$i]['ID_site']) ;echo'</P>';
