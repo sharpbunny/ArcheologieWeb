@@ -1,0 +1,3 @@
+# Use rewriting URL to transform xxx/yyy/zzz in index.php?controler=xxx&action=yyy&id=zzz
+RewriteEngine on
+RewriteRule ^([a-zA-Z]*)/?([a-zA-Z]*)?/?([a-zA-Z0-9]*)?/?$ index.php?controller=$1&action=$2&id=$3 [NC,L]

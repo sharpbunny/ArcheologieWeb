@@ -2,7 +2,7 @@
 // page title
 $title = "Stats des Sites";
 // page footer content
-$footer = "Contenu bas de page";
+$footer = '<p class="text-muted credit">&copy; 2017 Sharpbunny, Inc.</p>';
 // buffer init
 ob_start();
 // le code html qui va suivre ne sera pas envoyé à l'écran mais dans un buffer pour être envoyé au template
@@ -20,20 +20,20 @@ $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
 
 
         <!-- Div contenant les graphiques -->
-        <?php 
-            if(isset($_GET['stats']) && $_GET['stats'] == true){
+        <?php
+        if (isset($_GET['stats']) && $_GET['stats'] == true) {
 
-                //Si c'est le graphique concernant les thèmes qui a été demandé
-                if(isset($_GET['theme'])){
+            //Si c'est le graphique concernant les thèmes qui a été demandé
+            if (isset($_GET['theme'])) {
                     ?><script type="text/javascript" language="javascript">
                         var theme = <?php echo $_GET['theme']; ?>
                     </script>
 
         <?php
-                }
+            }
 
 
-                echo'<div id="graphContainer">
+            echo '<div id="graphContainer">
                 <div id="chartDiv">
                     <canvas id="ArcheoChart" width="100" height="100"></canvas>        
                     </div>
@@ -42,15 +42,12 @@ $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
                         <canvas id="ArcheoPie"></canvas>        
                     </div>
                 </div>';
-            }
+        }
 
-            else{
-                echo '<p>Vous n\'avez choisi aucune statistique.</p>';
-            }
+        else {
+            echo '<p>Vous n\'avez choisi aucune statistique.</p>';
+        }
 
-        ?>
-
-<?php
 // store buffer into $content
 $content = ob_get_clean();
 $scripts = array(); // tableau pour stocker les scripts supplémentaires
@@ -58,5 +55,3 @@ $scripts[] = '<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0
 $scripts[] = '<script src="Assets/JS/statsView.js" type="text/javascript"></script>';
 // call template to display
 include('Views/siteTemplate.php');
-
-?>
