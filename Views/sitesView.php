@@ -8,6 +8,8 @@ $links=array();
 $links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
 $links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
 // left side
+require_once "model/SitesModel.php";
+
 ob_start();
 ?>
         <div id="divGauche">
@@ -50,8 +52,5 @@ $content = ob_get_clean();
 
 
 // include scripts with template
-$scripts=array();
-$scripts[]='<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>';
-$scripts[]='<script src="Assets/JS/mapView.js"></script>';
 // call template to display
 include('Views/siteTemplate.php');

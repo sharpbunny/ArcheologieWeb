@@ -107,14 +107,17 @@ class Site
     {        
         $bdd = ArcheoPDO::Connect();
         
-        $reponse = $bdd->query("SELECT nomDepartement,nom_site,libellePeriode,date_debut,date_fin from departement
-                                left join commune on departement.ID_departement = commune.ID_departement
+        $reponse = $bdd->query("
+            SELECT nomDepartement, nom_site, libellePeriode, date_debut, date_fin
+            FROM departement
+            LEFT JOIN commune ON departement.ID_departement = commune.ID_departement
                                 left join site_intervention on commune.ID_commune = site_intervention.ID_commune
                                 left join periodeintervention on site_intervention.ID_site = periodeintervention.ID_site
                                 left join periode on periodeintervention.ID_periode = periode.ID_periode
                                 left join intervention on site_intervention.ID_site = intervention.ID_site
                                 where departement.nomDepartement = \"$dpt\"
-                                order by departement.nomDepartement asc;");
+                                order by departement.nomDepartement asc;"
+        );
 
         while ($donnees = $reponse->fetch())
         {
