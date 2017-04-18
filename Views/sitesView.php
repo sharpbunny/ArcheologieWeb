@@ -8,13 +8,13 @@ $links=array();
 $links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
 $links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
 // left side
-require_once "model/SitesModel.php";
+require_once "Model/sitesModel.php";
 
 ob_start();
 ?>
         <div id="divGauche">
             <p>Recherche</p>
-            <form method='POST' action="">
+            <form method='POST' action="sites/view">
                 <SELECT id="departement" class="menuD" name ="dpt" size="1">
                     <option>*Choisissez votre département*                    
                     <?php Site::MenuDDepartement(); ?>                             
@@ -37,14 +37,16 @@ ob_start();
 ?>
         <div id="divDroite">
             <table>
+                <tr>
                 <th id='nomDpt'>Nom/Département</th>
                 <th id='nSite'>Nom du Site</th>
                 <th>Libellé période</th>
                 <th class='date'>Date de début</th>
                 <th class='date'>Date de fin</th>
+                </tr>
                 <?php Site::FiltreParDpt($dptSelectionne);?>
                 <?php Site::FiltreParVille($villeSelectionnee);?>
-            <table>
+            </table>
         </div>
 <?php
 // store buffer into $content

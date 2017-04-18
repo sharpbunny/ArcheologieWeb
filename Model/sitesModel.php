@@ -18,7 +18,7 @@ class Site
 
         while ($donnees = $reponse->fetch())
         {
-            echo '<option>'.$donnees['nomCommune'];
+            echo '<option>'.$donnees['nomCommune']."\n";
         }
         $reponse->closeCursor();
 
@@ -38,7 +38,7 @@ class Site
         
         while ($donnees = $reponse->fetch())
         {
-        ?><option><?php echo $donnees['nomDepartement'];
+        ?><option><?php echo $donnees['nomDepartement']."\n";
         }
         $reponse->closeCursor();
 
