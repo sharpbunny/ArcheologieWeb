@@ -34,6 +34,7 @@ if ($user->iduser>0) {
             echo '                <span class="icon-bar"></span>'."\n";
             echo '                <span class="icon-bar"></span>'."\n";
             echo '                <span class="icon-bar"></span>'."\n";
+            echo '                <span class="icon-bar"></span>'."\n";
             echo '            </button>'."\n";
             echo '            <a class="navbar-brand" href="#">ArchéoSite</a>'."\n";
             echo '        </div>'."\n";
@@ -44,6 +45,7 @@ if ($user->iduser>0) {
             echo '                <li'.($controller=='search'?' class="active"':'').'><a href="search">Recherche</a></li>'."\n";
             echo '                <li'.($controller=='stats'?' class="active"':'').'><a href="stats">Stats</a></li>'."\n";
             echo '                <li'.($controller=='detail'?' class="active"':'').'><a href="detail/view/fff52f4ac0a03ea9b7b28a8cbd72342496b090d1">Détail</a></li>'."\n";
+            echo '                <li'.($controller=='sites'?' class="active"':'').'><a href="sites/view/">Sites</a></li>'."\n";
             echo '                <li'.($controller=='map'?' class="active"':'').'><a href="map/view">Maps</a></li>'."\n";
             echo '                <li class="dropdown">'."\n";
             echo '                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenue '.$user->login.'<b class="caret"></b></a>'."\n";
@@ -88,12 +90,12 @@ if ($user->iduser>0) {
 ?>
     <div class="container">
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="sidebar-module sidebar-module-inset">
                     <?php echo $leftcontent."\n"; ?>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <?php echo $content."\n"; ?>
             </div>
         </div>

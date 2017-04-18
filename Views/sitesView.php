@@ -1,37 +1,40 @@
-<!doctype html>
 <?php
-header('Content-type: text/html; charset=utf-8');
-include '../Model/sitesModel.php';
+// page title
+$title = "Recherche par Sites";
+// page footer content
+$footer = '<p class="text-muted credit">&copy; 2017 Sharpbunny, Inc.</p>';
+// buffer init
+$links=array();
+$links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
+$links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
+// left side
+require_once "model/SitesModel.php";
 
+ob_start();
 ?>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8"/>
-        <link rel="stylesheet" href="style.css" />
-        <title>Recherche par site</title>
-    </head>
-    <body>
-        <div id=entete>
-            <h1> Recherche par site </h1>
-        </div>
         <div id="divGauche">
             <p>Recherche</p>
             <form method='POST' action="">
                 <SELECT id="departement" class="menuD" name ="dpt" size="1">
                     <option>*Choisissez votre département*                    
-                    <?php MenuDDepartement(); ?>                             
+                    <?php Site::MenuDDepartement(); ?>                             
                 </SELECT>
                 <br>
                 <SELECT id="ville" class="menuD" name ="vil" size="1">
                     <option>*Choisissez votre ville*
-                    <?php MenuDVille(); ?>               
+                    <?php Site::MenuDVille(); ?>               
                 </SELECT>
                 <br>
                 <input type='submit'>
             </form>
             <br>
                  
-        </div> 
+        </div>
+<?php
+// store buffer into $content
+$leftcontent = ob_get_clean();
+ob_start();
+?>
         <div id="divDroite">
             <table>
                 <th id='nomDpt'>Nom/Département</th>
@@ -39,10 +42,15 @@ include '../Model/sitesModel.php';
                 <th>Libellé période</th>
                 <th class='date'>Date de début</th>
                 <th class='date'>Date de fin</th>
-                <?php FiltreParDpt($dptSelectionne);?>
-                <?php FiltreParVille($villeSelectionnee);?>
+                <?php Site::FiltreParDpt($dptSelectionne);?>
+                <?php Site::FiltreParVille($villeSelectionnee);?>
             <table>
         </div>
-    </body>
-    
-</html>
+<?php
+// store buffer into $content
+$content = ob_get_clean();
+
+
+// include scripts with template
+// call template to display
+include('Views/siteTemplate.php');
