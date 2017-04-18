@@ -3,7 +3,7 @@
 class ModelDetailSite
 {
     /**
-     *
+     *Fonction permettant de récupérer les informations sur la BDD pour réaliser un test d'affichage.'
      */
     public static function getData()
     {

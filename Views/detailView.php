@@ -49,7 +49,7 @@ ob_start();
                     <td>Site de fouille B<?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["nomCommune"]; ?> <button id="BoutonB">Choisir</button></td>
                 <tr>
                     <td>0.20</td>
-                    <td>Site de fouille C <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["ID_departement"]; ?> <button id="BoutonC">Choisir</button></td>
+                    <td>Site de fouille C <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["ID_commune"]; ?> <button id="BoutonC">Choisir</button></td>
                 </tr>
                 <tr>
                     <td>0.30</td>
