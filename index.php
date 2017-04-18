@@ -46,7 +46,11 @@ switch ($controller) {
     case 'sites':                                    // case = sites page request
         //code
         include_once "Controllers/sitesController.php";
-        SitesController::DisplaySitesView();
+        if ($action=='json') {
+            SitesController::sendJson();
+        } else {
+            SitesController::DisplaySitesView();
+        }
         break;
     case 'stats':                                    // case = stats page request
         //code

@@ -5,8 +5,7 @@ $title = "Recherche par Sites";
 $footer = '<p class="text-muted credit">&copy; 2017 Sharpbunny, Inc.</p>';
 // buffer init
 $links=array();
-$links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
-$links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
+$links[]='<link rel="stylesheet" href="Assets/CSS/bootcomplete.css">';
 // left side
 require_once "Model/sitesModel.php";
 
@@ -28,7 +27,10 @@ ob_start();
                 <input type='submit'>
             </form>
             <br>
-                 
+<input id="jsdepartement" type="text" name="departement" placeholder="Entrez un département" class="form-control">
+<br>
+<input id="jsville" type="text" name="ville" placeholder="Entrez une ville" class="form-control">
+                
         </div>
 <?php
 // store buffer into $content
@@ -47,12 +49,12 @@ ob_start();
 <?php
 if (isset($POST['dpt'])) 
 { 
-    $dptSelectionne = $_POST['dpt'];
+    $dptSelectionne = htmlspecialchars($_POST['dpt']);
     Site::FiltreParDpt($dptSelectionne);
 }
 
 if (isset($_POST['vil'])) {
-    $villeSelectionnee = $_POST['vil'];
+    $villeSelectionnee = htmlspecialchars($_POST['vil']);
     Site::FiltreParVille($villeSelectionnee);
 }
 ?>
@@ -64,5 +66,8 @@ $content = ob_get_clean();
 
 
 // include scripts with template
+$scripts = array();
+$scripts[] = '<script src="Assets/JS/jquery.bootcomplete.js"></script>';
+$scripts[] = '<script src="Assets/JS/searchView.js"></script>';
 // call template to display
 include('Views/siteTemplate.php');
