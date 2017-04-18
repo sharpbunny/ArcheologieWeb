@@ -7,7 +7,7 @@ class mapModel
     /**
      * Get all sites from bdd.
      */
-    public function getSite()
+    public static function getSite()
     {
         require_once("./Model/Connector.php");
         $arraySite = array();
