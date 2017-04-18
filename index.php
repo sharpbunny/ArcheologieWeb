@@ -43,6 +43,11 @@ switch ($controller) {
             UserController::userView();
         }
         break;
+    case 'sites':                                    // case = sites page request
+        //code
+        include_once "Controllers/sitesController.php";
+        SitesController::DisplaySitesView();
+        break;
     case 'stats':                                    // case = stats page request
         //code
         include_once "Controllers/statsController.php";
