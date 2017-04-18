@@ -8,12 +8,9 @@ $footer = '<p class="text-muted credit">&copy; 2017 Sharpbunny, Inc.</p>';
 ob_start();
 // le code html qui va suivre ne sera pas envoyé à l'écran mais dans un buffer pour être envoyé au template
 ?>
-
-
-    <div class="container" id="blocRecherche">
         <div id="divBarreRecherche">
             <fieldset>
-                <form action="researchView.php" method="POST">
+                <form action="search/view" method="POST">
                 <label>Champ de recherche</label>
                 <input id="barreRecherche" name="researchField" type="text"></input>
                 <input id="submitResearch" type="submit"></input>
@@ -21,17 +18,20 @@ ob_start();
             </fieldset>
             
         </div>
+<?php
+// store buffer into $leftcontent
+$leftcontent = ob_get_clean();
+// strart new buffer
+ob_start();
+?>
         <div id="resultatRecherche">
                 <table>
+<?php
+if (isset($arraySearch)) var_dump($arraySearch);
+?>
 
                 </table>
-        <?php
-        //Insertion du Controlleur dans la vue
-        //include("controllers/researchController.php");
-        //Research::jeanpierre($_POST['researchField']);
-        ?>
         </div>
-    </div>
 <?php
 // store buffer into $content
 $content = ob_get_clean();

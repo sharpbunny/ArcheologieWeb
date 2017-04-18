@@ -88,12 +88,12 @@ if ($user->iduser>0) {
 ?>
     <div class="container">
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <div class="sidebar-module sidebar-module-inset">
                     <?php echo $leftcontent."\n"; ?>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                 <?php echo $content."\n"; ?>
             </div>
         </div>
