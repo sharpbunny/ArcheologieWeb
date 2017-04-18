@@ -1,8 +1,8 @@
 <?php
 
-class SiteController
+class SitesController
 {
-    public static function SitesView()
+    public static function DisplaySitesView()
     {
         global $user, $basehref;
         require_once("./Views/sitesView.php");
