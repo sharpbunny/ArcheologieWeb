@@ -11,7 +11,5 @@
 
     if($verification != 0)
     {
-      
-    }
 
-?>
+    }

@@ -10,9 +10,9 @@ $links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/le
 // left side
 ob_start();
                     echo '<div id="listnogeo"></div>';
-                    echo'<input id="activerpointeur" type="submit" value="pointeur" href="mapController.php">';
-                    $tab=Map::getsiteintervention();
-                       //require'./Controllers/mapController.php';
+                    // echo'<input id="activerpointeur" type="submit" value="pointeur" href="mapController.php">';
+                    // $tab=Map::getsiteintervention();
+                    //require'./Controllers/mapController.php';
                     //    for ($i=0;$i < count($tab);$i++)
                     //    {
                     //   echo'<p>';print_r($tab[$i]['ID_site']) ;echo'</P>';
@@ -36,6 +36,3 @@ $scripts[]='<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></sc
 $scripts[]='<script src="Assets/JS/mapView.js"></script>';
 // call template to display
 include('Views/siteTemplate.php');
-
-?>
-

@@ -1,4 +1,4 @@
-<?php 
+<?php
 //FIXME move to view
 // page title
 $title = "Recherche de Sites";
@@ -25,11 +25,11 @@ ob_start();
                 <table>
 
                 </table>
-         <?php
-         //Insertion du Controlleur dans la vue
-         //include("controllers/researchController.php");
-         //Research::jeanpierre($_POST['researchField']);
-         ?>
+        <?php
+        //Insertion du Controlleur dans la vue
+        //include("controllers/researchController.php");
+        //Research::jeanpierre($_POST['researchField']);
+        ?>
         </div>
     </div>
 <?php
@@ -38,5 +38,3 @@ $content = ob_get_clean();
 
 // call template to display
 include('Views/siteTemplate.php');
-
-?>

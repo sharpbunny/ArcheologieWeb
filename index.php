@@ -1,5 +1,8 @@
-<?php 
-require_once("Model/userModel.php");
+<?php
+/**
+ * Router for all controllers actions
+ */
+require_once "Model/userModel.php";
 
 session_start();
 
@@ -15,23 +18,22 @@ $iduser = htmlspecialchars(isset($_SESSION["iduser"])?$_SESSION["iduser"]:"");
 $user = new User();
 $user->getUser($iduser);
 
-if ($controller != 'user' && $action != 'login' && $user->iduser == 0 ) {
+if ($controller != 'user' && $action != 'login' && $user->iduser == 0) {
     $controller = 'user';
     $action='';
 }
 
 // check action passed through url
 // my.domain.com/controller/action/id
-switch ($controller)
-{
+switch ($controller) {
     case 'user':
         // user
-        require_once('Controllers/userController.php');
+        include_once "Controllers/userController.php";
         if ($action=='login') {
             // load user connexion view
             $user->loginUser($login, $password);
             header("Location: .");
-        } else if ($action=='logout') {
+        } elseif ($action=='logout') {
             // load deconnexion user
             $user->logoutUser();
             header("Location: .");
@@ -43,34 +45,32 @@ switch ($controller)
         break;
     case 'stats':                                    // case = stats page request
         //code
-        require_once('Controllers/statsController.php');
+        include_once "Controllers/statsController.php";
         Stats::DisplayStatsView();
-        break; 
+        break;
     case 'detail':                                    // case = stats page request
         //code
-        require_once('Controllers/detailController.php');
+        include_once "Controllers/detailController.php";
         DetailController::DisplayDetailView();
-        break; 
+        break;
     case 'map':                                       // case = map page request
         // map
-        require_once('Controllers/mapController.php');
+        include_once "Controllers/mapController.php";
         if ($action=='json') {
-            Map::SendJson();
+            Map::sendJson();
         } else {
             //$action=='view'
-            Map::DisplayMapView();
+            Map::displayMapView();
         }
-        break; 
-    case 'search':                                   // case = search page request 
+        break;
+    case 'search':                                   // case = search page request
         // Research ctrl
-        require_once('Controllers/searchController.php');
+        include_once "Controllers/searchController.php";
         SearchController::DisplaySearchView();
         break;
     default:                                           // TODO : add page default
         // user ctrl
-        require_once('Controllers/userController.php');
+        include_once "Controllers/userController.php";
         UserController::userView();
         break;
 }
-
-?>

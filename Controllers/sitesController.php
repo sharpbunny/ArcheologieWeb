@@ -70,6 +70,3 @@ class Departement extends Ville
         $this->_departement = $departement;
     }
 }
-
-
-?>

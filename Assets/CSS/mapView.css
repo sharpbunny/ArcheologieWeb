@@ -13,8 +13,8 @@
     align-items: center;
 }
 
-#gauche {   
-    background-color: #2E2928;
+#gauche {
+    background-color: #2E292;
     text-align: center;
     width: 350px;
     height:  700px;
@@ -22,7 +22,7 @@
 
 #droite {
     display:flex;
-    flex-direction: column;  
+    flex-direction: column;
     align-items: center;
     background-color: maroon;
     width: 750px;
@@ -30,7 +30,7 @@
     margin:0;
 }
 
-#map {  
+#map {
     position:relative;
     background-color: white;
     width:900px;

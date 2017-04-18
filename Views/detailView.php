@@ -4,9 +4,6 @@ $title = "Détail du Site";
 // page footer content
 $footer = '<p class="text-muted credit">&copy; 2017 Sharpbunny, Inc.</p>';
 // buffer init
-$links=array();
-$links[]='<link rel="stylesheet" href="Assets/CSS/mapView.css">';
-$links[]='<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />';
 // left side
 ob_start();
 ?>
@@ -17,8 +14,8 @@ ob_start();
         <!--<img src="RegionIDF.png" alt="Détail de la région île de France" title ="Zone géographique des sites archéologiques">-->
         <p>Localisation :</p>
         <ul>
-            <li id="LongitudeChoisi"> Longitude : <?php if(isset($TableauEstBienRempli)){echo $TableauEstBienRempli["longitude"];} ?></li>
-            <li id="LatitudeChoisi"> Latitude : <?php if(isset($TableauEstBienRempli)){echo $TableauEstBienRempli["latitude"];} ?></li>
+            <li id="LongitudeChoisi"> Longitude : <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["longitude"]; ?></li>
+            <li id="LatitudeChoisi"> Latitude : <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["latitude"]; ?></li>
         </ul>
         <p id="PeriodeChoisi">Période concernée : Paléolithique, Mésolithique, Néolithique, Âge du Bronze, Âge du Fer, Antiquité, Moyen Âge, Epoque moderne<p>
         <p id="EtatSiteChoisi"> Etat du site : (Transfert l'information de la BDD : Ouvert au public (périodes destinées, normes de protections.) || Fermé au public (En cours d'investigation, travaux, restauration.) </p>
@@ -45,14 +42,14 @@ ob_start();
                 </tr>
                 <tr>
                     <td>0.00</td>
-                    <td>Site de fouille A<?php if(isset($TableauEstBienRempli)){echo $TableauEstBienRempli["nom_site"];} ?>  <button name="BoutonA">Choisir</button> </td>
+                    <td>Site de fouille A <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["nom_site"]; ?>  <button name="BoutonA">Choisir</button> </td>
                 </tr>
                 <tr>
                     <td>0.10</td>
-                    <td>Site de fouille B<?php if(isset($TableauEstBienRempli)){echo $TableauEstBienRempli["nomCommune"];} ?> <button id="BoutonB">Choisir</button></td>
+                    <td>Site de fouille B<?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["nomCommune"]; ?> <button id="BoutonB">Choisir</button></td>
                 <tr>
                     <td>0.20</td>
-                    <td>Site de fouille C <?php if(isset($TableauEstBienRempli)){echo $TableauEstBienRempli["ID_departement"];} ?> <button id="BoutonC">Choisir</button></td>
+                    <td>Site de fouille C <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["ID_departement"]; ?> <button id="BoutonC">Choisir</button></td>
                 </tr>
                 <tr>
                     <td>0.30</td>
@@ -69,5 +66,3 @@ $content = ob_get_clean();
 $scripts=array();
 // call template to display
 include('Views/siteTemplate.php');
-
-?>
