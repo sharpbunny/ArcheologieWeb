@@ -1,7 +1,6 @@
 <!doctype html>
 <?php
-header('Content-type: text/html; charset=utf-8');
-include '../Model/sitesModel.php';
+
 
 ?>
 <html lang="fr">
@@ -19,12 +18,12 @@ include '../Model/sitesModel.php';
             <form method='POST' action="">
                 <SELECT id="departement" class="menuD" name ="dpt" size="1">
                     <option>*Choisissez votre département*                    
-                    <?php MenuDDepartement(); ?>                             
+                    <?php Site::MenuDDepartement(); ?>                             
                 </SELECT>
                 <br>
                 <SELECT id="ville" class="menuD" name ="vil" size="1">
                     <option>*Choisissez votre ville*
-                    <?php MenuDVille(); ?>               
+                    <?php Site::MenuDVille(); ?>               
                 </SELECT>
                 <br>
                 <input type='submit'>
@@ -39,8 +38,8 @@ include '../Model/sitesModel.php';
                 <th>Libellé période</th>
                 <th class='date'>Date de début</th>
                 <th class='date'>Date de fin</th>
-                <?php FiltreParDpt($dptSelectionne);?>
-                <?php FiltreParVille($villeSelectionnee);?>
+                <?php Site::FiltreParDpt($dptSelectionne);?>
+                <?php Site::FiltreParVille($villeSelectionnee);?>
             <table>
         </div>
     </body>
