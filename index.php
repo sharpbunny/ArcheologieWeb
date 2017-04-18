@@ -66,7 +66,11 @@ switch ($controller) {
     case 'search':                                   // case = search page request
         // Research ctrl
         include_once "Controllers/searchController.php";
-        SearchController::DisplaySearchView();
+        if ($action=='view') {
+            SearchController::DisplayResultSearchView();
+        } else {
+            SearchController::DisplaySearchView();
+        }
         break;
     default:                                           // TODO : add page default
         // user ctrl
