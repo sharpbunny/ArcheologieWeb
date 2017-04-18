@@ -12,14 +12,12 @@ ob_start();
         <p> Pays : France </p>
         <p id="TitreRegionPlusImage">Région : Île-de-France </p>
         <!--<img src="RegionIDF.png" alt="Détail de la région île de France" title ="Zone géographique des sites archéologiques">-->
-        <p>Localisation :</p>
+        <!--<p>Localisation :</p>
         <ul>
             <li id="LongitudeChoisi"> Longitude : <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["longitude"]; ?></li>
             <li id="LatitudeChoisi"> Latitude : <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["latitude"]; ?></li>
-        </ul>
-        <p id="PeriodeChoisi">Période concernée : Paléolithique, Mésolithique, Néolithique, Âge du Bronze, Âge du Fer, Antiquité, Moyen Âge, Epoque moderne<p>
-        <p id="EtatSiteChoisi"> Etat du site : (Transfert l'information de la BDD : Ouvert au public (périodes destinées, normes de protections.) || Fermé au public (En cours d'investigation, travaux, restauration.) </p>
-        <p id="TypeSiteChoisi"> Type de site : (Transfert l'information de la BDD : Bâtiments, Ruines, Artefacts, Décorations)
+        </ul>-->
+       
     </div>
 <?php
 $leftcontent = ob_get_clean();
@@ -33,28 +31,27 @@ ob_start();
     <div class="container">
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading">Détail du site</div>
+            <div class="panel-heading">Détail du site de fouille : <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["nomCommune"]; ?> </div>
             <!-- Table -->
             <table class="table">
                 <tr>
                     <th>Localisation</th>
-                    <th>Nom du site</th>
+                    <th>Description</th>
                 </tr>
                 <tr>
-                    <td>0.00</td>
-                    <td>Site de fouille A <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["nom_site"]; ?>  <button name="BoutonA">Choisir</button> </td>
+                    <td>  Longitude : <?php  if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["longitude"]; ?></td>
+                    <td> <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["nom_site"]; ?> </td>
                 </tr>
                 <tr>
-                    <td>0.10</td>
-                    <td>Site de fouille B<?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["nomCommune"]; ?> <button id="BoutonB">Choisir</button></td>
+                    <td>   Latitude :<?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["latitude"]; ?></td>
+                   <td>Type d'intervention : <?php if (isset($DonneesIntervention)) echo $DonneesIntervention["libelleIntervention"]; ?> </td>
+                    
                 <tr>
-                    <td>0.20</td>
-                    <td>Site de fouille C <?php if (isset($TableauEstBienRempli)) echo $TableauEstBienRempli["ID_departement"]; ?> <button id="BoutonC">Choisir</button></td>
+                    <td>Période concernée :  <?php if(isset($DonneesPeriode)) echo $DonneesPeriode["libellePeriode"]; ?> </td>
+                    <td>Type de site : Ruines</td>
+                    
                 </tr>
-                <tr>
-                    <td>0.30</td>
-                    <td>Site de fouille D</td>
-                </tr>
+               
             </table>
         </div>
     </div>
@@ -65,4 +62,7 @@ $content = ob_get_clean();
 // include scripts with template
 $scripts=array();
 // call template to display
+
 include('Views/siteTemplate.php');
+
+

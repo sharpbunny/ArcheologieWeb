@@ -5,7 +5,9 @@ class DetailController
     {
         global $user, $basehref;
         require_once("Model/DetailSiteModel.php");
-        $TableauEstBienRempli = ModelDetailSite::getData();
+        $TableauEstBienRempli = ModelDetailSite::getData();   
+        $DonneesPeriode = ModelDetailSite::MettrePeriode();
+        $DonneesIntervention = ModelDetailSite::MettreTypeIntervention();   
         require_once("Views/detailView.php");
     }
 }
