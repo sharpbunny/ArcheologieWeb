@@ -134,13 +134,4 @@ class Site
         ArcheoPDO::Disconnect();
     }
 
-    public $dptSelectionne = "";
-    public $villeSelectionnee = "";
-
-    // if (isset($_POST['vil']) || isset($POST['dpt'])) 
-    // { 
-    //     $villeSelectionnee = $_POST['vil'];
-    //     $dptSelectionne = $_POST['dpt'];
-    // }
-
 }

@@ -51,7 +51,7 @@ switch ($controller) {
     case 'stats':                                    // case = stats page request
         //code
         include_once "Controllers/statsController.php";
-        Stats::DisplayStatsView();
+        StatsController::DisplayStatsView();
         break;
     case 'detail':                                    // case = stats page request
         //code

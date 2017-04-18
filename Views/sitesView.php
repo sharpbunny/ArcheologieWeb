@@ -36,7 +36,7 @@ $leftcontent = ob_get_clean();
 ob_start();
 ?>
         <div id="divDroite">
-            <table>
+            <table class="table">
                 <tr>
                 <th id='nomDpt'>Nom/Département</th>
                 <th id='nSite'>Nom du Site</th>
@@ -44,8 +44,18 @@ ob_start();
                 <th class='date'>Date de début</th>
                 <th class='date'>Date de fin</th>
                 </tr>
-                <?php Site::FiltreParDpt($dptSelectionne);?>
-                <?php Site::FiltreParVille($villeSelectionnee);?>
+<?php
+if (isset($POST['dpt'])) 
+{ 
+    $dptSelectionne = $_POST['dpt'];
+    Site::FiltreParDpt($dptSelectionne);
+}
+
+if (isset($_POST['vil'])) {
+    $villeSelectionnee = $_POST['vil'];
+    Site::FiltreParVille($villeSelectionnee);
+}
+?>
             </table>
         </div>
 <?php
