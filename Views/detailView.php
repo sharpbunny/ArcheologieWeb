@@ -53,7 +53,7 @@ ob_start();
                      <?php $dateDebut = new DateTime($DateIntervention['date_debut']);
                      $dateFin = new DateTime($DateIntervention['date_fin']);
                      $dateFin->format('d-m-Y'); 
-                     echo $dateDebut->format('d-m-Y').' '.$dateFin->format('d-m-Y');?>;      
+                     echo $dateDebut->format('d-m-Y').' '.$dateFin->format('d-m-Y')?>;      
                     </td>
                     
                 </tr>
