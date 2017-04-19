@@ -17,7 +17,7 @@ $leftcontent = ob_get_clean();
 ob_start();
 echo'<div id="mapviewcentral">
         <div id="coordonne">
-            <div id="listDesSites"><p></p>
+            <div id="listDesSites"><p class="affisite"></p>
             </div>
               <div id="rowinput">
                     <input class="navsite g" id="gauche" value="gauche" type="submit">
