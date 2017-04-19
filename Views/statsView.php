@@ -17,8 +17,11 @@ $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
             </select>
             <input type="Submit" name="chartSubmit" value="Afficher le graphique">
         </form>
-
-
+<?php
+// store buffer into $content
+$leftcontent = ob_get_clean();
+ob_start();
+?>
         <!-- Div contenant les graphiques -->
         <?php
         if (isset($_GET['stats']) && $_GET['stats'] == true) {
