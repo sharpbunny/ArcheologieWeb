@@ -28,10 +28,9 @@ ob_start();
 <?php
 if(empty($arraySearch)) {
         echo "Remplissez le champ de gauche";
-}
-else{
-$i = 0;
-while($i < count($arraySearch)) {
+} else {
+    $i = 0;
+    while($i < count($arraySearch)) {
         echo '<tr>';
         echo '<td class ="researchResult">';
         echo '<a href="detail/view/'.$arraySearch[$i]["ID_site"].'">Identifiant du site = '.$arraySearch[$i]["ID_site"].' </a>';
@@ -42,7 +41,7 @@ while($i < count($arraySearch)) {
         echo '</td>';
         echo "</tr>";
         $i++;
-        }
+    }
 }
 ?>
 
