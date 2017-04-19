@@ -47,7 +47,7 @@ ob_start();
                 <th class='date'>Date de fin</th>
                 </tr>
 <?php
-if (isset($POST['dpt'])) 
+if (isset($_POST['dpt'])) 
 { 
     $dptSelectionne = htmlspecialchars($_POST['dpt']);
     Site::FiltreParDpt($dptSelectionne);
