@@ -35,7 +35,7 @@ body {
 #resultatRecherche {
     background-color: beige;
     height: 800px;
-    border: 1px solid black;
+    border: 1px solid dashed;
 }
 
 /* Placement & modification des items du header*/
