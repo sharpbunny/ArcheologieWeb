@@ -11,16 +11,6 @@ $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
 ?>
 
 
-<html id="html">
-
-    <head>
-        <meta charset="utf-8">
-        <link href="../Assets/CSS/statsView.css" rel="stylesheet">
-        <title></title>
-    </head>
-
-    <body>
-
         <!-- <h1>ArcheologieWeb</h1>-->
 
         <!-- Formulaire permettant de choisir la statistique à afficher-->

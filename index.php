@@ -55,7 +55,11 @@ switch ($controller) {
     case 'stats':                                    // case = stats page request
         //code
         include_once "Controllers/statsController.php";
-        StatsController::DisplayStatsView();
+        if ($action=='jsonth') {
+            StatsController::sendJsonTheme();
+        } else {
+            StatsController::DisplayStatsView();
+        }
         break;
     case 'detail':                                    // case = stats page request
         //code
