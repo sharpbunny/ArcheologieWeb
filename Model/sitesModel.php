@@ -90,7 +90,7 @@ class Site
         while ($donnees = $reponse->fetch())
         {
             echo '<tr>';
-            echo '<td><a href="detail/view/'.$donnees['ID_site'].'>'.$donnees["nomCommune"].'</a></td>';
+            echo '<td><a href="detail/view/'.$donnees['ID_site'].'">'.$donnees["nomCommune"].'</a></td>';
             echo '<td>'.$donnees["nom_site"].'</td>';
             echo '<td>'.$donnees['libellePeriodes'].'</td>';
             echo '<td>'.$donnees['date_debut'].'</td>';
@@ -122,11 +122,11 @@ class Site
                                 where departement.nomDepartement = \"$dpt\"
                                 GROUP BY site_intervention.ID_site
                                 order by departement.nomDepartement asc;");
-      
+ 
         while ($donnees = $reponse->fetch())
         {
             echo '<tr>';
-            echo '<td><a href="detail/view/'.$donnees['ID_site'].'>'.$donnees["nomDepartement"].'</a></td>';
+            echo '<td><a href="detail/view/'.$donnees['ID_site'].'">'.$donnees["nomDepartement"].'</a></td>';
             echo '<td>'.$donnees["nom_site"].'</td>';
             echo '<td>'.$donnees['libellePeriodes'].'</td>';
             echo '<td>'.$donnees['date_debut'].'</td>';
