@@ -1,15 +1,15 @@
 <?php
-
-
-    class Stats
+/**
+* In charge of managing Map stuff
+*/
+class StatsController
+{
+    /**
+     * display map
+     */
+    public static function DisplayStatsView()
     {
-        /**
-        * display stats
-        */
-        static public function DisplayStatsView()
-        {
-            global $user;
-            require_once("./Views/statsView.php");
-        }
+        global $user, $basehref;
+        require_once("./Views/statsView.php");
     }
-?>
+}

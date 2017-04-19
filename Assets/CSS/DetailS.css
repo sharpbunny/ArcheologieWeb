@@ -1,0 +1,38 @@
+#divDeGauche {
+    float: left;
+}
+
+#divDeDroite {
+    float: right;
+}
+
+#divDuCentre {
+    float: center;
+}
+#TitreRegionPlusImage {
+    float: center;
+}
+
+#Tableau {
+    border-top : 5px black;
+    border-bottom: 6px black;
+    background-color: black;
+   
+    border : 6px solid black;
+}
+th {
+    border : 5px solid black;
+}
+
+#PeriodeChoisi {
+    color: darkred;
+}
+
+#panel-heading{
+    text-decoration: underline;
+    color: red;
+}
+
+p{
+    color: green;
+}
