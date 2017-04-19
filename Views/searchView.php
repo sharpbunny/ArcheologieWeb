@@ -12,7 +12,7 @@ ob_start();
                 <form action="search/view" method="POST">
                 <div class="form-group">
                 <label>Champ de recherche</label>
-                <input  class="form-control" id="barreRecherche" name="researchField" type="text"></input>
+                <input  class="form-control" name="researchField" type="text"></input>
                 </div>
                 <button type="submit" class="btn btn-default">Envoyer</button>
                 </form>        
