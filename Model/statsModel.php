@@ -26,8 +26,11 @@ class StatsModel
                 
 
         $request->execute();
+        $i=0;
         while($result = $request->fetch(PDO::FETCH_ASSOC)){
-            $arrayTheme[] = $result;
+            $arrayTheme['label'][$i] = $result['nomTheme'];
+            $arrayTheme['nb'][$i] = $result['nbTheme'];
+            $i++;
         }
         ArcheoPDO::Disconnect();
 
