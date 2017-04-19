@@ -76,20 +76,23 @@ class Site
     {
         $bdd = ArcheoPDO::Connect();
 
-        $reponse = $bdd->query("SELECT nomCommune,nom_site,libellePeriode,date_debut,date_fin from commune
+        $reponse = $bdd->query("SELECT site_intervention.ID_site,nomCommune,nom_site,date_debut,date_fin,
+                                GROUP_CONCAT(DISTINCT libellePeriode SEPARATOR '#') as libellePeriodes
+                                from commune                                
                                 left join site_intervention on commune.ID_commune = site_intervention.ID_commune
                                 left join periodeintervention on site_intervention.ID_site = periodeintervention.ID_site
                                 left join periode on periodeintervention.ID_periode = periode.ID_periode
                                 left join intervention on site_intervention.ID_site = intervention.ID_site
                                 where nomCommune=\"$ville\"
+                                GROUP BY site_intervention.ID_site
                                 order by commune.nomCommune asc;");
 
         while ($donnees = $reponse->fetch())
         {
             echo '<tr>';
-            echo '<td>'.$donnees["nomCommune"].'</td>';
+            echo '<td><a href="detail/view/'.$donnees['ID_site'].'>'.$donnees["nomCommune"].'</a></td>';
             echo '<td>'.$donnees["nom_site"].'</td>';
-            echo '<td>'.$donnees['libellePeriode'].'</td>';
+            echo '<td>'.$donnees['libellePeriodes'].'</td>';
             echo '<td>'.$donnees['date_debut'].'</td>';
             echo '<td>'.$donnees['date_fin'].'</td>';
             echo '</tr>';
@@ -107,33 +110,32 @@ class Site
     {        
         $bdd = ArcheoPDO::Connect();
         
-        $reponse = $bdd->query("
-            SELECT nomDepartement, nom_site, libellePeriode, date_debut, date_fin
-            FROM departement
-            LEFT JOIN commune ON departement.ID_departement = commune.ID_departement
+
+        $reponse = $bdd->query("SELECT site_intervention.ID_site,nomDepartement,nom_site,date_debut,date_fin, 
+                                GROUP_CONCAT(DISTINCT libellePeriode SEPARATOR '#') as libellePeriodes
+                                from departement
+                                left join commune on departement.ID_departement = commune.ID_departement
                                 left join site_intervention on commune.ID_commune = site_intervention.ID_commune
                                 left join periodeintervention on site_intervention.ID_site = periodeintervention.ID_site
                                 left join periode on periodeintervention.ID_periode = periode.ID_periode
                                 left join intervention on site_intervention.ID_site = intervention.ID_site
                                 where departement.nomDepartement = \"$dpt\"
-                                order by departement.nomDepartement asc;"
-        );
-
+                                GROUP BY site_intervention.ID_site
+                                order by departement.nomDepartement asc;");
+      
         while ($donnees = $reponse->fetch())
         {
-        ?><tr><?php
-                ?><td><?php echo $donnees['nomDepartement']?></td><?php
-                ?><td><?php echo $donnees['nom_site']?></td><?php
-                ?><td><?php echo $donnees['libellePeriode']?></td><?php
-                ?><td><?php echo $donnees['date_debut']?></td><?php
-                ?><td><?php echo $donnees['date_fin']?></td><?php
-        ?></tr><?php                
+            echo '<tr>';
+            echo '<td><a href="detail/view/'.$donnees['ID_site'].'>'.$donnees["nomDepartement"].'</a></td>';
+            echo '<td>'.$donnees["nom_site"].'</td>';
+            echo '<td>'.$donnees['libellePeriodes'].'</td>';
+            echo '<td>'.$donnees['date_debut'].'</td>';
+            echo '<td>'.$donnees['date_fin'].'</td>';
+            echo '</tr>';              
         }
         $reponse->closeCursor();
-
         ArcheoPDO::Disconnect();
     }
-
     /**
     *
     */
@@ -157,6 +159,7 @@ class Site
             //$arraySite[]['id'] = $result['label'];
             $arraySite[]['label'] = $result['label'];
         }
+
 
         ArcheoPDO::Disconnect();
         return $arraySite;
