@@ -26,7 +26,7 @@ ob_start();
         <div id="resultatRecherche">
                 <table class="table">
 <?php
-if(!(isset($arraySearch))){
+if(empty($arraySearch)) {
         echo "Remplissez le champ de gauche";
 }
 else{
