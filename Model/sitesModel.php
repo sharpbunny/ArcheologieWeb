@@ -18,7 +18,7 @@ class Site
 
         while ($donnees = $reponse->fetch())
         {
-            echo '<option>'.$donnees['nomCommune'];
+            echo '<option>'.$donnees['nomCommune']."\n";
         }
         $reponse->closeCursor();
 
@@ -38,7 +38,7 @@ class Site
         
         while ($donnees = $reponse->fetch())
         {
-        ?><option><?php echo $donnees['nomDepartement'];
+        ?><option><?php echo $donnees['nomDepartement']."\n";
         }
         $reponse->closeCursor();
 
@@ -134,13 +134,31 @@ class Site
         ArcheoPDO::Disconnect();
     }
 
-    public $dptSelectionne = "";
-    public $villeSelectionnee = "";
+    /**
+    *
+    */
+    public static function getSite()
+    {
+        $bdd = ArcheoPDO::Connect();
 
-    // if (isset($_POST['vil']) || isset($POST['dpt'])) 
-    // { 
-    //     $villeSelectionnee = $_POST['vil'];
-    //     $dptSelectionne = $_POST['dpt'];
-    // }
+        $query = htmlspecialchars(isset($_POST['query'])?$_POST['query']:"");
+        $data = htmlspecialchars(isset($_POST['data'])?$_POST['data']:"");
+        $arraySite= array();
+        if ($data=='ville') {
+            $request = $bdd->query('SELECT DISTINCT nomCommune as label FROM commune WHERE nomCommune LIKE "%'.$query.'%" order by nomCommune ASC');
+        } elseif ($data=='dept') {
+            $request = $bdd->query('SELECT DISTINCT nomDepartement as label FROM departement WHERE nomDepartement LIKE "%'.$query.'%" order by nomDepartement ASC');
+        } else {
+            ArcheoPDO::Disconnect();
+            return $arraySite;
+        }
+        $request->execute();
+        while($result = $request->fetch(PDO::FETCH_ASSOC)) {
+            //$arraySite[]['id'] = $result['label'];
+            $arraySite[]['label'] = $result['label'];
+        }
 
+        ArcheoPDO::Disconnect();
+        return $arraySite;
+    }
 }
