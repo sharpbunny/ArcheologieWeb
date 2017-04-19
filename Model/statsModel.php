@@ -25,7 +25,7 @@ class StatsModel {
                 $theme->closeCursor();
 
                 ArcheoPDO::Disconnect();
-                header('Location: ../Controllers/statsView.php?$theme&amp;stats=true');
+                header('Location: index.php?action=stats?'.$theme.'&amp;stats=true');
             }
 
             else{

@@ -10,6 +10,19 @@ $links = array(); // tableau pour stocker les css supplémentaires
 $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
 ?>
 
+
+<html id="html">
+
+    <head>
+        <meta charset="utf-8">
+        <link href="../Assets/CSS/statsView.css" rel="stylesheet">
+        <title></title>
+    </head>
+
+    <body>
+
+        <!-- <h1>ArcheologieWeb</h1>-->
+
         <!-- Formulaire permettant de choisir la statistique à afficher-->
         <form action="stats/view" method="post">
             <select name="listeStats">
@@ -25,6 +38,7 @@ ob_start();
 echo '        <!-- Div contenant les graphiques -->';
 //if (isset($_GET['stats']) && $_GET['stats'] == true) {
 
+               // }
     //Si c'est le graphique concernant les thèmes qui a été demandé
     //if (isset($_GET['theme'])) {
         //echo '<script type="text/javascript" language="javascript">';
