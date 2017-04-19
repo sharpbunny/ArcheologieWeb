@@ -38,10 +38,10 @@ while($i < count($arraySearch)){
         echo "<br>";
         echo "Nom du Site = ".$arraySearch[$i]['nom_site'];
         echo "<br>";
-        echo "Nom de la commune = ".$arraySearch[$i]['ID_commune'];
+        echo "ID de la commune = ".$arraySearch[$i]['ID_commune'];
         echo "</div>";
         $i++;
-}
+        }
 }
 ?>
 
