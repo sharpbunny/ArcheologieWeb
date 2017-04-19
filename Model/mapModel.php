@@ -35,6 +35,7 @@ class mapModel
         while($result = $request->fetch(PDO::FETCH_ASSOC)){
             $arraySite[] = $result;
         }
+        ArcheoPDO::Disconnect();
 
         return $arraySite;
     }
