@@ -27,7 +27,6 @@ ob_start();
         <div id="resultatRecherche">
                 <table>
 <?php
-if(isset($arraySearch) echo "Rentrez une recherche");
 $i = 0;
 while($i < count($arraySearch)){
         echo '<div class ="researchResult">';
