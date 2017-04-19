@@ -32,7 +32,7 @@
 // });
 
 /* Affichage d'un piechart */
-var ctx2 = document.getElementById("ArcheoPie")
+var ctx2 = $('#ArcheoPie')
 var myPieChart = new Chart(ctx2, {
     type: 'pie',
     data: {
@@ -65,7 +65,7 @@ function respondCanvas() {
     var c = $('#ArcheoChart');
     //console.dir(c);
     var ctx = c.get(0).getContext("2d");
-    var container = c.parent();
+    //var container = c.parent();
 
     //var $container = $(container);
 
@@ -108,7 +108,7 @@ var GetChartData = function() {
         method: 'GET',
         dataType: 'json',
         success: function(d) {
-            console.dir(d);
+            //console.dir(d);
             chartData = {
                 labels: d.label,
                 datasets: [{
@@ -123,7 +123,7 @@ var GetChartData = function() {
             max = Math.max.apply(Math, d.nb);
             steps = 10;
             //console.dir(d);
-            console.dir(chartData);
+            //console.dir(chartData);
             respondCanvas();
         }
     });
