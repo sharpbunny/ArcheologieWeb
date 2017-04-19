@@ -145,15 +145,20 @@ class Site
 
         $query = htmlspecialchars(isset($_POST['query'])?$_POST['query']:"");
         $data = htmlspecialchars(isset($_POST['data'])?$_POST['data']:"");
+        $group = htmlspecialchars(isset($_POST['group'])?$_POST['group']:"");
         $arraySite= array();
         if ($data=='ville') {
             // recherche depart avec $_Post'group'
             // avec id dpt
-            $request = $bdd->query('SELECT DISTINCT nomCommune as label FROM commune WHERE nomCommune LIKE "%'.$query.'%" order by nomCommune ASC');
-            $request1 = $bdd->query('SELECT nomDepartement as label
-                                     FROM commune
-                                    LEFT JOIN departement ON commune.ID_departement = departement.ID_departement
-                                    where commune.nomCommune LIKE "%'.$query.'%";');
+            if ($group!="") {
+                $request = $bdd->query('SELECT ID_departement FROM departement WHERE nomDepartement LIKE "%'.$group.'%"');
+                $request->execute();
+                $result = $request->fetch(PDO::FETCH_ASSOC);
+                $iddpt = $result['ID_departement'];
+                $request = $bdd->query('SELECT DISTINCT nomCommune as label FROM commune WHERE nomCommune LIKE "%'.$query.'%" AND ID_departement = '.$iddpt.' order by nomCommune ASC');
+            } else {
+                $request = $bdd->query('SELECT DISTINCT nomCommune as label FROM commune WHERE nomCommune LIKE "%'.$query.'%" order by nomCommune ASC');
+            }
         } elseif ($data=='dept') {
             $request = $bdd->query('SELECT DISTINCT nomDepartement as label FROM departement WHERE nomDepartement LIKE "%'.$query.'%" order by nomDepartement ASC');
         } else {
