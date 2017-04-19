@@ -76,7 +76,7 @@ $(function() {
             for (var key in obj) {
 
                 if (key == "nom_site") {
-                    $(".affisite").append(obj[key] + '<br>');
+                    $("#listDesSites").append('<p TITLE=' + obj['ID_site'] + '>' + obj[key] + '</p>');
                 }
             }
         }
@@ -91,13 +91,13 @@ $(function() {
         if (gauche == 1) {
             $('#gauche').hide();
         }
-        $(".affisite").empty();
+        $("#listDesSites").empty();
         for (var i = ((affichparpage * pageencour) - affichparpage) - affichparpage; i < (affichparpage * pageencour) - affichparpage; i++) {
             var obj = touslessites.array[i];
 
             for (var key in obj) {
                 if (key == "nom_site") {
-                    $(".affisite").append(obj[key] + '<br>');
+                    $("#listDesSites").append('<p>' + obj[key] + '</p>');
                 }
             }
         }
@@ -116,14 +116,14 @@ $(function() {
         if (droite == parseInt(nombrePage, 10)) {
             $('#droite').hide();
         }
-        $(".affisite").empty();
+        $("#listDesSites").empty();
         for (var i = (affichparpage * droite) - affichparpage; i < (affichparpage * droite); i++) {
             var obj = touslessites.array[i];
 
             for (var key in obj) {
                 if (key == "nom_site") {
 
-                    $(".affisite").append(obj[key] + '<br>');
+                    $("#listDesSites").append('<p>' + obj[key] + '</p>');
                 }
             }
         }
@@ -134,10 +134,22 @@ $(function() {
     });
 
 
-    $(".affisite").click(function() {
-        var contenu = $(this).attr("href");
+    // $("#listDesSites").on("click", "p", function(touslessites) {
 
-    });
+    //     var contenu = $(this).attr("TITLE");
+    //     //bindPopup('Site de fouille.<br>Ville de ' + obj.nomCommune + '<br><u>Périodes</u>: ' + obj.libellePeriodes + '<br><u>Thèmes</u>: ' + obj.libelleThemes + '<br>Début intervention: ' + obj.date_debut + '<br>Fin  intervention: ' + obj.date_fin + ' < br > < a href = "detail/view/' + obj.ID_site + '" > ' + obj.nom_site + '</a>');
+    //     alert(contenu);
+    //     for (var i = 0; i < touslessites.array.length; i++) {
+    //         var obj = touslessites.array[i];
+
+    //         for (var key in obj) {
+
+    //             if (key == contenu) {
+    //                 alert(obj['latitude']);
+    //             }
+    //         }
+    //     }
+    // });
 
 
 
