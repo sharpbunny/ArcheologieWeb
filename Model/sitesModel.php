@@ -77,13 +77,15 @@ class Site
 
         while ($donnees = $reponse->fetch())
         {
+            $dateD = new DateTime($donnees['date_debut']);
+            $dateF = new DateTime($donnees['date_fin']);
             echo '<tr>';
             echo '<td>'.$donnees["nomCommune"].'</td>';
             echo '<td>'.$donnees["nomDepartement"].'</td>';
             echo '<td><a href="detail/view/'.$donnees['ID_site'].'">'.$donnees["nom_site"].'</a></td>';
             echo '<td>'.$donnees['libellePeriodes'].'</td>';
-            echo '<td>'.$donnees['date_debut'].'</td>';
-            echo '<td>'.$donnees['date_fin'].'</td>';
+            echo '<td>'.$dateD->format('d-m-Y').'</td>';
+            echo '<td>'.$dateF->format('d-m-Y').'</td>';
             echo '</tr>';
         }
         $reponse->closeCursor();
@@ -110,13 +112,15 @@ class Site
  
         while ($donnees = $reponse->fetch())
         {
+            $dateD = new DateTime($donnees['date_debut']);
+            $dateF = new DateTime($donnees['date_fin']);
             echo '<tr>';
             echo '<td>'.$donnees["nomCommune"].'</td>';
             echo '<td>'.$donnees["nomDepartement"].'</td>';
             echo '<td><a href="detail/view/'.$donnees['ID_site'].'">'.$donnees["nom_site"].'</a></td>';
             echo '<td>'.$donnees['libellePeriodes'].'</td>';
-            echo '<td>'.$donnees['date_debut'].'</td>';
-            echo '<td>'.$donnees['date_fin'].'</td>';
+            echo '<td>'.$dateD->format('d-m-Y').'</td>';
+            echo '<td>'.$dateF->format('d-m-Y').'</td>';
             echo '</tr>';              
         }
         $reponse->closeCursor();
