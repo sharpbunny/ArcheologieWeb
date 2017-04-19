@@ -1,5 +1,13 @@
 $(function() {
 
+    var touslessites;
+    var latitu = 0;
+    var longitu = 0;
+    var touslessites;
+    var gauche = 1;
+    var droite = 1;
+    var pageencour;
+
     InitialiserCarte();
 
     function InitialiserCarte() {
@@ -13,39 +21,36 @@ $(function() {
 
         $.ajax({
 
-            url:"map/json",
-            type:'GET',
-            cache:false,
+            url: "map/json",
+            type: 'GET',
+            cache: false,
             //data:'data'+html,
-            dataType:'json',
+            dataType: 'json',
             // lorsque l'appel AJAX aura réussi, cette fonction sera automatiquement appelée ;
             // c'est elle que l'on utilise pour mettre à jour notre page !
             // Comme quoi, tout a vraiment été pensé
-            success : function(json)
-            {
+            success: function(json) {
                 // the response contains data
-                if(json.error === 0)
-                {
+                if (json.error === 0) {
                     //extract data from json and pass them to the DOM
-                    for (var i=0; i<json.array.length; i++)
-                    {
+                    for (var i = 0; i < json.array.length; i++) {
                         var obj = json.array[i];
-                        if (obj.longitude!=null && obj.latitude!=null) {
+                        if (obj.longitude != null && obj.latitude != null) {
                             L.marker([obj.latitude, obj.longitude]).addTo(map)
-                                .bindPopup('Site de fouille.<br>Ville de '+obj.nomCommune+'<br><u>Périodes</u>: '+obj.libellePeriodes+'<br><u>Thèmes</u>: '+obj.libelleThemes+'<br>Début intervention: '+obj.date_debut+'<br>Fin intervention: '+obj.date_fin+'<br><a href="detail/view/'+obj.ID_site+'">'+obj.nom_site+'</a>');
+                                .bindPopup('Site de fouille.<br>Ville de ' + obj.nomCommune + '<br><u>Périodes</u>: ' + obj.libellePeriodes + '<br><u>Thèmes</u>: ' + obj.libelleThemes + '<br>Début intervention: ' + obj.date_debut + '<br>Fin intervention: ' + obj.date_fin + '<br><a href="detail/view/' + obj.ID_site + '">' + obj.nom_site + '</a>');
                         } else {
                             // add to list site without geoloc
                         }
                     }
-                }
-                else
-                {
+                } else {
                     alert('error');
-                }
+                };
+                touslessites = json;
+                remplirladiv(json);
             },
             statusCode: {
                 404: function() {
-                    alert( "404 page not found" );
+                    alert("404 page not found");
                 },
                 error: function(json) {
                     alert('error: ' + json);
@@ -53,6 +58,91 @@ $(function() {
             }
         });
     }
+
+    function remplirladiv(touslessites) {
+        var affichparpage = 14;
+        var nombrePage = touslessites.array.length / affichparpage;
+        var dernierepage = touslessites.array.length % affichparpage;
+        alert(nombrePage);
+        //alert(dernierepage);
+        if (gauche == 1) {
+            $('#gauche').hide();
+        }
+        if (droite == nombrePage) {
+            $('#droite').hide();
+        }
+        for (var i = 0; i < affichparpage; i++) {
+            var obj = touslessites.array[i];
+
+            for (var key in obj) {
+
+                if (key == "nom_site") {
+                    $(".affisite").append(obj[key] + '<br>');
+                }
+            }
+        }
+    }
+    $('#gauche').click(function() {
+        gauche++;
+        pageencour = droite;
+        droite--;
+        var affichparpage = 14;
+        var nombrePage = touslessites.array.length / affichparpage;
+        var dernierepage = touslessites.array.length % affichparpage;
+        if (gauche == 1) {
+            $('#gauche').hide();
+        }
+        $(".affisite").empty();
+        for (var i = ((affichparpage * pageencour) - affichparpage) - affichparpage; i < (affichparpage * pageencour) - affichparpage; i++) {
+            var obj = touslessites.array[i];
+
+            for (var key in obj) {
+                if (key == "nom_site") {
+                    $(".affisite").append(obj[key] + '<br>');
+                }
+            }
+        }
+        $('#droite').show();
+        //alert(gauche);
+        return false;
+    });
+
+    $('#droite').click(function() {
+        droite++;
+        pageencour = gauche;
+        gauche--;
+        var affichparpage = 14;
+        var nombrePage = touslessites.array.length / affichparpage;
+        var dernierepage = touslessites.array.length % affichparpage;
+        if (droite == parseInt(nombrePage, 10)) {
+            $('#droite').hide();
+        }
+        $(".affisite").empty();
+        for (var i = (affichparpage * droite) - affichparpage; i < (affichparpage * droite); i++) {
+            var obj = touslessites.array[i];
+
+            for (var key in obj) {
+                if (key == "nom_site") {
+
+                    $(".affisite").append(obj[key] + '<br>');
+                }
+            }
+        }
+        $('#gauche').show();
+
+        //alert(droite);
+        return false;
+    });
+
+
+    $(".affisite").click(function() {
+        var contenu = $(this).attr("href");
+        alert(contenu);
+
+    });
+
+
+
+
+
 });
-
-
