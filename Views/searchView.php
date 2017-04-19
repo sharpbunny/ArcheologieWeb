@@ -27,7 +27,18 @@ ob_start();
         <div id="resultatRecherche">
                 <table>
 <?php
-if (isset($arraySearch)) var_dump($arraySearch);
+if(isset($arraySearch) echo "Rentrez une recherche");
+$i = 0;
+while($i < count($arraySearch)){
+        echo '<div class ="researchResult">';
+        echo '<a href="detail/view/'.$arraySearch[$i]["ID_site"].'">Identifiant du site = '.$arraySearch[$i]["ID_site"].' </a>';
+        echo "<br>";
+        echo "Nom du Site = ".$arraySearch[$i]['nom_site'];
+        echo "<br>";
+        echo "Nom de la commune = ".$arraySearch[$i]['ID_commune'];
+        echo "</div>";
+        $i++;
+}
 ?>
 
                 </table>
