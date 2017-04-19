@@ -16,10 +16,10 @@ ob_start();
             <form method='POST' action="sites/view">
                 <!--<SELECT id="departement" class="menuD" name ="dpt" size="1">
                     <option>*Choisissez votre département*                    
-                    <?php //Site::MenuDDepartement(); ?>                             
+                    <?php // Site::MenuDDepartement(); ?>          
                 </SELECT>
-                <br>
-                <SELECT id="ville" class="menuD" name ="vil" size="1">
+                <br>-->
+                <!--<SELECT id="ville" class="menuD" name ="vil" size="1">
                     <option>*Choisissez votre ville*
                     <?php //Site::MenuDVille(); ?>               
                 </SELECT>-->
@@ -47,17 +47,14 @@ ob_start();
                 <th>Date de fin</th>
                 </tr>
 <?php
-
     
 if (isset($_POST['dpt']) && $_POST['vil']==null)
-{ 
-    
+{     
     $dptSelectionne = htmlspecialchars($_POST['dpt']);
     Site::FiltreParDpt($dptSelectionne);
 }
 if (isset($_POST['vil']) && $_POST['dpt']==null) 
-{
-    
+{    
     $villeSelectionnee = htmlspecialchars($_POST['vil']);
     Site::FiltreParVille($villeSelectionnee);
 }
@@ -68,15 +65,12 @@ else if (isset($_POST['dpt']) && isset($_POST['vil']))
     $villeSelectionnee = htmlspecialchars($_POST['vil']);
     Site::FiltreParVille($villeSelectionnee);
 }
-
-
 ?>
             </table>
         </div>
 <?php
 // store buffer into $content
 $content = ob_get_clean();
-
 
 // include scripts with template
 $scripts = array();

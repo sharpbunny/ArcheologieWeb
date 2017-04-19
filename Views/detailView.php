@@ -48,7 +48,7 @@ ob_start();
                     
                 <tr>
                     <td>Période concernée :  <?php if(isset($DonneesPeriode)) echo $DonneesPeriode["libellePeriode"]; ?> </td>
-                    <td>Type de site : Ruines</td>
+                    <td>Date intervention(début/fin): <?php if(isset($DateIntervention)) echo $DateIntervention["date_debut"]; ?> <?php if(isset($DateIntervention)) echo $DateIntervention["date_fin"]; ?>  </td>
                     
                 </tr>
                

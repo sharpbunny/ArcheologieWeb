@@ -5,7 +5,7 @@ class SitesController
     public static function DisplaySitesView()
     {
         global $user, $basehref;
-        require_once("./Views/sitesView.php");
+        require_once("./Views/sitesView.php"); 
     }
 
     /**
@@ -26,5 +26,4 @@ class SitesController
             echo json_encode(array('error' => 1, 'message'=>"no stuff"));
         }
     }
-
 }

@@ -13,7 +13,7 @@ class mapModel
         $arraySite = array();
         $bdd = ArcheoPDO::Connect();
         $request = $bdd->prepare("
-            SELECT s.ID_site, s.nom_site, s.latitude, s.longitude
+            SELECT DISTINCT s.ID_site, s.nom_site, s.latitude, s.longitude
             , i.date_debut, i.date_fin
             , c.nomCommune
             , d.nomDepartement

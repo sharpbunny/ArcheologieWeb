@@ -26,18 +26,23 @@ ob_start();
         <div id="resultatRecherche">
                 <table class="table">
 <?php
+if(!(isset($arraySearch))){
+        echo "Remplissez le champ de gauche";
+}
+else{
 $i = 0;
-while($i < count($arraySearch)){
+while($i < count($arraySearch)) {
         echo '<tr>';
         echo '<td class ="researchResult">';
         echo '<a href="detail/view/'.$arraySearch[$i]["ID_site"].'">Identifiant du site = '.$arraySearch[$i]["ID_site"].' </a>';
         echo "<br>";
         echo "Nom du Site = ".$arraySearch[$i]['nom_site'];
         echo "<br>";
-        echo "Nom de la commune = ".$arraySearch[$i]['ID_commune'];
+        echo "ID de la commune = ".$arraySearch[$i]['ID_commune'];
         echo '</td>';
         echo "</tr>";
         $i++;
+        }
 }
 ?>
 

@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Site
 {
 
@@ -9,11 +7,8 @@ class Site
     *
     */
     public static function MenuDVille()
-    {
-       
-
+    {      
         $bdd = ArcheoPDO::Connect();
-
         $reponse = $bdd->query("SELECT DISTINCT nomCommune from commune order by nomCommune asc");
 
         while ($donnees = $reponse->fetch())
@@ -21,10 +16,7 @@ class Site
             echo '<option>'.$donnees['nomCommune']."\n";
         }
         $reponse->closeCursor();
-
         ArcheoPDO::Disconnect();
-
-        
     }
 
     /**
@@ -33,15 +25,13 @@ class Site
     public static function MenuDDepartement()
     {        
         $bdd = ArcheoPDO::Connect();
+        $reponse = $bdd->query("SELECT DISTINCT nomDepartement from departement order by nomDepartement asc");  
 
-        $reponse = $bdd->query("SELECT DISTINCT nomDepartement from departement order by nomDepartement asc");
-        
         while ($donnees = $reponse->fetch())
         {
         ?><option><?php echo $donnees['nomDepartement']."\n";
         }
         $reponse->closeCursor();
-
         ArcheoPDO::Disconnect();
     }
 
@@ -51,7 +41,6 @@ class Site
     public static function AfficheSiteParASC()
     {
         $bdd = ArcheoPDO::Connect();
-
         $reponse = $bdd->query("SELECT nomCommune,nom_site,libellePeriode,date_debut,date_fin from commune
                                 left join site_intervention on commune.ID_commune = site_intervention.ID_commune
                                 left join periodeintervention on site_intervention.ID_site = periodeintervention.ID_site
@@ -65,7 +54,6 @@ class Site
             echo '<br>';
         }
         $reponse->closeCursor();
-
         ArcheoPDO::Disconnect();
     }
 
@@ -75,7 +63,6 @@ class Site
     public static function FiltreParVille($ville)
     {
         $bdd = ArcheoPDO::Connect();
-
         $reponse = $bdd->query("SELECT site_intervention.ID_site,nomCommune,nom_site,date_debut,date_fin,nomDepartement,
                                 GROUP_CONCAT(DISTINCT libellePeriode SEPARATOR '#') as libellePeriodes
                                 from commune
@@ -101,7 +88,6 @@ class Site
         }
         $reponse->closeCursor();
         ArcheoPDO::Disconnect();
-
     }
 
     /**
@@ -109,9 +95,7 @@ class Site
     */
     public static function FiltreParDpt($dpt)
     {        
-        $bdd = ArcheoPDO::Connect();
-        
-
+        $bdd = ArcheoPDO::Connect();   
         $reponse = $bdd->query("SELECT site_intervention.ID_site,nomDepartement,nom_site,date_debut,date_fin,nomCommune, 
                                 GROUP_CONCAT(DISTINCT libellePeriode SEPARATOR '#') as libellePeriodes
                                 from departement
@@ -138,20 +122,18 @@ class Site
         $reponse->closeCursor();
         ArcheoPDO::Disconnect();
     }
+
     /**
     *
     */
     public static function getSite()
     {
         $bdd = ArcheoPDO::Connect();
-
         $query = htmlspecialchars(isset($_POST['query'])?$_POST['query']:"");
         $data = htmlspecialchars(isset($_POST['data'])?$_POST['data']:"");
         $group = htmlspecialchars(isset($_POST['group'])?$_POST['group']:"");
         $arraySite= array();
-        if ($data=='ville') {
-            // recherche depart avec $_Post'group'
-            // avec id dpt
+        if ($data=='ville') {            
             if ($group!="") {
                 $request = $bdd->query('SELECT ID_departement FROM departement WHERE nomDepartement LIKE "%'.$group.'%"');
                 $request->execute();
@@ -173,15 +155,6 @@ class Site
             //$arraySite[]['id'] = $result['label'];
             $arraySite[]['label'] = $result['label'];
         }
-
-        // if (isset($result))
-        // {
-        //     $request = $bdd->query("select nomDepartement 
-        //                             from commune
-        //                             left join departement on commune.ID_departement = departement.ID_departement
-        //                             where commune.nomCommune = "$result";");
-        //     $request->execute();
-        // }
         ArcheoPDO::Disconnect();
         return $arraySite;
     }
