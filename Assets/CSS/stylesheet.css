@@ -27,8 +27,13 @@ body {
     width: 559px;
 }
 
+.researchResult{
+    border : dashed blue 1px;
+    padding: 2px;
+}
+
 #resultatRecherche {
-    background-color: purple;
+    background-color: beige;
     height: 800px;
     border: 1px solid black;
 }
