@@ -56,4 +56,3 @@ var myPieChart = new Chart(ctx2, {
         }]
     }
 });
-options: options
