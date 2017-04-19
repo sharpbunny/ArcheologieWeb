@@ -18,7 +18,7 @@ window.onload = function() {
                 }).addTo(map);
             }
             L.marker([48.866667, 2.333333]).addTo(map)
-                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+                // .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
                 .openPopup();
         });
 
@@ -31,7 +31,7 @@ window.onload = function() {
             //page=$(this).attr("href");
 
             $.ajax({
-                url: "./Controllers/ajoutMarqueur.php",
+                url: "map/json",
                 type: 'GET',
                 cache: false,
                 //data:'data'+html,
@@ -45,7 +45,7 @@ window.onload = function() {
                 },
                 //paramètre exécuté une fonction si l'appel AJAX a échoué.
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    //alert(errorThrown);
+                    alert(errorThrown);
                 },
                 // s'exécute une fois l'appel AJAX effectué.
                 complete: function(json, statut) {}
@@ -56,25 +56,13 @@ window.onload = function() {
         }); //Fin de jQuery
 
         function ajoutdesmarqueur(json) {
-            var boolla = false;
-            var boollon = false;
+            alert(json.length);
             for (var i = 0; i < json.length; i++) {
+
                 var obj = json[i];
 
-                for (var key in obj) {
-                    if (key == "latitude") {
-                        lati = obj[key];
-                        boolla = true;
-                    }
-                    if (key == "longitude") {
-                        longi = obj[key];
-                        boollon = true;
-                    }
-
-                    if (boolla == true && boollon == true) {
-                        L.marker([lati, longi]).addTo(map);
-
-                    }
+                if (obj.latitude != null && obj.longitude != null) {
+                    L.marker([obj.latitude, obj.longitude]).addTo(map);
                 }
             }
             touslessites = json;
@@ -160,7 +148,7 @@ window.onload = function() {
 
 
         $(".affisite").click(function() {
-            var contenu = $(this).text();
+            var contenu = $(this).attr("href");
             alert(contenu);
 
         });

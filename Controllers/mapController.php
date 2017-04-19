@@ -13,7 +13,7 @@ class Map
         require_once("./Views/mapView.php");
 	}
 
-	static public function getsiteintervention()
+	static public function SendJson()
 	{
 		$tableauSite=array();
 		require_once'./Model/Connector.php';
@@ -25,8 +25,8 @@ class Map
 		$tableauSite[]=$resultat;
 		//print_r($resultat);
 		endwhile;
-
-		return $tableauSite;
+		echo json_encode($tableauSite);
+		//return $tableauSite;
 	}
 
 
