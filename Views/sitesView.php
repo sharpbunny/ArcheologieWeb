@@ -46,13 +46,19 @@ ob_start();
                 <th class='date'>Date de fin</th>
                 </tr>
 <?php
-if (isset($_POST['dpt'])) 
+if (isset($_POST['dpt']) && isset($_POST['vil']))
+{
+    $dptSelectionne = htmlspecialchars($_POST['dpt']);
+    $villeSelectionnee = htmlspecialchars($_POST['vil']);
+    Site::FiltreParVille($villeSelectionnee);
+}
+else if (isset($_POST['dpt'])) 
 { 
     $dptSelectionne = htmlspecialchars($_POST['dpt']);
     Site::FiltreParDpt($dptSelectionne);
 }
-
-if (isset($_POST['vil'])) {
+else if (isset($_POST['vil'])) 
+{
     $villeSelectionnee = htmlspecialchars($_POST['vil']);
     Site::FiltreParVille($villeSelectionnee);
 }
