@@ -31,6 +31,7 @@ echo '        <!-- Div contenant les graphiques -->';
         //echo 'var theme = '.$_GET['theme'];
         //echo '</script>';
 
+
     //}
     echo '<div id="graphContainer">
                 <div id="chartDiv">
