@@ -12,25 +12,24 @@ require_once "Model/sitesModel.php";
 ob_start();
 ?>
         <div id="divGauche">
-            <p>Recherche</p>
+            <br>
             <form method='POST' action="sites/view">
-                <SELECT id="departement" class="menuD" name ="dpt" size="1">
+                <!--<SELECT id="departement" class="menuD" name ="dpt" size="1">
                     <option>*Choisissez votre département*                    
-                    <?php Site::MenuDDepartement(); ?>                             
+                    <?php //Site::MenuDDepartement(); ?>                             
                 </SELECT>
                 <br>
                 <SELECT id="ville" class="menuD" name ="vil" size="1">
                     <option>*Choisissez votre ville*
-                    <?php Site::MenuDVille(); ?>               
-                </SELECT>
+                    <?php //Site::MenuDVille(); ?>               
+                </SELECT>-->
+                <input id="jsdepartement" type="text" name="dpt" placeholder="Entrez un département" class="form-control">
+                <br>
+                <input id="jsville" type="text" name="vil" placeholder="Entrez une ville" class="form-control">
                 <br>
                 <input type='submit'>
             </form>
             <br>
-<input id="jsdepartement" type="text" name="departement" placeholder="Entrez un département" class="form-control">
-<br>
-<input id="jsville" type="text" name="ville" placeholder="Entrez une ville" class="form-control">
-                
         </div>
 <?php
 // store buffer into $content

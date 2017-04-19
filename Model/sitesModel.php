@@ -147,7 +147,13 @@ class Site
         $data = htmlspecialchars(isset($_POST['data'])?$_POST['data']:"");
         $arraySite= array();
         if ($data=='ville') {
+            // recherche depart avec $_Post'group'
+            // avec id dpt
             $request = $bdd->query('SELECT DISTINCT nomCommune as label FROM commune WHERE nomCommune LIKE "%'.$query.'%" order by nomCommune ASC');
+            $request1 = $bdd->query('SELECT nomDepartement as label
+                                     FROM commune
+                                    LEFT JOIN departement ON commune.ID_departement = departement.ID_departement
+                                    where commune.nomCommune LIKE "%'.$query.'%";');
         } elseif ($data=='dept') {
             $request = $bdd->query('SELECT DISTINCT nomDepartement as label FROM departement WHERE nomDepartement LIKE "%'.$query.'%" order by nomDepartement ASC');
         } else {
@@ -155,12 +161,20 @@ class Site
             return $arraySite;
         }
         $request->execute();
+       
         while($result = $request->fetch(PDO::FETCH_ASSOC)) {
             //$arraySite[]['id'] = $result['label'];
             $arraySite[]['label'] = $result['label'];
         }
 
-
+        // if (isset($result))
+        // {
+        //     $request = $bdd->query("select nomDepartement 
+        //                             from commune
+        //                             left join departement on commune.ID_departement = departement.ID_departement
+        //                             where commune.nomCommune = "$result";");
+        //     $request->execute();
+        // }
         ArcheoPDO::Disconnect();
         return $arraySite;
     }
