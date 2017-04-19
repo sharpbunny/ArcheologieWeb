@@ -8,15 +8,14 @@ $footer = '<p class="text-muted credit">&copy; 2017 Sharpbunny, Inc.</p>';
 ob_start();
 // le code html qui va suivre ne sera pas envoyé à l'écran mais dans un buffer pour être envoyé au template
 ?>
-        <div id="divBarreRecherche">
-            <fieldset>
+        <div>
                 <form action="search/view" method="POST">
+                <div class="form-group">
                 <label>Champ de recherche</label>
-                <input id="barreRecherche" name="researchField" type="text"></input>
-                <input id="submitResearch" type="submit"></input>
-                </form>
-            </fieldset>
-            
+                <input  class="form-control" name="researchField" type="text"></input>
+                </div>
+                <button type="submit" class="btn btn-default">Envoyer</button>
+                </form>        
         </div>
 <?php
 // store buffer into $leftcontent
@@ -25,9 +24,26 @@ $leftcontent = ob_get_clean();
 ob_start();
 ?>
         <div id="resultatRecherche">
-                <table>
+                <table class="table">
 <?php
-if (isset($arraySearch)) var_dump($arraySearch);
+if(empty($arraySearch)) {
+        echo "Remplissez le champ de gauche";
+}
+else{
+$i = 0;
+while($i < count($arraySearch)) {
+        echo '<tr>';
+        echo '<td class ="researchResult">';
+        echo '<a href="detail/view/'.$arraySearch[$i]["ID_site"].'">Identifiant du site = '.$arraySearch[$i]["ID_site"].' </a>';
+        echo "<br>";
+        echo "Nom du Site = ".$arraySearch[$i]['nom_site'];
+        echo "<br>";
+        echo "ID de la commune = ".$arraySearch[$i]['ID_commune'];
+        echo '</td>';
+        echo "</tr>";
+        $i++;
+        }
+}
 ?>
 
                 </table>
