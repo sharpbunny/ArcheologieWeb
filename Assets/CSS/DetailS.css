@@ -27,3 +27,12 @@ th {
 #PeriodeChoisi {
     color: darkred;
 }
+
+#panel-heading{
+    text-decoration: underline;
+    color: red;
+}
+
+p{
+    color: green;
+}

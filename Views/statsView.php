@@ -11,7 +11,7 @@ $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
 ?>
 
         <!-- Formulaire permettant de choisir la statistique à afficher-->
-        <form action="index.php?action=stats" method="post">
+        <form action="stats/view" method="post">
             <select name="listeStats">
                 <option value="themeChart" name="themeChart">Statistiques des thèmes d'intervention</option>
             </select>

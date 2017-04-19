@@ -7,15 +7,19 @@ class SearchController
     /**
      * FIXME: rename to better function's name
      */
-    static function jeanpierre($recheche)
+    public static function DisplayResultSearchView()
     {
-        echo $recheche;
+        global $user, $basehref;
+        require('Model/researchModel.php');
+        $arraySearch = searchModel::DisplayResultSearchView();
+        require_once("./Views/searchView.php");
+
     }
 
     /**
      * Display search view
      */
-    static public function DisplaySearchView()
+    public static function DisplaySearchView()
     {
         global $user, $basehref;
         require_once("./Views/searchView.php");
