@@ -84,8 +84,8 @@ class Site
             echo '<td>'.$donnees["nomDepartement"].'</td>';
             echo '<td><a href="detail/view/'.$donnees['ID_site'].'">'.$donnees["nom_site"].'</a></td>';
             echo '<td>'.$donnees['libellePeriodes'].'</td>';
-            echo '<td>'.$dateD->format('d-m-Y').'</td>';
-            echo '<td>'.$dateF->format('d-m-Y').'</td>';
+            echo '<td>'.$dateD->format('d/m/Y').'</td>';
+            echo '<td>'.$dateF->format('d/m/Y').'</td>';
             echo '</tr>';
         }
         $reponse->closeCursor();
@@ -119,8 +119,8 @@ class Site
             echo '<td>'.$donnees["nomDepartement"].'</td>';
             echo '<td><a href="detail/view/'.$donnees['ID_site'].'">'.$donnees["nom_site"].'</a></td>';
             echo '<td>'.$donnees['libellePeriodes'].'</td>';
-            echo '<td>'.$dateD->format('d-m-Y').'</td>';
-            echo '<td>'.$dateF->format('d-m-Y').'</td>';
+            echo '<td>'.$dateD->format('d/m/Y').'</td>';
+            echo '<td>'.$dateF->format('d/m/Y').'</td>';
             echo '</tr>';              
         }
         $reponse->closeCursor();
@@ -163,4 +163,3 @@ class Site
         return $arraySite;
     }
 }
-
