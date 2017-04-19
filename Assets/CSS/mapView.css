@@ -11,7 +11,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid 1px blue;
     width: 290px;
     height: 800px;
     text-align: center;
@@ -38,10 +37,10 @@
     width: 280px;
     height: 51px;
     color: black;
+    background-color: #2e2524;
 }
 
 #map {
-    border: solid 1px red;
     position: relative;
     background-color: white;
     width: 900px;

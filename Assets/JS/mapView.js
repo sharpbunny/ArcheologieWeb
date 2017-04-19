@@ -63,7 +63,6 @@ $(function() {
         var affichparpage = 14;
         var nombrePage = touslessites.array.length / affichparpage;
         var dernierepage = touslessites.array.length % affichparpage;
-        alert(nombrePage);
         //alert(dernierepage);
         if (gauche == 1) {
             $('#gauche').hide();
@@ -137,7 +136,6 @@ $(function() {
 
     $(".affisite").click(function() {
         var contenu = $(this).attr("href");
-        alert(contenu);
 
     });
 
