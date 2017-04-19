@@ -11,16 +11,6 @@ $links[]='<link href="Assets/CSS/statsView.css" rel="stylesheet">';
 ?>
 
 
-<html id="html">
-
-    <head>
-        <meta charset="utf-8">
-        <link href="../Assets/CSS/statsView.css" rel="stylesheet">
-        <title></title>
-    </head>
-
-    <body>
-
         <!-- <h1>ArcheologieWeb</h1>-->
 
         <!-- Formulaire permettant de choisir la statistique à afficher-->
@@ -49,13 +39,13 @@ echo '        <!-- Div contenant les graphiques -->';
     //}
     echo '<div id="graphContainer">
                 <div id="chartDiv">
-                    <canvas id="ArcheoChart" width="100" height="100"></canvas>        
-                    </div>
+                    <canvas id="ArcheoChart" width="100" height="100" class="plot"></canvas>        
+                </div>
 
-                    <div id="pieDiv">
-                        <canvas id="ArcheoPie"></canvas>        
-                    </div>
-                </div>';
+                <div id="pieDiv">
+                    <canvas id="ArcheoPie"></canvas>        
+                </div>
+            </div>';
 //} else {
 //    echo '<p>Vous n\'avez choisi aucune statistique.</p>';
 //}
@@ -63,7 +53,7 @@ echo '        <!-- Div contenant les graphiques -->';
 // store buffer into $content
 $content = ob_get_clean();
 $scripts = array(); // tableau pour stocker les scripts supplémentaires
-$scripts[] = '<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js" type="text/javascript"></script> <!-- Librairie chartjs-->';
+$scripts[] = '<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" type="text/javascript"></script>';
 $scripts[] = '<script src="Assets/JS/statsView.js" type="text/javascript"></script>';
 // call template to display
 include('Views/siteTemplate.php');
