@@ -27,6 +27,10 @@ ob_start();
         <div id="resultatRecherche">
                 <table>
 <?php
+if(!(isset($arraySearch))){
+        echo "Remplissez le champ de gauche";
+}
+else{
 $i = 0;
 while($i < count($arraySearch)){
         echo '<div class ="researchResult">';
@@ -37,6 +41,7 @@ while($i < count($arraySearch)){
         echo "Nom de la commune = ".$arraySearch[$i]['ID_commune'];
         echo "</div>";
         $i++;
+}
 }
 ?>
 
