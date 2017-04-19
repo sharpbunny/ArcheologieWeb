@@ -1,4 +1,6 @@
 <?php 
+class StatsModel {
+
     //FIXME : create CLASS
     include ('Connector.php');
     //Si l'utilisateur a bien une session d'ouverte, on autorise sa connexion à la BDD
@@ -23,7 +25,7 @@
                 $theme->closeCursor();
 
                 ArcheoPDO::Disconnect();
-                header('Location: ../Controllers/statsView.php?$theme&amp;stats=true');
+                header('Location: index.php?action=stats?'.$theme.'&amp;stats=true');
             }
 
             else{
@@ -31,11 +33,4 @@
             }
 
     }
-
-    //Si il n'est pas connecté
-    else{
-        //header('Location: ../index.php');
-        //exit;      
-    }
-
-?>
+}

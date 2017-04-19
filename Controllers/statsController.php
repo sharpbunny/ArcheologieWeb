@@ -2,7 +2,7 @@
 /**
 * In charge of managing Map stuff
 */
-class Stats
+class StatsController
 {
     /**
      * display map
