@@ -7,24 +7,25 @@ $footer = '<p class="text-muted credit">&copy; 2017 Sharpbunny, Inc.</p>';
 // buffer init
 ob_start();
 // le code html qui va suivre ne sera pas envoyé à l'écran mais dans un buffer pour être envoyé au template
+$search = htmlspecialchars(isset($_POST['researchField'])?$_POST['researchField']:"");
 ?>
-        <div>
-                <form action="search/view" method="POST">
-                <div class="form-group">
+    <div>
+        <form action="search/view" method="POST">
+            <div class="form-group">
                 <label>Champ de recherche</label>
-                <input  class="form-control" name="researchField" type="text"></input>
-                </div>
+                <input  class="form-control" name="researchField" type="text" value="<?php echo $search; ?>"></input>
+            </div>
                 <button type="submit" class="btn btn-default">Envoyer</button>
-                </form>        
-        </div>
+        </form>
+    </div>
 <?php
 // store buffer into $leftcontent
 $leftcontent = ob_get_clean();
-// strart new buffer
+// start new buffer
 ob_start();
 ?>
-        <div id="resultatRecherche">
-                <table class="table">
+    <div id="resultatRecherche">
+        <table class="table">
 <?php
 if(empty($arraySearch)) {
         echo "Remplissez le champ de gauche";
@@ -45,8 +46,8 @@ if(empty($arraySearch)) {
 }
 ?>
 
-                </table>
-        </div>
+        </table>
+    </div>
 <?php
 // store buffer into $content
 $content = ob_get_clean();
