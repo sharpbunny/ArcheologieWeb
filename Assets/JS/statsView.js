@@ -30,29 +30,6 @@
 //         }
 //     }
 // });
-var max = 0;
-var steps = 10;
-var chartData = {};
-
-function respondCanvas() {
-    var c = $('#ArcheoChart');
-    var ctx = c.get(0).getContext("2d");
-    var container = c.parent();
-
-    var $container = $(container);
-
-    c.attr('width', $container.width()); //max width
-
-    c.attr('height', $container.height()); //max height                   
-
-    //Call a function to redraw other content (texts, images etc)
-    var chart = new Chart(ctx).Line(chartData, {
-        scaleOverride: true,
-        scaleSteps: steps,
-        scaleStepWidth: Math.ceil(max / steps),
-        scaleStartValue: 0
-    });
-}
 
 /* Affichage d'un piechart */
 var ctx2 = document.getElementById("ArcheoPie")
@@ -80,13 +57,39 @@ var myPieChart = new Chart(ctx2, {
     }
 });
 
+var max = 0;
+var steps = 10;
+var chartData = {};
+
+function respondCanvas() {
+    var c = $('#ArcheoChart');
+    console.dir(c);
+    var ctx = c.get(0).getContext("2d");
+    var container = c.parent();
+
+    var $container = $(container);
+
+    //c.attr('width', $container.width()); //max width
+    c.attr('width', 100);
+    //c.attr('height', $container.height()); //max height                   
+    c.attr('height', 100);
+    //Call a function to redraw other content (texts, images etc)
+    var chart = new Chart(ctx).Line(chartData, {
+        scaleOverride: true,
+        scaleSteps: steps,
+        scaleStepWidth: Math.ceil(max / steps),
+        scaleStartValue: 0
+    });
+}
+
+
 var GetChartData = function() {
     $.ajax({
         url: 'stats/jsonth',
         method: 'GET',
         dataType: 'json',
         success: function(d) {
-            console.dir(d);
+            //console.dir(d);
             chartData = {
                 labels: d.AxisLabels,
                 datasets: [{
@@ -100,13 +103,14 @@ var GetChartData = function() {
 
             max = Math.max.apply(Math, d.DataSets[0]);
             steps = 10;
+            console.dir(chartData);
             respondCanvas();
         }
     });
 };
 
 $(document).ready(function() {
-    //$(window).resize(respondCanvas);
+    $(window).resize(setTimeout(respondCanvas, 500));
 
     GetChartData();
 });
