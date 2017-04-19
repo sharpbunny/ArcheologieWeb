@@ -39,29 +39,37 @@ ob_start();
         <div id="divDroite">
             <table class="table">
                 <tr>
-                <th id='nomDpt'>Nom/Département</th>
-                <th id='nSite'>Nom du Site</th>
+                <th>Ville</th>
+                <th>Département</th>
+                <th>Nom du Site</th>
                 <th>Libellé période</th>
-                <th class='date'>Date de début</th>
-                <th class='date'>Date de fin</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
                 </tr>
 <?php
-if (isset($_POST['dpt']) && isset($_POST['vil']))
-{
-    $dptSelectionne = htmlspecialchars($_POST['dpt']);
-    $villeSelectionnee = htmlspecialchars($_POST['vil']);
-    Site::FiltreParVille($villeSelectionnee);
-}
-else if (isset($_POST['dpt'])) 
+
+    
+if (isset($_POST['dpt']) && $_POST['vil']==null)
 { 
+    
     $dptSelectionne = htmlspecialchars($_POST['dpt']);
     Site::FiltreParDpt($dptSelectionne);
 }
-else if (isset($_POST['vil'])) 
+if (isset($_POST['vil']) && $_POST['dpt']==null) 
 {
+    
     $villeSelectionnee = htmlspecialchars($_POST['vil']);
     Site::FiltreParVille($villeSelectionnee);
 }
+
+else if (isset($_POST['dpt']) && isset($_POST['vil']))
+{
+    $dptSelectionne = htmlspecialchars($_POST['dpt']);
+    $villeSelectionnee = htmlspecialchars($_POST['vil']);
+    Site::FiltreParVille($villeSelectionnee);
+}
+
+
 ?>
             </table>
         </div>
