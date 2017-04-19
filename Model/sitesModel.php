@@ -76,9 +76,10 @@ class Site
     {
         $bdd = ArcheoPDO::Connect();
 
-        $reponse = $bdd->query("SELECT site_intervention.ID_site,nomCommune,nom_site,date_debut,date_fin,
+        $reponse = $bdd->query("SELECT site_intervention.ID_site,nomCommune,nom_site,date_debut,date_fin,nomDepartement,
                                 GROUP_CONCAT(DISTINCT libellePeriode SEPARATOR '#') as libellePeriodes
-                                from commune                                
+                                from commune
+                                left join departement on commune.ID_departement = departement.ID_departement                              
                                 left join site_intervention on commune.ID_commune = site_intervention.ID_commune
                                 left join periodeintervention on site_intervention.ID_site = periodeintervention.ID_site
                                 left join periode on periodeintervention.ID_periode = periode.ID_periode
@@ -90,15 +91,15 @@ class Site
         while ($donnees = $reponse->fetch())
         {
             echo '<tr>';
-            echo '<td><a href="detail/view/'.$donnees['ID_site'].'">'.$donnees["nomCommune"].'</a></td>';
-            echo '<td>'.$donnees["nom_site"].'</td>';
+            echo '<td>'.$donnees["nomCommune"].'</td>';
+            echo '<td>'.$donnees["nomDepartement"].'</td>';
+            echo '<td><a href="detail/view/'.$donnees['ID_site'].'">'.$donnees["nom_site"].'</a></td>';
             echo '<td>'.$donnees['libellePeriodes'].'</td>';
             echo '<td>'.$donnees['date_debut'].'</td>';
             echo '<td>'.$donnees['date_fin'].'</td>';
             echo '</tr>';
         }
         $reponse->closeCursor();
-
         ArcheoPDO::Disconnect();
 
     }
@@ -111,7 +112,7 @@ class Site
         $bdd = ArcheoPDO::Connect();
         
 
-        $reponse = $bdd->query("SELECT site_intervention.ID_site,nomDepartement,nom_site,date_debut,date_fin, 
+        $reponse = $bdd->query("SELECT site_intervention.ID_site,nomDepartement,nom_site,date_debut,date_fin,nomCommune, 
                                 GROUP_CONCAT(DISTINCT libellePeriode SEPARATOR '#') as libellePeriodes
                                 from departement
                                 left join commune on departement.ID_departement = commune.ID_departement
@@ -126,8 +127,9 @@ class Site
         while ($donnees = $reponse->fetch())
         {
             echo '<tr>';
-            echo '<td><a href="detail/view/'.$donnees['ID_site'].'">'.$donnees["nomDepartement"].'</a></td>';
-            echo '<td>'.$donnees["nom_site"].'</td>';
+            echo '<td>'.$donnees["nomCommune"].'</td>';
+            echo '<td>'.$donnees["nomDepartement"].'</td>';
+            echo '<td><a href="detail/view/'.$donnees['ID_site'].'">'.$donnees["nom_site"].'</a></td>';
             echo '<td>'.$donnees['libellePeriodes'].'</td>';
             echo '<td>'.$donnees['date_debut'].'</td>';
             echo '<td>'.$donnees['date_fin'].'</td>';

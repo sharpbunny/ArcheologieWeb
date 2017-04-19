@@ -1,36 +1,36 @@
-<?php 
-class StatsModel {
+<?php
+/**
+ * In charge of managing Stats stuff
+ */
+class StatsModel
+{
+    public static function getStatsTheme()
+    {
 
-    //FIXME : create CLASS
-    include ('Connector.php');
-    //Si l'utilisateur a bien une session d'ouverte, on autorise sa connexion à la BDD
-    if(isset($_SESSION['iduser'])){
-       $bdd = ArcheoPDO::Connect();
-            //On effectue la requête correspondant au choix de l'utilisateur
-
-            //Si l'utilisateur a choisi d'afficher les statistiques concernant les thèmes d'intervention'
-            if($_POST['listeStats'] == 'themeChart'){
-
-                $theme = $bdd->query('SELECT nomTheme, COUNT(nomTheme) FROM themeintervention
-                    LEFT JOIN theme ON theme.ID_theme = themeintervention.ID_theme
-                    GROUP BY nomTheme
-                    ORDER BY nomTheme ASC'); 
-                /* La requête précédente créée un tableau a deux dimensions. La première colonne contient le nom d'un thème, la seconde
+        require_once("./Model/Connector.php");
+        $arrayTheme = array();
+        $bdd = ArcheoPDO::Connect();
+        //On effectue la requête correspondant au choix de l'utilisateur
+        //Si l'utilisateur a choisi d'afficher les statistiques concernant les thèmes d'intervention'
+        $request = $bdd->query('
+            SELECT nomTheme, COUNT(nomTheme) as nbTheme FROM themeintervention
+            LEFT JOIN theme ON theme.ID_theme = themeintervention.ID_theme
+            GROUP BY nomTheme
+            ORDER BY nomTheme ASC
+        '); 
+        /* La requête précédente créée un tableau a deux dimensions. La première colonne contient le nom d'un thème, la seconde
                 colonne contient le nombre de fois que ce thème est invoqué pour un site d'intervention.
                 Exemple : "Agriculture" | 11
                           "Arts, biens de prestige" | 2
                           etc...*/  
                 
 
-                $theme->closeCursor();
+        $request->execute();
+        while($result = $request->fetch(PDO::FETCH_ASSOC)){
+            $arrayTheme[] = $result;
+        }
+        ArcheoPDO::Disconnect();
 
-                ArcheoPDO::Disconnect();
-                header('Location: index.php?action=stats?'.$theme.'&amp;stats=true');
-            }
-
-            else{
-
-            }
-
+        return $arrayTheme;
     }
 }
