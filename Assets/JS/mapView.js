@@ -42,7 +42,7 @@ $(function() {
                         var obj = json.array[i];
                         if (obj.longitude != null && obj.latitude != null) {
                            var unmarker= L.marker([obj.latitude, obj.longitude],{title:obj.ID_site}).addTo(map)
-                                .bindPopup('Site de fouille.<br>N° Site :'+ obj.ID_site+'<br>Ville de ' + obj.nomCommune + '<br><u>Périodes</u>: ' + obj.libellePeriodes + '<br><u>Thèmes</u>: ' + obj.libelleThemes + '<br>Début intervention: ' + obj.date_debut + '<br>Fin intervention: ' + obj.date_fin + '<br><a href="detail/view/' + obj.ID_site + '">' + obj.nom_site + '</a>');
+                                .bindPopup('Site de fouille.<br>Ville de ' + obj.nomCommune + '<br><u>Périodes</u>: ' + obj.libellePeriodes + '<br><u>Thèmes</u>: ' + obj.libelleThemes + '<br>Début intervention: ' + obj.date_debut + '<br>Fin intervention: ' + obj.date_fin + '<br><a href="detail/view/' + obj.ID_site + '">' + obj.nom_site + '</a>');
                                 Listmarkers.push(unmarker);
                         } else {
                             // add to list site without geoloc
