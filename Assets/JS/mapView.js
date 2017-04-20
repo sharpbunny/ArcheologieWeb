@@ -1,18 +1,18 @@
 $(function() {
 
-    var touslessites;
     var latitu = 0;
     var longitu = 0;
     var touslessites;
     var gauche = 1;
     var droite = 1;
     var pageencour;
+    var map;
 
     InitialiserCarte();
 
     function InitialiserCarte() {
 
-        var map = L.map('map').setView([48.765, 2.745], 9);
+        map = L.map('map').setView([48.765, 2.745], 9);
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -41,12 +41,14 @@ $(function() {
                         } else {
                             // add to list site without geoloc
                         }
+
                     }
+                    touslessites = json.array;
                 } else {
                     alert('error');
                 };
-                touslessites = json;
-                remplirladiv(json);
+
+                remplirladiv(touslessites);
             },
             statusCode: {
                 404: function() {
@@ -61,8 +63,8 @@ $(function() {
 
     function remplirladiv(touslessites) {
         var affichparpage = 14;
-        var nombrePage = touslessites.array.length / affichparpage;
-        var dernierepage = touslessites.array.length % affichparpage;
+        var nombrePage = touslessites.length / affichparpage;
+        var dernierepage = touslessites.length % affichparpage;
         //alert(dernierepage);
         if (gauche == 1) {
             $('#gauche').hide();
@@ -71,7 +73,7 @@ $(function() {
             $('#droite').hide();
         }
         for (var i = 0; i < affichparpage; i++) {
-            var obj = touslessites.array[i];
+            var obj = touslessites[i];
 
             for (var key in obj) {
 
@@ -81,23 +83,24 @@ $(function() {
             }
         }
     }
+
     $('#gauche').click(function() {
         gauche++;
         pageencour = droite;
         droite--;
         var affichparpage = 14;
-        var nombrePage = touslessites.array.length / affichparpage;
-        var dernierepage = touslessites.array.length % affichparpage;
+        var nombrePage = touslessites.length / affichparpage;
+        var dernierepage = touslessites.length % affichparpage;
         if (gauche == 1) {
             $('#gauche').hide();
         }
         $("#listDesSites").empty();
         for (var i = ((affichparpage * pageencour) - affichparpage) - affichparpage; i < (affichparpage * pageencour) - affichparpage; i++) {
-            var obj = touslessites.array[i];
+            var obj = touslessites[i];
 
             for (var key in obj) {
                 if (key == "nom_site") {
-                    $("#listDesSites").append('<p>' + obj[key] + '</p>');
+                    $("#listDesSites").append('<p TITLE=' + obj['ID_site'] + '>' + obj[key] + '</p>');
                 }
             }
         }
@@ -111,19 +114,19 @@ $(function() {
         pageencour = gauche;
         gauche--;
         var affichparpage = 14;
-        var nombrePage = touslessites.array.length / affichparpage;
-        var dernierepage = touslessites.array.length % affichparpage;
+        var nombrePage = touslessites.length / affichparpage;
+        var dernierepage = touslessites.length % affichparpage;
         if (droite == parseInt(nombrePage, 10)) {
             $('#droite').hide();
         }
         $("#listDesSites").empty();
         for (var i = (affichparpage * droite) - affichparpage; i < (affichparpage * droite); i++) {
-            var obj = touslessites.array[i];
+            var obj = touslessites[i];
 
             for (var key in obj) {
                 if (key == "nom_site") {
 
-                    $("#listDesSites").append('<p>' + obj[key] + '</p>');
+                    $("#listDesSites").append('<p TITLE=' + obj['ID_site'] + '>' + obj[key] + '</p>');
                 }
             }
         }
@@ -134,25 +137,37 @@ $(function() {
     });
 
 
-    // $("#listDesSites").on("click", "p", function(touslessites) {
+    $("#listDesSites").on("click", "p", function() {
 
-    //     var contenu = $(this).attr("TITLE");
-    //     //bindPopup('Site de fouille.<br>Ville de ' + obj.nomCommune + '<br><u>Périodes</u>: ' + obj.libellePeriodes + '<br><u>Thèmes</u>: ' + obj.libelleThemes + '<br>Début intervention: ' + obj.date_debut + '<br>Fin  intervention: ' + obj.date_fin + ' < br > < a href = "detail/view/' + obj.ID_site + '" > ' + obj.nom_site + '</a>');
-    //     alert(contenu);
-    //     for (var i = 0; i < touslessites.array.length; i++) {
-    //         var obj = touslessites.array[i];
+        console.log('lut');
+        touslessites;
+        var contenu = $(this).attr("TITLE");
+        for (var i = 0; i < touslessites.length; i++) {
+            var obj = touslessites[i];
+            //bindPopup('Site de fouille.<br>Ville de ' + obj.nomCommune + '<br><u>Périodes</u>: ' + obj.libellePeriodes + '<br><u>Thèmes</u>: ' + obj.libelleThemes + '<br>Début intervention: ' + obj.date_debut + '<br>Fin  intervention: ' + obj.date_fin + ' < br > < a href = "detail/view/' + obj.ID_site + '" > ' + obj.nom_site + '</a>');
+            if (obj.ID_site == contenu) {
 
-    //         for (var key in obj) {
+                // var latlng = L.latLng(obj.latitude, obj.longitude).bindPopup('' + obj.nom_site + '').openPopup();
+                // alert(latlng);
+                // // alert(obj.ID_site + ' / ' + obj.nom_site + ' / ' + obj.latitude + ' / ' + obj.longitude);
+                // // var marker = new L.Marker([obj.latitude, obj.longitude]);
+                // // L.marker([obj.latitude, obj.longitude]).remove(map)
+                // // L.marker([obj.latitude, obj.longitude]).addTo(map)
+                // // marker.bindPopup('' + obj.nom_site + '').openPopup();
 
-    //             if (key == contenu) {
-    //                 alert(obj['latitude']);
-    //             }
-    //         }
-    //     }
-    // });
+                // // for (var i in marker) {
+                // //     alert(i);
+                // // }
+                // // marker.openPopup();
+                // // map.addLayer(marker);
+                // //marker.bindPopup('' + obj.nom_site + '').openPopup();
+                // //L.marker([obj.latitude, obj.longitude]).remove(map);
+                // latlng.bindPopup('' + obj.nom_site + '').openPopup();
 
+                ;
+            }
+        }
 
-
-
+    });
 
 });
