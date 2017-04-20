@@ -36,7 +36,7 @@ class ModelDetailSite
         $request = $bdd->prepare('SELECT libellePeriode
                                   FROM periode                            
                                   LEFT JOIN periodeintervention ON periodeintervention.ID_periode = periode.ID_periode                                                                      
-                                  WHERE ID_site LIKE "'.$id.'"');
+                                  WHERE periodeintervention.ID_site LIKE "'.$id.'"');
         $request->execute();
         $detailSite = $request->fetch(PDO::FETCH_ASSOC);
 

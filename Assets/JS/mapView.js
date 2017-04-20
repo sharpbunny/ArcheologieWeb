@@ -11,6 +11,7 @@ $(function() {
     InitialiserCarte();
 
     function InitialiserCarte() {
+        
 
         var map = L.map('map').setView([48.765, 2.745], 9);
 
@@ -18,9 +19,10 @@ $(function() {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
+         L.marker([48.765, 2.745]).addTo(map);
 
         $.ajax({
-
+           
             url: "map/json",
             type: 'GET',
             cache: false,
@@ -30,6 +32,7 @@ $(function() {
             // c'est elle que l'on utilise pour mettre à jour notre page !
             // Comme quoi, tout a vraiment été pensé
             success: function(json) {
+               
                 // the response contains data
                 if (json.error === 0) {
                     //extract data from json and pass them to the DOM
@@ -53,6 +56,7 @@ $(function() {
                     alert("404 page not found");
                 },
                 error: function(json) {
+                    alert();
                     alert('error: ' + json);
                 }
             }
@@ -134,22 +138,22 @@ $(function() {
     });
 
 
-    // $("#listDesSites").on("click", "p", function(touslessites) {
+    $("#listDesSites").on("click", "p", function(touslessites) {
 
-    //     var contenu = $(this).attr("TITLE");
-    //     //bindPopup('Site de fouille.<br>Ville de ' + obj.nomCommune + '<br><u>Périodes</u>: ' + obj.libellePeriodes + '<br><u>Thèmes</u>: ' + obj.libelleThemes + '<br>Début intervention: ' + obj.date_debut + '<br>Fin  intervention: ' + obj.date_fin + ' < br > < a href = "detail/view/' + obj.ID_site + '" > ' + obj.nom_site + '</a>');
-    //     alert(contenu);
-    //     for (var i = 0; i < touslessites.array.length; i++) {
-    //         var obj = touslessites.array[i];
+        var contenu = $(this).attr("TITLE");
+        //bindPopup('Site de fouille.<br>Ville de ' + obj.nomCommune + '<br><u>Périodes</u>: ' + obj.libellePeriodes + '<br><u>Thèmes</u>: ' + obj.libelleThemes + '<br>Début intervention: ' + obj.date_debut + '<br>Fin  intervention: ' + obj.date_fin + ' < br > < a href = "detail/view/' + obj.ID_site + '" > ' + obj.nom_site + '</a>');
+        alert(contenu);
+        for (var i = 0; i < touslessites.array.length; i++) {
+            var obj = touslessites.array[i];
 
-    //         for (var key in obj) {
+            for (var key in obj) {
 
-    //             if (key == contenu) {
-    //                 alert(obj['latitude']);
-    //             }
-    //         }
-    //     }
-    // });
+                if (key == contenu) {
+                    alert(obj['latitude']);
+                }
+            }
+        }
+    });
 
 
 
