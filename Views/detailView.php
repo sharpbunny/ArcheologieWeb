@@ -47,8 +47,14 @@ ob_start();
                    <td>Type d'intervention : <?php if (isset($DonneesIntervention)) echo $DonneesIntervention["libelleIntervention"]; ?> </td>
                     
                 <tr>
+                
                     <td>Période concernée :  <?php if(isset($DonneesPeriode)) echo $DonneesPeriode["libellePeriode"]; ?> </td>
-                    <td>Type de site : Ruines</td>
+                    <td>Date intervention(début/fin): 
+                     <?php $dateDebut = new DateTime($DateIntervention['date_debut']);
+                     $dateFin = new DateTime($DateIntervention['date_fin']);
+                     $dateFin->format('d/m/Y'); 
+                     echo $dateDebut->format('d/m/Y').' '.$dateFin->format('d/m/Y');?>     
+                    </td>
                     
                 </tr>
                

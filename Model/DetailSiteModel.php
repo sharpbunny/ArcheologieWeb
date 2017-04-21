@@ -35,8 +35,8 @@ class ModelDetailSite
 
         $request = $bdd->prepare('SELECT libellePeriode
                                   FROM periode                            
-                                  LEFT JOIN periodeintervention ON periodeintervention.ID_periode = periode.ID_periode                                                                      
-                                  WHERE periodeintervention.ID_site LIKE "'.$id.'"');
+                                  LEFT JOIN periodeintervention ON periodeintervention.ID_periode = periode.ID_periode                                                                                                   
+                                  WHERE periodeintervention.ID_site = "'.$id.'"' );
         $request->execute();
         $detailSite = $request->fetch(PDO::FETCH_ASSOC);
 
@@ -62,7 +62,29 @@ class ModelDetailSite
 
         return $detailSite;
     }
+    /**
+    *Fonction pour récupérer la date de début et de fin du site d'intervention.
+    */ 
+    public static function MettreDateIntervention()
+    {
+        $getpost = array_merge($_GET, $_POST);
+        $id = htmlspecialchars(isset($getpost['id'])?$getpost['id']:"");
 
+        $bdd = ArcheoPDO::Connect();
 
-   
+        $request = $bdd->prepare('SELECT date_debut, date_fin 
+                                  FROM intervention                          
+                                  WHERE ID_site LIKE "'.$id.'"');
+        // date('d/m/Y',strtotime($request['date_debut'])); 
+        // date('d/m/Y', strtotime($request['date_fin']));                         
+        //  $dateDebut = new DateTime($request['date_debut']);
+        //  $dateFin = new DateTime($request['date_fin']);
+        //  $dateDebut->format('d-m-Y');
+        //  $dateFin->format('d-m-Y');          
+        $request->execute();
+        $detailSite = $request->fetch(PDO::FETCH_ASSOC);
+
+        return $detailSite;                          
+    }
+ 
 }

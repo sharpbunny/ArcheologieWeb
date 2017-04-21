@@ -25,7 +25,7 @@ class StatsController
         header('Content-Type: application/json; charset=UTF-8');
 
         if (count($array) > 0) {
-            echo json_encode(array('error' => 0,  'DataSets'=>$array));
+            echo json_encode($array,JSON_UNESCAPED_UNICODE);
         }
         else {
             echo json_encode(array('error' => 1, 'message'=>"no stuff"));
