@@ -27,7 +27,7 @@ class mapModel
             LEFT JOIN commune AS c ON c.ID_commune = s.ID_commune
             LEFT JOIN departement AS d ON d.ID_departement = c.ID_departement
             LEFT JOIN intervention AS i ON i.ID_site = s.ID_site
-            GROUP BY s.ID_site
+            GROUP BY s.ID_site,i.date_debut,i.date_fin
         ");
 
 
